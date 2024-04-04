@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "dev.pack_my_trip"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "dev.pack_my_trip"
@@ -27,7 +27,7 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 

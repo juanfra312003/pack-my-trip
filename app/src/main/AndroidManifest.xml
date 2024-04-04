@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Packmytrip"
         tools:targetApi="31">
         <activity
-            android:name=".activities.general_activities.login_activity"
+            android:name=".activities.tourist_activities.DashboardTourist"
+            android:exported="false" />
+        <activity
+            android:name=".activities.general_activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
