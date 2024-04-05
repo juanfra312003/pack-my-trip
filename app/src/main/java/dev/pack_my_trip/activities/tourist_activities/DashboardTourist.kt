@@ -13,5 +13,6 @@ class DashboardTourist : AppCompatActivity() {
         binding = ActivityDashboardTouristBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
     }
 }
