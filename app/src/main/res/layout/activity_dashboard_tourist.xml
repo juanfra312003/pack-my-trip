@@ -24,11 +24,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_dashboard_tourist" />
 
+    <TextView
+        android:id="@+id/textoPaquetesTuristicos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/coda"
+        android:text="Mis Paquetes Turísticos"
+        android:textColor="#092790"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="105dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:background="#D8E3F2"
         android:padding="1dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +90,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/usuario" />
+            app:srcCompat="@drawable/usuario"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/button_location"
@@ -90,7 +107,8 @@
             app:layout_constraintStart_toEndOf="@+id/button_profile"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.47"
-            app:srcCompat="@drawable/marcador_location" />
+            app:srcCompat="@drawable/marcador_location"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/textProfile"
@@ -124,5 +142,45 @@
             app:layout_constraintTop_toBottomOf="@+id/button_profile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageTouristDashboard"
+        android:layout_width="107dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoPaquetesTuristicos"
+        app:srcCompat="@drawable/turista_dashboard" />
+
+    <ListView
+        android:id="@+id/list_tourist_packages"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageTouristDashboard" />
+
+    <Button
+        android:id="@+id/buttonSearchPackages"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#092790"
+        android:fontFamily="@font/coda"
+        android:text="Buscar Paquetes"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_tourist_packages" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
