@@ -12,7 +12,5 @@ class DashboardTourist : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardTouristBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
 }
