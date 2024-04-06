@@ -1,5 +1,4 @@
 package dev.pack_my_trip.activities.general_activities
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
