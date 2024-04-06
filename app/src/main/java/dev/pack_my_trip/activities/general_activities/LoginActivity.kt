@@ -15,6 +15,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //startActivity(Intent(this, DashboardTourist::class.java))
+        startActivity(Intent(this, DashboardTourist::class.java))
     }
 }
