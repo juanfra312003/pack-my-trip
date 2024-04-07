@@ -1,9 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.operator_activities.DashboardOperator">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_tam"
+        android:layout_marginBottom="16dp"
+    />
+
+    <TextView
+        android:id="@+id/textoBienvenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:fontFamily="@font/coda"
+        android:text="@string/bienvenida_operador"
+        android:layout_marginBottom="16dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="#D8E3F2"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/circulo_blanco"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="50dp">
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/operador_photo"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_marginEnd="80dp">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/usuario"
+                />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/texto_perfil"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/coda"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+            <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/marcador_location"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto_region"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/coda"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+            />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#28429e"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:text="@string/texto_mis_servicios"
+        android:layout_marginBottom="5dp"
+        />
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:src="@drawable/operador_dashboard"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+    <ListView
+        android:id="@+id/MisServiciosListView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/registrarServicioDashBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/texto_registar_servicio"
+        android:layout_gravity="center"
+        android:backgroundTint="#28429e"
+        android:fontFamily="@font/coda"
+    />
+</LinearLayout>

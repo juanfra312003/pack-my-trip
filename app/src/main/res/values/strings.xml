@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">pack-my-trip</string>
+    <string name="bienvenida_operador">Bienvenido de nuevo, operador</string>
+    <string name="texto_perfil">Perfil</string>
+    <string name="texto_region">Región</string>
+    <string name="texto_mis_servicios">Mis servicios</string>
+    <string name="texto_registar_servicio">Registrar Servicio</string>
+    <string name="texto_registro_de_servicios">Registro de servicios</string>
+    <string name="texto_nombre_servicio">Nombre del servicio:</string>
+    <string name="texto_precio_servicio">Precio del servicio:</string>
+    <string name="texto_limite_dario">Limite de visita diario:</string>
+    <string name="texto_caracteristicas_servicios">Caracteristicas de tu servicio</string>
+    <string name="texto_subir_portada">Subir Portada</string>
+    <string name="texto_programar_servicio">Programa tu servicio</string>
+    <string name="texto_selecciona_fecha">Selecciona la fecha</string>
+    <string name="texto_selecciona_Hora">Selecciona la hora</string>
+    <string name="texto_edicion_de_servicios">Edición de servicios</string>
+    <string name="texto_aceptar_cambios">Aceptar Cambios</string>
+    <string name="texto_editar">Editar</string>
+    <string name="texto_prueba_servicios_adapter">Experiencía Acuática Playa San Carlos. Fecha Programada: 25/04/2024</string>
 </resources>
