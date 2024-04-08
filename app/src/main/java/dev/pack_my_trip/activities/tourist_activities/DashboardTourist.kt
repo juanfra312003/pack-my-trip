@@ -50,12 +50,12 @@ class DashboardTourist : AppCompatActivity() {
     private fun managePackages () : MutableList<PaqueteTuristico>{
         var paquetes = mutableListOf<PaqueteTuristico>()
 
-        // Paquete Volcan
+        // Paquete Volcan arenal
         var paquete_volcan_arenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
         paquete_volcan_arenal.servicios.add(ServicioTuristico("Expedición Volcánica", 10.461352, -84.701013, "Expedición al volcán arenal de Costa Rica"))
         paquete_volcan_arenal.servicios.add(ServicioTuristico("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
         paquete_volcan_arenal.servicios.add(ServicioTuristico("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
-
+        paquete_volcan_arenal.precio = 150.45
 
         // Añadir los paquetes.
         paquetes.add(paquete_volcan_arenal)
