@@ -34,7 +34,8 @@ class DashboardTourist : AppCompatActivity() {
             var paquete_turista = turista.paquetes[position]
 
             var intent = Intent(baseContext, PackageTourist::class.java)
-            //intent.putExtra("paquete_turista", paquete_turista)
+            intent.putExtra("paquete_turista", paquete_turista)
+            startActivity(intent)
         }
     }
 
