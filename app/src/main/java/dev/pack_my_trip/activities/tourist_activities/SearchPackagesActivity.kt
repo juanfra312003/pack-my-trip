@@ -74,7 +74,7 @@ class SearchPackagesActivity : AppCompatActivity() {
     }
 
     private fun manageButtons (){
-        binding.backbuttonSearchPackages.setOnClickListener {
+        binding.backButtonPackagesDetails.setOnClickListener {
             val intent = Intent(this, DashboardTouristActivity::class.java)
             startActivity(intent)
         }
