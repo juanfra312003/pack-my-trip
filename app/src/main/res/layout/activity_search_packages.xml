@@ -17,7 +17,7 @@
         android:id="@+id/backbuttonSearchPackages"
         android:layout_width="45dp"
         android:layout_height="39dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="#FFF"
         android:foregroundGravity="center"
@@ -30,9 +30,9 @@
         android:id="@+id/packagesSearchIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/coda"
         android:text="Paquetes turísticos disponibles en la región actual:"
         android:textSize="15sp"
@@ -42,24 +42,75 @@
 
     <TextView
         android:id="@+id/packageSearchNameTouristEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/coda"
         android:text="Búsca tú paquete ideal, "
         android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backbuttonSearchPackages" />
 
     <ListView
         android:layout_width="0dp"
-        android:layout_height="376dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/reminderTittle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="202dp" />
+        app:layout_constraintTop_toBottomOf="@+id/packagesSearchIntro" />
+
+    <TextView
+        android:id="@+id/reminderTittle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/coda"
+        android:text="Recordatorio:"
+        android:textColor="#092790"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/reminderTittle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/reminderTittle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/coda"
+        android:text="Los paquetes turísticos que se ofrecen pueden variar de acuerdo con la región turistica en que te encuentres."
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttoncambiarRegionPackageSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttoncambiarRegionPackageSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cambiar Región"
+        android:backgroundTint="#092790"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
