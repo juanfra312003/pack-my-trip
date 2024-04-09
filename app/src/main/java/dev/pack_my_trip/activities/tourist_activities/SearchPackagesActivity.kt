@@ -73,7 +73,7 @@ class SearchPackagesActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.buttoncambiarRegionPackageSearch.setOnClickListener {
+        binding.buttonChangeRegionSearchPackages.setOnClickListener {
            // TODO: Implementar la funcionalidad de cambiar la región (Transición).
         }
     }
