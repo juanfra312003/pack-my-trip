@@ -13,7 +13,19 @@
         android:theme="@style/Theme.Packmytrip"
         tools:targetApi="31">
         <activity
-            android:name=".activities.tourist_activities.PackageTourist"
+            android:name=".activities.tourist_activities.PackageSearchableActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.SearchPackagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.ChatTouristActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.TouristMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.PackageTouristActivity"
             android:exported="false" />
         <activity
             android:name=".activities.inter_activities.DashboardInter"
@@ -22,7 +34,7 @@
             android:name=".activities.operator_activities.DashboardOperator"
             android:exported="false" />
         <activity
-            android:name=".activities.tourist_activities.DashboardTourist"
+            android:name=".activities.tourist_activities.DashboardTouristActivity"
             android:exported="false" />
         <activity
             android:name=".activities.general_activities.LoginActivity"
