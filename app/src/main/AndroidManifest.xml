@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Packmytrip"
         tools:targetApi="31">
         <activity
+            android:name=".activities.tourist_activities.SearchPackagesActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.tourist_activities.ChatTouristActivity"
             android:exported="false" />
         <activity

@@ -20,45 +20,67 @@ class DashboardTouristActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // MANEJO DE TURISTA Y PAQUETES "ADQUIRIDOS"
-        var turista = manageTourist()
-        var lista_paquetes = managePackages()
-        var fecha = java.util.Date()
-        for (paquete in lista_paquetes){
-            var paquetes_turista = PaquetesPorTurista(turista.uuid, paquete, fecha)
-            turista.paquetes.add(paquetes_turista)
+        val turista = manageTourist()
+        val listaPaquetes = managePackages()
+        val fecha = java.util.Date()
+        for (paquete in listaPaquetes){
+            val paquetesPorTurista = PaquetesPorTurista(turista.uuid, paquete, fecha)
+            turista.paquetes.add(paquetesPorTurista)
         }
 
         // MOSTRAR LA LISTA DE PAQUETES
         binding.listTouristPackages.adapter = PackagesTouristAdapter(this, turista.paquetes)
-        binding.listTouristPackages.setOnItemClickListener(){ parent, view, position, id ->
-            var paquete_turista = turista.paquetes[position]
+        binding.listTouristPackages.setOnItemClickListener { _, _, position, _ ->
+            val paqueteTurista = turista.paquetes[position]
 
-            var intent = Intent(baseContext, PackageTouristActivity::class.java)
-            intent.putExtra("paquete_turista", paquete_turista)
+            val intent = Intent(baseContext, PackageTouristActivity::class.java)
+            intent.putExtra("paquete_turista", paqueteTurista)
             startActivity(intent)
         }
+
+        // ACTUALIZAR EL NOMBRE DEL TURISTA.
+        binding.textoBienvenido.text = "Bienvenido de nuevo, ${turista.nombre}"
+
+        // MANEJO DE BOTÓN DE BÚSQUEDA DE PAQUETES CON EL TURISTA CÓMO PARÁMETRO PARA LA ACTIVIDAD DE BÚSQUEDA DE PAQUETES
+        manageButtons(turista)
     }
 
     private fun manageTourist () : Turista {
         // Turista.
-        var turista = Turista("Juan", "juanframireze@gmail.com")
+        val turista = Turista("Juan", "juanframireze@gmail.com")
         turista.latitud = 4.60971
         turista.longitud = -74.08175
-        return turista;
+        return turista
     }
 
     private fun managePackages () : MutableList<PaqueteTuristico>{
-        var paquetes = mutableListOf<PaqueteTuristico>()
+        val paquetes = mutableListOf<PaqueteTuristico>()
 
         // Paquete Volcan arenal
-        var paquete_volcan_arenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
-        paquete_volcan_arenal.servicios.add(ServicioTuristico("Expedición Volcánica", 10.461352, -84.701013, "Expedición al volcán arenal de Costa Rica"))
-        paquete_volcan_arenal.servicios.add(ServicioTuristico("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
-        paquete_volcan_arenal.servicios.add(ServicioTuristico("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
-        paquete_volcan_arenal.precio = 150.45
+        val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
+        paqueteVolcanArenal.servicios.add(ServicioTuristico("Expedición Volcánica", 10.461352, -84.701013, "Expedición al volcán arenal de Costa Rica"))
+        paqueteVolcanArenal.servicios.add(ServicioTuristico("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
+        paqueteVolcanArenal.servicios.add(ServicioTuristico("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
+        paqueteVolcanArenal.precio = 150.45
 
         // Añadir los paquetes.
-        paquetes.add(paquete_volcan_arenal)
-        return paquetes;
+        paquetes.add(paqueteVolcanArenal)
+        return paquetes
+    }
+
+    private fun manageButtons(turista : Turista){
+        binding.buttonSearchPackages.setOnClickListener {
+            val intent = Intent(this, SearchPackagesActivity::class.java)
+            intent.putExtra("turista", turista)
+            startActivity(intent)
+        }
+
+        binding.buttonProfile.setOnClickListener {
+            //TODO: Implementar la transición a la actividad de perfil de usuario.
+        }
+
+        binding.buttonLocation.setOnClickListener {
+            //TODO Implementar la transición a la actividad de cambio de región para los paquetes.
+        }
     }
 }
