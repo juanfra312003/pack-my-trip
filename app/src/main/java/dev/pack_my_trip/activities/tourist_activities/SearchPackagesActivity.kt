@@ -28,13 +28,19 @@ class SearchPackagesActivity : AppCompatActivity() {
         // TODO: Recibir los paquetes turísticos de la base de datos.
         var paquetes = managePackages()
 
+        // Manejo de botones
+        manageButtons()
+
         // Mostrar los paquetes turísticos.
         binding.listViewPackagesSearchTourist.adapter = PackagesSearchAdapter(this, paquetes)
 
-        /*
-        var intent = Intent(this, PackageTouristActivity::class.java)
-        intent.putExtra("turista", turista)
-         */
+        binding.listViewPackagesSearchTourist.setOnItemClickListener { _, _, position, _ ->
+            val paqueteNuevo = paquetes[position]
+            val intent = Intent(baseContext, PackageSearchableActivity::class.java)
+            intent.putExtra("paquete_nuevo", paqueteNuevo)
+            intent.putExtra("turista", turista)
+            startActivity(intent)
+        }
     }
 
     private fun managePackages () : MutableList<PaqueteTuristico>{
