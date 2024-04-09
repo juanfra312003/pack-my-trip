@@ -24,7 +24,8 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_search_packages_tourist"
-        app:srcCompat="@drawable/volver_tourist" />
+        app:srcCompat="@drawable/volver_tourist"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/packagesSearchIntro"
@@ -55,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/backbuttonSearchPackages" />
 
     <ListView
+        android:id="@+id/listViewPackagesSearchTourist"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -78,13 +80,13 @@
         android:textColor="#092790"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/reminderTittle2"
+        app:layout_constraintBottom_toTopOf="@+id/reminderText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/reminderTittle2"
+        android:id="@+id/reminderText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -94,13 +96,13 @@
         android:text="Los paquetes turísticos que se ofrecen pueden variar de acuerdo con la región turistica en que te encuentres."
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttoncambiarRegionPackageSearch"
+        app:layout_constraintBottom_toTopOf="@+id/buttonChangeRegionSearchPackages"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttoncambiarRegionPackageSearch"
+        android:id="@+id/buttonChangeRegionSearchPackages"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dev.pack_my_trip.R
+import dev.pack_my_trip.adapters.tourist_adapters.PackagesSearchAdapter
 import dev.pack_my_trip.databinding.ActivitySearchPackagesBinding
 import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
 import dev.pack_my_trip.models.models_tourist.ServicioTuristico
@@ -28,8 +29,12 @@ class SearchPackagesActivity : AppCompatActivity() {
         var paquetes = managePackages()
 
         // Mostrar los paquetes turísticos.
+        binding.listViewPackagesSearchTourist.adapter = PackagesSearchAdapter(this, paquetes)
+
+        /*
         var intent = Intent(this, PackageTouristActivity::class.java)
         intent.putExtra("turista", turista)
+         */
     }
 
     private fun managePackages () : MutableList<PaqueteTuristico>{
@@ -57,6 +62,19 @@ class SearchPackagesActivity : AppCompatActivity() {
 
         // Añadir los paquetes.
         paquetes.add(paqueteVolcanArenal)
+        paquetes.add(paqueteBuceo)
+        paquetes.add(paqueteAviario)
         return paquetes
+    }
+
+    private fun manageButtons (){
+        binding.backbuttonSearchPackages.setOnClickListener {
+            val intent = Intent(this, DashboardTouristActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttoncambiarRegionPackageSearch.setOnClickListener {
+           // TODO: Implementar la funcionalidad de cambiar la región (Transición).
+        }
     }
 }
