@@ -10,7 +10,7 @@ import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import dev.pack_my_trip.models.models_tourist.ServicioTuristico
 import dev.pack_my_trip.models.models_tourist.Turista
 
-class DashboardTourist : AppCompatActivity() {
+class DashboardTouristActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardTouristBinding
 
@@ -33,7 +33,7 @@ class DashboardTourist : AppCompatActivity() {
         binding.listTouristPackages.setOnItemClickListener(){ parent, view, position, id ->
             var paquete_turista = turista.paquetes[position]
 
-            var intent = Intent(baseContext, PackageTourist::class.java)
+            var intent = Intent(baseContext, PackageTouristActivity::class.java)
             intent.putExtra("paquete_turista", paquete_turista)
             startActivity(intent)
         }

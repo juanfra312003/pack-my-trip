@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.tourist_activities.PackageTourist">
+    tools:context=".activities.tourist_activities.PackageTouristActivity">
 
     <include
         android:id="@+id/header_package_tourist"
@@ -214,11 +214,11 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="#092790"
         android:text="Envíar"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewCreate"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewCreate"
+        android:id="@+id/bottomNavigationViewTourist"
         style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
