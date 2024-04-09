@@ -13,8 +13,6 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -40,6 +38,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -48,7 +48,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.github.MKergall:osmbonuspack:6.9.0")
     implementation("com.google.maps:google-maps-services:0.15.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation("com.android.volley:volley:1.2.1")
