@@ -1,9 +1,11 @@
 package dev.pack_my_trip.activities.tourist_activities
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import dev.pack_my_trip.R
+import dev.pack_my_trip.adapters.tourist_adapters.ServicesPackageAdapter
 import dev.pack_my_trip.databinding.ActivityPackageTouristBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
@@ -18,7 +20,7 @@ class PackageTourist : AppCompatActivity() {
 
         // Recibir el paquete a partir de la actividad anterior.
         paquete_turista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
-        Log.i("turista", paquete_turista.paqueteActual.nombre)
+
 
         // Cargar los valores
         load_values()
@@ -26,20 +28,26 @@ class PackageTourist : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun load_values(){
         // Cargar los valroes de: nombre, costo, fecha, organizador
-        binding.costoEditableTextPackagetourist.text = paquete_turista.paqueteActual.precio.toString()
-        binding.fechaEditableTextPackagetourist.text = paquete_turista.fecha.toString()
+        binding.costoEditableTextPackagetourist.text = "$" + paquete_turista.paqueteActual.precio.toString()
+        // Obtener la fecha en formato dia/mes/año
+        val fechaPaquete = paquete_turista.fecha.date.toString() + "/" + (paquete_turista.fecha.month + 1).toString() + "/" + (paquete_turista.fecha.year + 1900).toString()
+        binding.fechaEditableTextPackagetourist.text = fechaPaquete
         binding.organizadorTextEditablePackageT.text = paquete_turista.paqueteActual.nombreOrganizador
         binding.textFieldPackageNameEditable.text = paquete_turista.paqueteActual.nombre
 
         // Cargar la imagen
-        val imageName = paquete_turista.paqueteActual.tipo
-        val resourceId = resources.getIdentifier(imageName, "drawable", packageName)
-        binding.imageViewPackageType.setImageResource(resourceId)
+        when (paquete_turista.paqueteActual.tipo){
+            //TODO: Cambiar las imagenes por las que se encuentran en el proyecto en firebase storage
+            "Volcan" -> binding.imageViewPackageType.setImageResource(R.drawable.volcan)
+            "Buceo" -> binding.imageViewPackageType.setImageResource(R.drawable.buceo)
+            "Aviario" -> binding.imageViewPackageType.setImageResource(R.drawable.aviario)
+        }
 
 
-        // Mostrar los servicios
-
+        // Mostrar los servicios a través del adapter del mismo
+        binding.listViewServicesPackage.adapter = ServicesPackageAdapter(this, paquete_turista.paqueteActual.servicios)
     }
 }

@@ -22,6 +22,7 @@ class ServicesPackageAdapter  (context : Context, services : MutableList<Servici
         val description = itemView!!.findViewById<TextView>(R.id.descripcionServiceTextViewEditable)
         description.text = item!!.descripcion
 
+        // TODO: Pintar la imagen del servicio con Firebase Storage
         return itemView
     }
 }

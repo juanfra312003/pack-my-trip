@@ -27,15 +27,14 @@ class PackagesTouristAdapter (context : Context, packages : MutableList<Paquetes
         description.text = item!!.paqueteActual.nombre
         begininningDate.text = item.fecha.toString()
 
-        // todo: Realizar la modificaciòn de la imagen con Firebase Storage en la parte de backend
+        // TODO: Realizar la modificaciòn de la imagen con Firebase Storage en la parte de backend
         //imagePackage.setImageResource(item.paqueteActual.picture)
-
         when (item.paqueteActual.tipo) {
             "Volcan" -> {
                 imagePackage.setImageResource(R.drawable.volcan)
             }
             "Aviario" -> {
-                imagePackage.setImageResource(R.drawable.ave)
+                imagePackage.setImageResource(R.drawable.aviario)
             }
             "Buceo" -> {
                 imagePackage.setImageResource(R.drawable.buceo)
