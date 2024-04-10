@@ -11,11 +11,11 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.ResolvableApiException
@@ -34,7 +34,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polyline
@@ -133,9 +132,10 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                             )
                         }
                     }
-                    lastLocationMarker!!.remove()
+                    //lastLocationMarker?.remove() // Remove only if not null
                 }
             }
+
         }
 
     }
@@ -178,12 +178,10 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
 
-        updateLocationOnMap()
         loadLatLngServices()
         for ((key, value) in mapLatLng){
             mMap.addMarker(MarkerOptions().position(value).title(key))
         }
-
         manageClickedMarker()
     }
 
@@ -214,7 +212,7 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                             polylineOptions.add(LatLng(point.lat, point.lng))
                         }
                         val polyline = mMap.addPolyline(polylineOptions)
-                        polyline.color = Color.BLUE
+                        polyline.color = Color.RED
                         currentPolylines.add(polyline)
 
                         // Obtener la distancia de la ruta
@@ -257,7 +255,7 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
             if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)) {
                 Toast.makeText(
                     baseContext,
-                    "You must grant location permission to see the map and receive updates.",
+                    "La aplicación necesita permisos de localización para funcionar correctamente.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -350,22 +348,15 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     // Manejo de pines de localización
     private fun updateLocationOnMap() {
-        lastLocation?.let {
-            val latLng = LatLng(it.latitude, it.longitude)
-            if (::mMap.isInitialized) {
-                if (lastLocationMarker == null) {
-                    lastLocationMarker = mMap.addMarker(
-                        MarkerOptions()
-                            .position(latLng)
-                            .title("Last Location")
-                            .icon(bitmapDescriptorFromVector(baseContext, R.drawable.userpin))
-                    )
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-                } else {
-                    lastLocationMarker?.position = latLng
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-                }
-            }
+        if (lastLocation != null) {
+            lastLocationMarker?.remove()
+
+            val latLng = LatLng(lastLocation!!.latitude, lastLocation!!.longitude)
+            lastLocationMarker =  mMap.addMarker(MarkerOptions().position(latLng).title("Ultima ubicación").icon(
+                bitmapDescriptorFromVector(this, R.drawable.userpin)))
+
+            // Enfocar la cámara en la última ubicación
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
         }
     }
 
