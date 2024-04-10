@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
@@ -23,11 +26,16 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsResponse
 import com.google.android.gms.location.Priority
 import com.google.android.gms.location.SettingsClient
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
 import dev.pack_my_trip.R
 import dev.pack_my_trip.databinding.ActivityTouristMapBinding
@@ -78,6 +86,44 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
         locationClient = LocationServices.getFusedLocationProviderClient(this)
         locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000)
             .setWaitForAccurateLocation(true).setMinUpdateIntervalMillis(5000).build()
+
+        // Implementación del callback de localización
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: com.google.android.gms.location.LocationResult) {
+                super.onLocationResult(locationResult)
+                if (locationResult.lastLocation != null) {
+                    val currentLocation = locationResult.lastLocation
+
+                    if (lastLocation == null){
+                        lastLocation = currentLocation
+                        updateLocationOnMap()
+                        mMap.moveCamera(
+                            com.google.android.gms.maps.CameraUpdateFactory.newLatLng(
+                                com.google.android.gms.maps.model.LatLng(
+                                    currentLocation!!.latitude,
+                                    currentLocation.longitude
+                                )
+                            )
+                        )
+                        mMap.animateCamera(com.google.android.gms.maps.CameraUpdateFactory.zoomTo(15f))
+                    } else {
+                        if (locationResult.lastLocation!!.distanceTo(lastLocation!!) > 30){
+                            lastLocation = locationResult.lastLocation
+                            updateLocationOnMap()
+                            mMap.moveCamera(
+                                com.google.android.gms.maps.CameraUpdateFactory.newLatLng(
+                                    com.google.android.gms.maps.model.LatLng(
+                                        currentLocation!!.latitude,
+                                        currentLocation.longitude
+                                    )
+                                )
+                            )
+                        }
+                    }
+                    lastLocationMarker!!.remove()
+                }
+            }
+        }
     }
 
     // Manejo de la barra de navegación
@@ -164,7 +210,7 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 dialog.cancel()
                 Toast.makeText(
                     this,
-                    "Funcionalidad de seguimiento no habilitada.",
+                    "Funcionalidad de seguimiento a servicios no habilitada.",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -206,6 +252,45 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                     showLocationPermissionDialog()
                 } catch (sendEx: IntentSender.SendIntentException) {
                     // Ignore the error
+                }
+            }
+        }
+    }
+
+    // Pintar vector cómo icono de mapa:
+    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
+        val vectorDrawable: Drawable = ContextCompat.getDrawable(context, vectorResId)!!
+        vectorDrawable.setBounds(
+            0,
+            0,
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight
+        )
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    // Manejo de pines de localización
+    private fun updateLocationOnMap() {
+        lastLocation?.let {
+            val latLng = LatLng(it.latitude, it.longitude)
+            if (::mMap.isInitialized) {
+                if (lastLocationMarker == null) {
+                    lastLocationMarker = mMap.addMarker(
+                        MarkerOptions()
+                            .position(latLng)
+                            .title("Last Location")
+                            .icon(bitmapDescriptorFromVector(baseContext, R.drawable.userpin))
+                    )
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+                } else {
+                    lastLocationMarker?.position = latLng
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
                 }
             }
         }
