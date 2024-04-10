@@ -44,7 +44,7 @@ import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding : ActivityTouristMapBinding
-    private lateinit var paquete_turista : PaquetesPorTurista
+    private lateinit var paqueteTurista : PaquetesPorTurista
 
     // Map attributes
     private lateinit var mMap: GoogleMap
@@ -56,6 +56,9 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private var lastLocation: Location? = null
     private var lastLocationMarker: Marker? = null
+
+    // Lista de latlng de los servicios turisticos
+    private var mapLatLng = mutableMapOf<String, LatLng>()
 
     // Gestión del permiso de localización
     private val getPermissionLocation =
@@ -71,7 +74,7 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         // Recibir el paquete a partir de la actividad anterior.
-        paquete_turista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
+        paqueteTurista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
 
         // Inicializar el mapa
         val mapFragment = supportFragmentManager
@@ -124,6 +127,13 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
         }
+
+    }
+
+    private fun loadLatLngServices (){
+        for (servicio in paqueteTurista.paqueteActual.servicios){
+            mapLatLng[servicio.nombre] = LatLng(servicio.latitud, servicio.longitud)
+        }
     }
 
     // Manejo de la barra de navegación
@@ -132,19 +142,19 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
             when(it.itemId){
                 R.id.menuBack -> {
                     val intent = Intent(this, PackageTouristActivity::class.java)
-                    intent.putExtra("paquete_turista", paquete_turista)
+                    intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true
                 }
                 R.id.menuChat -> {
                     val intent = Intent(this, ChatTouristActivity::class.java)
-                    intent.putExtra("paquete_turista", paquete_turista)
+                    intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true
                 }
                 R.id.menuMap -> {
                     val intent = Intent(this, TouristMapActivity::class.java)
-                    intent.putExtra("paquete_turista", paquete_turista)
+                    intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true
                 }
@@ -156,6 +166,12 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
     // Inicialización del mapa
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        updateLocationOnMap()
+
+        loadLatLngServices()
+        for ((key, value) in mapLatLng){
+            mMap.addMarker(MarkerOptions().position(value).title(key))
+        }
     }
 
     // Inicialización de la localización
