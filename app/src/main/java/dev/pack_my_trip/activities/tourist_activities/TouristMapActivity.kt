@@ -7,6 +7,7 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationManager
@@ -36,7 +37,13 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.gms.tasks.Task
+import com.google.maps.DirectionsApi
+import com.google.maps.GeoApiContext
+import com.google.maps.model.DirectionsResult
+import com.google.maps.model.TravelMode
 import dev.pack_my_trip.R
 import dev.pack_my_trip.databinding.ActivityTouristMapBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
@@ -59,6 +66,9 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     // Lista de latlng de los servicios turisticos
     private var mapLatLng = mutableMapOf<String, LatLng>()
+
+    // Lista de polylines para dibujar rutas
+    private val currentPolylines = mutableListOf<Polyline>()
 
     // Gestión del permiso de localización
     private val getPermissionLocation =
@@ -166,11 +176,58 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
     // Inicialización del mapa
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        updateLocationOnMap()
+        mMap.uiSettings.isZoomControlsEnabled = true
 
+        updateLocationOnMap()
         loadLatLngServices()
         for ((key, value) in mapLatLng){
             mMap.addMarker(MarkerOptions().position(value).title(key))
+        }
+
+        manageClickedMarker()
+    }
+
+    private fun manageClickedMarker(){
+        mMap.setOnMarkerClickListener { clickedMarker ->
+            for ((key, value) in mapLatLng){
+                if (clickedMarker.position == value){
+                    for (polylines in currentPolylines){
+                        polylines.remove()
+                    }
+
+                    // Dibujar la ruta
+                    val apiKey = "AIzaSyCxj6hHWTgFUWQdUYswYE6FyirF-3QFZvs"
+                    val geoContext = GeoApiContext.Builder().apiKey(apiKey).build()
+
+                    val directionsResult: DirectionsResult = DirectionsApi.newRequest(geoContext)
+                        .origin("${lastLocationMarker!!.position.latitude},${lastLocationMarker!!.position.longitude}")
+                        .destination("${clickedMarker.position.latitude},${clickedMarker.position.longitude}")
+                        .mode(TravelMode.WALKING)
+                        .await()
+
+                    // Dibujar la ruta en el mapa
+                    val polylineOptions = PolylineOptions()
+
+                    if (directionsResult.routes.isNotEmpty()) {
+                        val route = directionsResult.routes[0].overviewPolyline.decodePath()
+                        for (point in route) {
+                            polylineOptions.add(LatLng(point.lat, point.lng))
+                        }
+                        val polyline = mMap.addPolyline(polylineOptions)
+                        polyline.color = Color.BLUE
+                        currentPolylines.add(polyline)
+
+                        // Obtener la distancia de la ruta
+                        val distance = (directionsResult.routes[0].legs[0].distance.inMeters) / 1000.0
+
+                        // Actualizar los elementos de la interfaz
+                        binding.textDistanceMapValue.text = "$distance KM"
+                        binding.textDistanceMapDestiny.text = "Distancia a: $key"
+                    }
+                }
+            }
+
+            true
         }
     }
 
