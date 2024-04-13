@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.general_activities.LoginActivity">
 
+    <!-- Cabecera de la pantalla con el logo o título de la aplicación -->
     <include
         android:id="@+id/include"
         layout="@layout/header_layout"
@@ -13,13 +14,82 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Imagen del turista -->
+    <ImageView
+        android:id="@+id/imageTouristDashboard"
+        android:layout_width="107dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:srcCompat="@drawable/turista_dashboard" />
+
+    <!-- Título de la sección de inicio de sesión -->
+    <TextView
+        android:id="@+id/textViewLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio de sesion"
+        android:layout_marginTop="32dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imageTouristDashboard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Campo de texto para el nombre de usuario -->
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:hint="Nombre de perfil"
+        app:layout_constraintTop_toBottomOf="@id/textViewLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <!-- Campo de texto para la contraseña -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="330dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        app:layout_constraintEnd_toEndOf="@id/editTextUsername"
+        app:layout_constraintStart_toStartOf="@id/editTextUsername"
+        app:layout_constraintTop_toBottomOf="@id/editTextUsername" />
+
+    <!-- Botón para iniciar sesión -->
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:text="Iniciar sesión"
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="@id/editTextPassword"/>
+
+    <!-- Botón para registrarse -->
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="Regístrate"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+        app:layout_constraintStart_toStartOf="@id/buttonLogin"
+        app:layout_constraintEnd_toEndOf="@id/buttonLogin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
