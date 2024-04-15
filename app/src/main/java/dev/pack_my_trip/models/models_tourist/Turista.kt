@@ -3,17 +3,15 @@ package dev.pack_my_trip.models.models_tourist
 import java.io.Serializable
 import java.util.UUID
 import android.content.Context
-import dev.pack_my_trip.R
-
 
 data class Turista(
     var nombre: String,
     var correo: String,
-    var contraseña: String,
-    var diaNacimiento: Int,
-    var mesNacimiento: Int,
-    var añoNacimiento: Int,
-    var rol: String
+    var contraseña: String = "",
+    var diaNacimiento: Int = 0,
+    var mesNacimiento: Int = 0,
+    var añoNacimiento: Int = 0,
+    var rol: String = ""
 ) : Serializable {
     var uuid: UUID = UUID.randomUUID()
     var paquetes = mutableListOf<PaquetesPorTurista>()
@@ -54,7 +52,4 @@ data class Turista(
             rol = sharedPreferences.getString("rol", "")!!
         )
     }
-
-
 }
-

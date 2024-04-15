@@ -1,3 +1,5 @@
+package dev.pack_my_trip.activities.tourist_activities
+
 import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
@@ -24,34 +26,22 @@ class UserProfileActivity : AppCompatActivity() {
         imageViewSettings = findViewById(R.id.imageViewSettings)
 
         cargarPerfilUsuario()
-
-        imageViewSettings.setOnClickListener {
-            // Aquí puedes abrir una nueva actividad de configuración o un fragmento
-        }
     }
 
     private fun cargarPerfilUsuario() {
-        // Supongamos que obtenerUsuarioLogueado() es un método que recuperas desde SharedPreferences
         val usuarioLogueado = obtenerUsuarioLogueado(this)
         if (usuarioLogueado != null) {
             textViewUserName.text = usuarioLogueado.nombre
             textViewUserEmail.text = usuarioLogueado.correo
-            // Configurar imageViewProfile si tienes una URL o recurso para la imagen del perfil
-            // Si el usuario tiene un rol que altera la interfaz, también podrías configurarlo aquí
+
         } else {
-            // No hay usuario logueado. Podrías redirigir al login o mostrar contenido por defecto.
+            //TODO: Agregar logica de error
         }
     }
 
-    // Este método simula la obtención de un usuario logueado.
-    // Deberías implementar la lógica de recuperación del usuario de SharedPreferences o tu base de datos aquí.
     private fun obtenerUsuarioLogueado(context: Context): Turista? {
-        // Recuperación de los detalles del usuario de SharedPreferences o base de datos
-        val sharedPreferences = context.getSharedPreferences("DatosUsuario", Context.MODE_PRIVATE)
-        val nombre = sharedPreferences.getString("nombre", "") ?: return null
-        val correo = sharedPreferences.getString("correo", "") ?: return null
-        // Omitimos la contraseña por razones de seguridad
-        // Otros campos como diaNacimiento, mesNacimiento, añoNacimiento, y rol pueden ser agregados si es necesario
+        val nombre = "Usuario Ejemplo"
+        val correo = "usuario@example.com"
         return Turista(nombre, correo, "", 1, 1, 1990, "Rol no especificado")
     }
 }

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="textViewUploadTitle" type="id">TextSubidaDocs</item>
+    <item type="id" name="textViewUploadTitle"/>
 </resources>

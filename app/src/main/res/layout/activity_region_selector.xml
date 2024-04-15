@@ -31,14 +31,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Spinners para las selecciones de región. Asegúrate de definir los arrays de regiones en tus recursos. -->
             <!-- Spinner para la primera selección de región -->
             <Spinner
                 android:id="@+id/spinnerRegion1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:entries="@array/region1_array"/>
-            <!-- ... más Spinners para otras regiones ... -->
+
+            <!-- Spinner para la segunda selección de región -->
+            <Spinner
+                android:id="@+id/spinnerRegion2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+            android:entries="@array/region2_array"/>
+
+            <!-- Spinner para la tercera selección de región -->
+            <Spinner
+                android:id="@+id/spinnerRegion3"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+            android:entries="@array/region3_array"/>
 
             <!-- ... Agrega más Spinners según sea necesario ... -->
         </LinearLayout>

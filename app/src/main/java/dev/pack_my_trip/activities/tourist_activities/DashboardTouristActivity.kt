@@ -76,11 +76,15 @@ class DashboardTouristActivity : AppCompatActivity() {
         }
 
         binding.buttonProfile.setOnClickListener {
-            //TODO: Implementar la transición a la actividad de perfil de usuario.
+            binding.buttonProfile.setOnClickListener {
+                val intent = Intent(this, UserProfileActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         binding.buttonLocation.setOnClickListener {
-            //TODO Implementar la transición a la actividad de cambio de región para los paquetes.
+            val intent = Intent(this, SelectorActivity::class.java)
+            startActivity(intent)
         }
     }
 }

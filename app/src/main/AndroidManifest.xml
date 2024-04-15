@@ -19,6 +19,9 @@
             android:name=".activities.tourist_activities.PackageSearchableActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.tourist_activities.SelectorActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.tourist_activities.SearchPackagesActivity"
             android:exported="false" />
         <activity
@@ -39,6 +42,12 @@
         <activity
             android:name=".activities.tourist_activities.DashboardTouristActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.general_activities.RegisterActivity"
+            android:exported="true"/>
+        <activity android:name=".activities.tourist_activities.UserProfileActivity"
+            android:exported="false" />/>
+
         <activity
             android:name=".activities.general_activities.LoginActivity"
             android:exported="true">

@@ -9,13 +9,20 @@ import dev.pack_my_trip.R
 class SelectorActivity : AppCompatActivity() {
 
     private lateinit var spinnerRegion1: Spinner
+    private lateinit var spinnerRegion2: Spinner
+    private lateinit var spinnerRegion3: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_region_selector) // Asegúrate de que este es el nombre correcto del layout
+        setContentView(R.layout.activity_region_selector)
 
         spinnerRegion1 = findViewById(R.id.spinnerRegion1)
+        spinnerRegion2 = findViewById(R.id.spinnerRegion2)
+        spinnerRegion3 = findViewById(R.id.spinnerRegion3)
+
         setUpSpinner(spinnerRegion1, R.array.region1_array)
+        setUpSpinner(spinnerRegion2, R.array.region2_array)
+        setUpSpinner(spinnerRegion3, R.array.region3_array)
     }
 
     private fun setUpSpinner(spinner: Spinner, arrayResourceId: Int) {
