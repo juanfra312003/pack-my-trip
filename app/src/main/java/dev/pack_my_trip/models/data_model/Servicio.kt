@@ -3,7 +3,7 @@ import java.io.Serializable
 import java.sql.Blob
 import java.util.Date
 
-class Servicio (
+data class Servicio (
     var id : Int,
     var nombre : String,
     var precio : Double,
