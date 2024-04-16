@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.tourist_activities.SelectorActivity">
+
+    <!-- Cabecera de la pantalla con el logo o título de la aplicación -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Contenedor desplazable para las listas desplegables -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/include"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationViewTourist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <!-- Layout lineal para contener los Spinners -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Spinner para la primera selección de región -->
+            <Spinner
+                android:id="@+id/spinnerRegion1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:entries="@array/region1_array"/>
+
+            <!-- Spinner para la segunda selección de región -->
+            <Spinner
+                android:id="@+id/spinnerRegion2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+            android:entries="@array/region2_array"/>
+
+            <!-- Spinner para la tercera selección de región -->
+            <Spinner
+                android:id="@+id/spinnerRegion3"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+            android:entries="@array/region3_array"/>
+
+            <!-- ... Agrega más Spinners según sea necesario ... -->
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation View sin cambios, como solicitaste -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewTourist"
+        style="@style/Widget.Design.BottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#283593"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navbar_tourist" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

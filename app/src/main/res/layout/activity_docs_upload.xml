@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activities.general_activities.UploadDocumentActivity">
+
+    <!-- Título de la sección de subida de documentos -->
+    <TextView
+        android:id="@+id/textViewUploadTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upload_documents"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Texto que muestra el nombre del documento seleccionado -->
+    <TextView
+        android:id="@+id/textViewFileName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no_file_selected"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUploadTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <!-- Botón para seleccionar imagen/documento -->
+    <Button
+        android:id="@+id/buttonSelectFile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/select_file"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFileName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Botón para subir el archivo seleccionado -->
+    <Button
+        android:id="@+id/buttonUploadFile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/upload_file"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectFile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
