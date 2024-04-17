@@ -1,9 +1,11 @@
 package dev.pack_my_trip.activities.tourist_activities
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import dev.pack_my_trip.R
 import dev.pack_my_trip.databinding.ActivityDetailsPackageTouristBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
@@ -28,9 +30,58 @@ class DetailsPackageTourist : AppCompatActivity() {
         // Recibir el paquete a partir de la actividad anterior.
         paqueteTurista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
 
-        // Manejar los botones de calificación
+        // Inicializar botones de calificación
         calificationButtons = listOf(binding.buttonCalification1, binding.buttonCalification2, binding.buttonCalification3, binding.buttonCalification4, binding.buttonCalification5)
+
+        // Manejar Botones
+        manageButtons()
+    }
+
+    private fun manageButtons (){
         manageCalificationButtons()
+        manageNavBar()
+        manageOtherButtons()
+    }
+
+    private fun manageOtherButtons (){
+        binding.buttonSendComments.setOnClickListener {
+            paqueteTurista.comentario = binding.comentariosEditableText.text.toString()
+            paqueteTurista.calificacion = calification
+
+            // Volver a dejar valores en blanco
+            binding.comentariosEditableText.text.clear()
+            calification = 0
+            paintValues()
+
+            // Dar el mensaje de que se ha enviado la calificación
+            Toast.makeText(baseContext, "Calificación y comentarios enviados", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun manageNavBar(){
+        binding.bottomNavigationViewTourist.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.menuBack -> {
+                    val intent = Intent(this, PackageTouristActivity::class.java)
+                    intent.putExtra("paquete_turista", paqueteTurista)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menuChat -> {
+                    val intent = Intent(this, ChatTouristActivity::class.java)
+                    intent.putExtra("paquete_turista", paqueteTurista)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menuMap -> {
+                    val intent = Intent(this, TouristMapActivity::class.java)
+                    intent.putExtra("paquete_turista", paqueteTurista)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun manageCalificationButtons(){
