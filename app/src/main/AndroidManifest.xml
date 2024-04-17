@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,25 +28,57 @@
                 android:name=".activities.operator_activities.RegistroServicios"
                 android:exported="false"/>
         <activity
-                android:name=".activities.inter_activities.DashboardInter"
-                android:exported="false"/>
+            android:name=".activities.tourist_activities.FacturaPaqueteTuristaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.DetailsPackageTourist"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.PackageSearchableActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.SelectorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.SearchPackagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.ChatTouristActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.TouristMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.tourist_activities.PackageTouristActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.inter_activities.DashboardInter"
+            android:exported="false" />
+        <activity
+            android:name=".activities.operator_activities.DashboardOperator"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.tourist_activities.DashboardTouristActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.general_activities.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.tourist_activities.UserProfileActivity"
+            android:exported="false" />
         <activity
                 android:name=".activities.general_activities.LoginActivity"
-                android:exported="false"
-                />
-        <activity
-                android:name=".activities.tourist_activities.DashboardTourist"
-                android:exported="false"/>
-        <activity
-                android:name=".activities.operator_activities.DashboardOperator"
-                android:exported="true"
-                >
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCxj6hHWTgFUWQdUYswYE6FyirF-3QFZvs" />
     </application>
 
 </manifest>

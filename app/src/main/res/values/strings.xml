@@ -18,4 +18,18 @@
     <string name="texto_aceptar_cambios">Aceptar Cambios</string>
     <string name="texto_editar">Editar</string>
     <string name="texto_prueba_servicios_adapter">Experiencía Acuática Playa San Carlos. Fecha Programada: 25/04/2024</string>
+    <string name="select_role_prompt">Como te quieres registrar</string>
+    <string name="register_user">Registro de usuario</string>
+    <string name="profile_name_hint">Nombre de usuario</string>
+    <string name="email_hint">Correo electronico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="confirm_password_hint">Confirmar contraseña</string>
+    <string name="day_hint">Dia</string>
+    <string name="month_hint">Mes</string>
+    <string name="year_hint">Año</string>
+    <string name="register">Registrarse</string>
+    <string name="upload_documents">Subir Documentos</string>
+    <string name="no_file_selected">No hay archivo seleccionado</string>
+    <string name="select_file">Seleccionar Archivo</string>
+    <string name="upload_file">Subir Archivo</string>
 </resources>

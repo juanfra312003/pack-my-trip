@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/Widget.Design.BottomNavigationView"
+    >
+
+    <item
+        android:id="@+id/menuBack"
+        android:icon="@drawable/back_asset_32"
+        android:iconTint="@color/white"
+        android:title="Volver"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menuChat"
+        android:icon="@drawable/chat_32"
+        android:iconTint="@color/white"
+        android:title="Chat Organizador"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menuMap"
+        android:icon="@drawable/map_32"
+        android:iconTint="@color/white"
+        android:title="Localizar servicios"
+        android:visible="true" />
+
+</menu>
