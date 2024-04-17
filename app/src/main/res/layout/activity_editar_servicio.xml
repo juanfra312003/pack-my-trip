@@ -96,6 +96,7 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
         <Button
+            android:id="@+id/seleccionarFechaEdtBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/texto_selecciona_fecha"
@@ -105,6 +106,7 @@
             android:layout_marginEnd="20dp"
         />
         <Button
+            android:id="@+id/seleccionarHoraEdtBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/texto_selecciona_Hora"
@@ -113,6 +115,14 @@
             android:fontFamily="@font/coda"
         />
     </LinearLayout>
+    <TextView
+        android:id="@+id/fechaHoraEdtTxt"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-8dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

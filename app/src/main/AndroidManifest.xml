@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,7 +13,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Packmytrip"
-            tools:targetApi="31">
+            tools:targetApi="31"
+            >
+
         <activity
                 android:name=".activities.operator_activities.EditarServicio"
                 android:exported="false"/>
@@ -22,15 +26,16 @@
                 android:name=".activities.inter_activities.DashboardInter"
                 android:exported="false"/>
         <activity
-                android:name=".activities.operator_activities.DashboardOperator"
+                android:name=".activities.general_activities.LoginActivity"
                 android:exported="false"
                 />
         <activity
                 android:name=".activities.tourist_activities.DashboardTourist"
                 android:exported="false"/>
         <activity
-                android:name=".activities.general_activities.LoginActivity"
-                android:exported="true">
+                android:name=".activities.operator_activities.DashboardOperator"
+                android:exported="true"
+                >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
