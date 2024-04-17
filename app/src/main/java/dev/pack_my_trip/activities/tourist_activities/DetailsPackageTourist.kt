@@ -56,6 +56,12 @@ class DetailsPackageTourist : AppCompatActivity() {
             // Dar el mensaje de que se ha enviado la calificación
             Toast.makeText(baseContext, "Calificación y comentarios enviados", Toast.LENGTH_SHORT).show()
         }
+
+        binding.buttonDownloadFactura.setOnClickListener {
+            val intent = Intent(this, FacturaPaqueteTuristaActivity::class.java)
+            intent.putExtra("paquete_turista", paqueteTurista)
+            startActivity(intent)
+        }
     }
 
     private fun manageNavBar(){
