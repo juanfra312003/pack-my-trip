@@ -55,6 +55,7 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.17")
     implementation("com.google.maps:google-maps-services:0.15.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
+    implementation ("com.dmitryborodin:pdfview-android:1.1.0")
     implementation ("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.google.android.libraries.places:places:3.2.0")
     implementation("androidx.compose.ui:ui-graphics-android:1.5.3")

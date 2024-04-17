@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -15,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Packmytrip"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.tourist_activities.DetailsPackageTourist"
+            android:exported="false" />
         <activity
             android:name=".activities.tourist_activities.PackageSearchableActivity"
             android:exported="false" />
@@ -44,10 +49,10 @@
             android:exported="false" />
         <activity
             android:name=".activities.general_activities.RegisterActivity"
-            android:exported="true"/>
-        <activity android:name=".activities.tourist_activities.UserProfileActivity"
-            android:exported="false" />/>
-
+            android:exported="true" />
+        <activity
+            android:name=".activities.tourist_activities.UserProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.general_activities.LoginActivity"
             android:exported="true">
@@ -62,7 +67,5 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCxj6hHWTgFUWQdUYswYE6FyirF-3QFZvs" />
     </application>
-
-
 
 </manifest>
