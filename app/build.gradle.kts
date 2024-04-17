@@ -59,6 +59,7 @@ dependencies {
     implementation("com.google.android.libraries.places:places:3.2.0")
     implementation("androidx.compose.ui:ui-graphics-android:1.5.3")
     implementation("com.android.volley:volley:1.2.1")
+    implementation("com.dmitryborodin:pdfview-android:1.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

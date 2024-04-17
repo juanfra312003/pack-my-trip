@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFF"
+    android:layout_height="match_parent"
+    tools:context=".activities.tourist_activities.DetailsPackageTourist">
+
+    <include
+        android:id="@+id/header_details_package_tourist"
+        layout="@layout/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/experienciaTextField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:fontFamily="@font/coda"
+        android:text="Comentarios:"
+        android:textColor="#092790"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalificacion" />
+
+    <EditText
+        android:id="@+id/comentariosEditableText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:hint="Describe tu experiencia"
+        android:inputType="text"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/experienciaTextField" />
+
+    <TextView
+        android:id="@+id/textDetailsPackageCalif"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/coda"
+        android:text="¿Qué tal tu experiencia turística?"
+        android:textAlignment="center"
+        android:textColor="#092790"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_details_package_tourist" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewTourist"
+        style="@style/Widget.Design.BottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#283593"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navbar_tourist" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCalificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDetailsPackageCalif">
+
+        <Button
+            android:id="@+id/buttonCalification1"
+            android:layout_width="52dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2DDF1"
+            android:text="1"
+            android:textColor="#283593"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonCalification2"
+            android:layout_width="52dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2DDF1"
+            android:text="2"
+            android:textColor="#283593"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonCalification3"
+            android:layout_width="52dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2DDF1"
+            android:text="3"
+            android:textColor="#283593"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonCalification4"
+            android:layout_width="52dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2DDF1"
+            android:text="4"
+            android:textColor="#283593"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonCalification5"
+            android:layout_width="52dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2DDF1"
+            android:text="5"
+            android:textColor="#283593"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textDownloadComprobant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="72dp"
+        android:fontFamily="@font/coda"
+        android:text="Visualiza tu comprobante de pago"
+        android:textColor="#283593"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comentariosEditableText" />
+
+    <ImageButton
+        android:id="@+id/buttonSendComments"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFF"
+        android:foregroundGravity="center"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/comentariosEditableText"
+        app:layout_constraintTop_toBottomOf="@+id/experienciaTextField"
+        app:srcCompat="@drawable/enviar_comentarios" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDownloadFactura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDownloadComprobant"
+        app:srcCompat="@drawable/factura_tourist" />
+
+    <Button
+        android:id="@+id/buttonDownloadFactura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#283593"
+        android:text="Descargar comprobante del Paquete Turístico"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

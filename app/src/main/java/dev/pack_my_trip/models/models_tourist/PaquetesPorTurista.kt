@@ -8,4 +8,7 @@ data class PaquetesPorTurista (
     var uuid_user: UUID,
     var paqueteActual : PaqueteTuristico,
     var fecha : Date
-) : Serializable
+) : Serializable{
+    var calificacion = 0
+    var comentario = ""
+}

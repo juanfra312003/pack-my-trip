@@ -27,6 +27,20 @@
         app:srcCompat="@drawable/volver_tourist"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+    <ImageButton
+        android:id="@+id/buttonSearchFiltrePackages"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#FFF"
+        android:foregroundGravity="center"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_search_packages_tourist"
+        app:srcCompat="@drawable/lupa_busqueda"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
     <TextView
         android:id="@+id/packagesSearchIntro"
         android:layout_width="0dp"
@@ -66,7 +80,10 @@
         app:layout_constraintBottom_toTopOf="@+id/reminderTittle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/packagesSearchIntro" />
+        app:layout_constraintTop_toBottomOf="@+id/packagesSearchIntro" >
+
+
+    </ListView>
 
     <TextView
         android:id="@+id/reminderTittle"
@@ -113,6 +130,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editableTextSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Busca tu paquete ideal"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/packageSearchNameTouristEdit"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSearchFiltrePackages"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/backButtonPackagesDetails"
+        app:layout_constraintTop_toBottomOf="@+id/header_search_packages_tourist"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

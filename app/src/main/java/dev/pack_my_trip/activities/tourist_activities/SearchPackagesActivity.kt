@@ -9,6 +9,7 @@ import dev.pack_my_trip.databinding.ActivitySearchPackagesBinding
 import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
 import dev.pack_my_trip.models.models_tourist.ServicioTuristico
 import dev.pack_my_trip.models.models_tourist.Turista
+import java.util.Locale
 
 class SearchPackagesActivity : AppCompatActivity() {
 
@@ -41,6 +42,8 @@ class SearchPackagesActivity : AppCompatActivity() {
             intent.putExtra("turista", turista)
             startActivity(intent)
         }
+
+        manageFilterButton(paquetes)
     }
 
     private fun managePackages () : MutableList<PaqueteTuristico>{
@@ -81,6 +84,24 @@ class SearchPackagesActivity : AppCompatActivity() {
 
         binding.buttonChangeRegionSearchPackages.setOnClickListener {
            // TODO: Implementar la funcionalidad de cambiar la región (Transición).
+        }
+    }
+
+    private fun manageFilterButton (paquetes : MutableList<PaqueteTuristico>){
+        binding.buttonSearchFiltrePackages.setOnClickListener {
+            val text = binding.editableTextSearch.text.toString()
+
+            if (text.isEmpty()) {
+                // Mostrar todos los paquetes turísticos.
+                binding.listViewPackagesSearchTourist.adapter = PackagesSearchAdapter(this, paquetes)
+            }
+            else{
+                // Filtrar los paquetes turísticos con las letras en lower case.
+                val paquetesFiltrados = paquetes.filter { it.nombre.lowercase(Locale.ROOT).contains(
+                    text.lowercase(Locale.ROOT)
+                ) }
+                binding.listViewPackagesSearchTourist.adapter = PackagesSearchAdapter(this, paquetesFiltrados.toMutableList())
+            }
         }
     }
 }

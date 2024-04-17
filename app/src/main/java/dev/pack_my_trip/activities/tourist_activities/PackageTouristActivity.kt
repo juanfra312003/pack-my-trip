@@ -13,36 +13,39 @@ import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 class PackageTouristActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityPackageTouristBinding
-    private lateinit var paquete_turista : PaquetesPorTurista
+    private lateinit var paqueteTurista : PaquetesPorTurista
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPackageTouristBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Recibir el paquete a partir de la actividad anterior.
-        paquete_turista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
+        paqueteTurista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
 
         // Cargar los valores
         load_values()
 
         // Manejar la barra de navegación
         manageNavBar()
+
+        // Manejo de botones
+        manageButtons()
     }
 
     @SuppressLint("SetTextI18n")
     private fun load_values(){
         // Cargar los valroes de: nombre, costo, fecha, organizador
-        binding.costoEditableTextPackagetourist.text = "$" + paquete_turista.paqueteActual.precio.toString()
+        binding.costoEditableTextPackagetourist.text = "$" + paqueteTurista.paqueteActual.precio.toString()
 
         // Obtener la fecha en formato dia/mes/año
-        val fechaPaquete = paquete_turista.fecha.date.toString() + "/" + (paquete_turista.fecha.month + 1).toString() + "/" + (paquete_turista.fecha.year + 1900).toString()
+        val fechaPaquete = paqueteTurista.fecha.date.toString() + "/" + (paqueteTurista.fecha.month + 1).toString() + "/" + (paqueteTurista.fecha.year + 1900).toString()
 
         binding.fechaEditableTextPackagetourist.text = fechaPaquete
-        binding.organizadorTextEditablePackageT.text = paquete_turista.paqueteActual.nombreOrganizador
-        binding.textFieldPackageNameEditable.text = paquete_turista.paqueteActual.nombre
+        binding.organizadorTextEditablePackageT.text = paqueteTurista.paqueteActual.nombreOrganizador
+        binding.textFieldPackageNameEditable.text = paqueteTurista.paqueteActual.nombre
 
         // Cargar la imagen
-        when (paquete_turista.paqueteActual.tipo){
+        when (paqueteTurista.paqueteActual.tipo){
             //TODO: Cambiar las imagenes por las que se encuentran en el proyecto en firebase storage
             "Volcan" -> binding.imageViewPackageType.setImageResource(R.drawable.volcan)
             "Buceo" -> binding.imageViewPackageType.setImageResource(R.drawable.buceo)
@@ -51,7 +54,7 @@ class PackageTouristActivity : AppCompatActivity() {
 
 
         // Mostrar los servicios a través del adapter del mismo
-        binding.listViewServicesPackage.adapter = ServicesPackageAdapter(this, paquete_turista.paqueteActual.servicios)
+        binding.listViewServicesPackage.adapter = ServicesPackageAdapter(this, paqueteTurista.paqueteActual.servicios)
     }
 
     private fun manageNavBar(){
@@ -63,18 +66,26 @@ class PackageTouristActivity : AppCompatActivity() {
                 }
                 R.id.menuChat -> {
                     val intent = Intent(this, ChatTouristActivity::class.java)
-                    intent.putExtra("paquete_turista", paquete_turista)
+                    intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true
                 }
                 R.id.menuMap -> {
                     val intent = Intent(this, TouristMapActivity::class.java)
-                    intent.putExtra("paquete_turista", paquete_turista)
+                    intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true
                 }
                 else -> false
             }
+        }
+    }
+
+    private fun manageButtons (){
+        binding.buttonInfoAditionalPackage.setOnClickListener {
+            val intent = Intent(this, DetailsPackageTourist::class.java)
+            intent.putExtra("paquete_turista", paqueteTurista)
+            startActivity(intent)
         }
     }
 }
