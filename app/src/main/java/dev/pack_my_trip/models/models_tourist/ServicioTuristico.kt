@@ -3,9 +3,9 @@ import java.io.Serializable
 
 data class ServicioTuristico (
     var nombre : String,
-    var latitud : Double,
-    var longitud : Double,
-    var descripcion : String
+    var descripcion : String,
+    var precio : Double
 ) : Serializable {
-    var precio : Double = 0.0
+    var latitud : Double = 0.0
+    var longitud : Double = 0.0
 }

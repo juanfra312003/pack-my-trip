@@ -50,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun performLogin() {
         startActivity(Intent(this, DashboardTouristActivity::class.java))
-
     }
 
     private fun authenticateUser(username: String, password: String): String? {
