@@ -4,162 +4,235 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".activities.general_activities.RegisterActivity">
 
-    <!-- Cabecera de la pantalla con el logo o título de la aplicación -->
     <include
-        android:id="@+id/include"
-        layout="@layout/header_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/headerProfileDetails"
+            layout="@layout/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Título de la sección de registro -->
     <TextView
-        android:id="@+id/textViewRegisterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register_user"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/include"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+            android:id="@+id/textViewRegisterTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Haz parte de pack-my-trip"
+            android:textColor="#092790"
+            android:textSize="20sp"
+            android:fontFamily="@font/coda"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/headerProfileDetails" />
 
     <!-- Imagen del turista -->
     <ImageView
-        android:id="@+id/imageViewTourist"
-        android:layout_width="107dp"
-        android:layout_height="99dp"
-        app:srcCompat="@drawable/turista_dashboard"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+            android:id="@+id/imageViewTourist"
+            android:layout_width="200dp"
+            android:layout_height="165dp"
+            app:srcCompat="@drawable/operador_dashboard"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-    <!-- Campo de texto para el nombre de perfil -->
     <EditText
-        android:id="@+id/editTextProfileName"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:hint="@string/profile_name_hint"
-        android:inputType="textPersonName"
-        android:importantForAutofill="yes"
-        android:autofillHints="name"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewTourist"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+            android:id="@+id/editTextProfileName"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="15sp"
+            android:hint="@string/profile_name_hint"
+            android:inputType="textPersonName"
+            android:importantForAutofill="yes"
+            android:autofillHints="name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewTourist"
+            android:layout_marginTop="16dp"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <!-- Campo de texto para el correo electrónico -->
     <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
-        android:importantForAutofill="yes"
-        android:autofillHints="emailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextProfileName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+            android:id="@+id/editTextEmail"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="15sp"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="yes"
+            android:autofillHints="emailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProfileName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <!-- Campo de texto para la contraseña -->
     <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:hint="@string/password_hint"
-        android:inputType="textPassword"
-        android:importantForAutofill="yes"
-        android:autofillHints="password"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"/>
+            android:id="@+id/editTextPassword"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="15sp"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:importantForAutofill="yes"
+            android:autofillHints="password"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <!-- Campo de texto para confirmar la contraseña -->
-    <EditText
-        android:id="@+id/editTextConfirmPassword"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:hint="@string/confirm_password_hint"
-        android:inputType="textPassword"
-        android:importantForAutofill="yes"
-        android:autofillHints="password"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"/>
-
-    <!-- Campos de texto para la fecha de nacimiento -->
     <LinearLayout
-        android:id="@+id/linearLayoutDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp">
+            android:id="@+id/linearLayoutDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp">
 
         <EditText
-            android:id="@+id/editTextDay"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:hint="@string/day_hint"
-            android:inputType="number"
-            android:importantForAutofill="yes"
-            android:autofillHints="dateDay" />
+                android:id="@+id/editTextDay"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="15sp"
+                android:hint="@string/day_hint"
+                android:inputType="number"
+                android:importantForAutofill="yes"
+                android:autofillHints="dateDay" />
 
         <EditText
-            android:id="@+id/editTextMonth"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:hint="@string/month_hint"
-            android:inputType="number"
-            android:importantForAutofill="yes"
-            android:autofillHints="dateMonth" />
+                android:id="@+id/editTextMonth"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="15sp"
+                android:hint="@string/month_hint"
+                android:inputType="number"
+                android:importantForAutofill="yes"
+                android:autofillHints="dateMonth" />
 
         <EditText
-            android:id="@+id/editTextYear"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:hint="@string/year_hint"
-            android:inputType="number"
-            android:importantForAutofill="yes"
-            android:autofillHints="dateYear" />
+                android:id="@+id/editTextYear"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/year_hint"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="15sp"
+                android:inputType="number"
+                android:importantForAutofill="yes"
+                android:autofillHints="dateYear" />
     </LinearLayout>
 
-    <!-- Spinner para seleccionar el rol -->
     <Spinner
-        android:id="@+id/spinnerRole"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayoutDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:prompt="@string/select_role_prompt"/>
+            android:id="@+id/spinnerRole"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:prompt="@string/select_role_prompt"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            android:layout_marginTop="16dp" />
 
-    <!-- Botón para registrarse -->
     <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        android:text="@string/register"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerRole" />
+            android:id="@+id/buttonRegister"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#092790"
+            android:text="@string/register"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerRole"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp" />
+
+    <TextView
+            android:text="Fecha de Nacimiento: "
+            android:fontFamily="@font/coda"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+            android:text="Rol: "
+            android:layout_width="0dp"
+            android:fontFamily="@font/coda"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#FFF"
+            android:foregroundGravity="center"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/camara_photo"
+            android:id="@+id/cameraButtonSigin"
+            android:layout_marginTop="64dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:srcCompat="@drawable/galeria_photo"
+            android:id="@+id/galleryButtonSigin"
+            android:background="#FFF"
+            android:foregroundGravity="center"
+            android:scaleType="fitCenter"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="64dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTitle"
+            tools:ignore="SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
