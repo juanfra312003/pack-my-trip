@@ -33,21 +33,21 @@
 
             <!-- Spinner para la primera selección de región -->
             <Spinner
-                android:id="@+id/spinnerRegion1"
+                android:id="@+id/spinnerRegionLocalizacion"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:entries="@array/region1_array"/>
 
             <!-- Spinner para la segunda selección de región -->
             <Spinner
-                android:id="@+id/spinnerRegion2"
+                android:id="@+id/spinnerRegionProvincia"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
             android:entries="@array/region2_array"/>
 
             <!-- Spinner para la tercera selección de región -->
             <Spinner
-                android:id="@+id/spinnerRegion3"
+                android:id="@+id/spinnerRegionZona"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
             android:entries="@array/region3_array"/>
