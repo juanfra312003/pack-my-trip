@@ -24,8 +24,12 @@
                 android:exported="false" />
         <activity
                 android:name=".activities.general_activities.ProfileViewActivity"
-                android:name=".activities.operator_activities.ServiciosNotificacionAdapter"
                 android:exported="false" />
+
+        <activity
+            android:name=".activities.operator_activities.ServiciosNotificacionAdapter"
+            android:exported="false" />
+
         <activity
                 android:name=".activities.operator_activities.NotificationsActivity"
                 android:exported="false" />
