@@ -31,7 +31,6 @@ class RegisterActivity : AppCompatActivity() {
         editTextProfileName = findViewById(R.id.editTextProfileName)
         editTextEmail = findViewById(R.id.editTextEmail)
         editTextPassword = findViewById(R.id.editTextPassword)
-        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword)
         editTextDay = findViewById(R.id.editTextDay)
         editTextMonth = findViewById(R.id.editTextMonth)
         editTextYear = findViewById(R.id.editTextYear)
