@@ -16,9 +16,9 @@ class SelectorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_region_selector)
 
-        spinnerRegion1 = findViewById(R.id.spinnerRegion1)
-        spinnerRegion2 = findViewById(R.id.spinnerRegion2)
-        spinnerRegion3 = findViewById(R.id.spinnerRegion3)
+        spinnerRegion1 = findViewById(R.id.spinnerRegionLocalizacion)
+        spinnerRegion2 = findViewById(R.id.spinnerRegionProvincia)
+        spinnerRegion3 = findViewById(R.id.spinnerRegionZona)
 
         setUpSpinner(spinnerRegion1, R.array.region1_array)
         setUpSpinner(spinnerRegion2, R.array.region2_array)
