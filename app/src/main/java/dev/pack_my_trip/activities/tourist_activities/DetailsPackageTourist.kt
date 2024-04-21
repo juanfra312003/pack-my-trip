@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import dev.pack_my_trip.R
+import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.databinding.ActivityDetailsPackageTouristBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
@@ -74,7 +75,7 @@ class DetailsPackageTourist : AppCompatActivity() {
                     true
                 }
                 R.id.menuChat -> {
-                    val intent = Intent(this, ChatTouristActivity::class.java)
+                    val intent = Intent(this, ChatActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true

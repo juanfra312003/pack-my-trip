@@ -94,7 +94,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonBackMenuPaqueteAgendadoInt"
+            app:layout_constraintBottom_toTopOf="@+id/buttonInfoAditionalPackage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +182,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_costoAgenda" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationViewInter"
+            android:id="@+id/bottomNavigationViewTourist"
             style="@style/Widget.Design.BottomNavigationView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -194,7 +194,7 @@
             app:menu="@menu/navbar" />
 
     <Button
-            android:id="@+id/buttonBackMenuPaqueteAgendadoInt"
+            android:id="@+id/buttonInfoAditionalPackage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -202,7 +202,7 @@
             android:backgroundTint="#092790"
             android:layout_marginBottom="16dp"
             android:text="Volver al Menú Principal"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewInter"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

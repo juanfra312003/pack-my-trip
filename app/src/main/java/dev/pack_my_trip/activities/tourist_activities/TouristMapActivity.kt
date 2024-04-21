@@ -44,6 +44,7 @@ import com.google.maps.GeoApiContext
 import com.google.maps.model.DirectionsResult
 import com.google.maps.model.TravelMode
 import dev.pack_my_trip.R
+import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.databinding.ActivityTouristMapBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
@@ -157,7 +158,7 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                     true
                 }
                 R.id.menuChat -> {
-                    val intent = Intent(this, ChatTouristActivity::class.java)
+                    val intent = Intent(this, ChatActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true

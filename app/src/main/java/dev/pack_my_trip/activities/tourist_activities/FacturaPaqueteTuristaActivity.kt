@@ -13,8 +13,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import dev.pack_my_trip.R
+import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.databinding.ActivityFacturaPaqueteTuristaBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import java.io.File
@@ -217,7 +217,7 @@ class FacturaPaqueteTuristaActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menuChat -> {
-                    val intent = Intent(this, ChatTouristActivity::class.java)
+                    val intent = Intent(this, ChatActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
                     startActivity(intent)
                     true

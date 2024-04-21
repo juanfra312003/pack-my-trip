@@ -63,7 +63,7 @@
                 android:name=".activities.tourist_activities.SearchPackagesActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.tourist_activities.ChatTouristActivity"
+                android:name=".activities.general_activities.ChatActivity"
                 android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.TouristMapActivity"
