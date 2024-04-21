@@ -4,34 +4,45 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
+import dev.pack_my_trip.ConectionBack.OnGetServicios
+import dev.pack_my_trip.Presenter.DashboardOperatorPresenter
 import dev.pack_my_trip.R
 import dev.pack_my_trip.databinding.ActivityDashboardOperatorBinding
+import dev.pack_my_trip.models.data_model.Servicio
+import dev.pack_my_trip.models.data_model.Usuario
 
 class DashboardOperator : AppCompatActivity() {
-    private lateinit var binding: ActivityDashboardOperatorBinding
     private lateinit var misServiciosListView: ListView
     private lateinit var registrarServicioBtn: Button
+    private lateinit var usuario: Usuario
+    private var dashboardOperatorPresenter: DashboardOperatorPresenter = DashboardOperatorPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDashboardOperatorBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_dashboard_operator)
+        usuario = intent.getSerializableExtra("usuario") as Usuario
+
         inicializarVariables()
         eventoRegistarServicio()
     }
 
     fun inicializarVariables(){
         misServiciosListView = findViewById(R.id.MisServiciosListView)
-        val data = mapOf("a" to 1, "b" to 2)
-        val adapter = MisServiciosAdapter(this, data)
-        misServiciosListView.adapter = adapter
+        dashboardOperatorPresenter.getServicios(usuario.correo, this, object:OnGetServicios{
+            override fun onGetServicios(servicios: List<Servicio>) {
+                val adapter = MisServiciosAdapter(this@DashboardOperator, servicios, usuario)
+                misServiciosListView.adapter = adapter
+            }
+        })
         registrarServicioBtn = findViewById(R.id.registrarServicioDashBtn)
     }
 
     fun eventoRegistarServicio(){
         registrarServicioBtn.setOnClickListener{
             val intent = Intent(this, RegistroServicios::class.java) //Crea el intent con el contexto de esta actividad y la objetivo
+            intent.putExtra("usuario", usuario)
             startActivity(intent) //Inicia la actividad
         }
     }

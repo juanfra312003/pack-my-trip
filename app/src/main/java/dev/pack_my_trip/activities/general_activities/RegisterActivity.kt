@@ -16,7 +16,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var editTextProfileName: EditText
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
-    private lateinit var editTextConfirmPassword: EditText
     private lateinit var editTextDay: EditText
     private lateinit var editTextMonth: EditText
     private lateinit var editTextYear: EditText
@@ -48,23 +47,16 @@ class RegisterActivity : AppCompatActivity() {
         val name = editTextProfileName.text.toString().trim()
         val email = editTextEmail.text.toString().trim()
         val password = editTextPassword.text.toString().trim()
-        val confirmPassword = editTextConfirmPassword.text.toString().trim()
         val day = editTextDay.text.toString().toIntOrNull()
         val month = editTextMonth.text.toString().toIntOrNull()
         val year = editTextYear.text.toString().toIntOrNull()
         val role = spinnerRole.selectedItem.toString()
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() ||
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() ||
             day == null || month == null || year == null) {
             Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show()
             return
         }
-
-        if (password != confirmPassword) {
-            Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
 
         val newTurista = Turista(
             nombre = name,

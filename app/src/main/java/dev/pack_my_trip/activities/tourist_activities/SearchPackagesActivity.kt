@@ -49,9 +49,8 @@ class SearchPackagesActivity : AppCompatActivity() {
     private fun managePackages () : MutableList<PaqueteTuristico>{
         val paquetes = mutableListOf<PaqueteTuristico>()
 
-        /*
         // Paquete Volcan arenal
-        val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
+        /*val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
         paqueteVolcanArenal.servicios.add(ServicioTuristico("Expedición Volcánica", 10.461352, -84.701013, "Expedición al volcán arenal de Costa Rica"))
         paqueteVolcanArenal.servicios.add(ServicioTuristico("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
         paqueteVolcanArenal.servicios.add(ServicioTuristico("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
@@ -73,8 +72,7 @@ class SearchPackagesActivity : AppCompatActivity() {
         // Añadir los paquetes.
         paquetes.add(paqueteVolcanArenal)
         paquetes.add(paqueteBuceo)
-        paquetes.add(paqueteAviario)
-         */
+        paquetes.add(paqueteAviario)*/
         return paquetes
     }
 

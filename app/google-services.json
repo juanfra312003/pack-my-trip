@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "851021051488",
+    "project_id": "packmytrip-6d6aa",
+    "storage_bucket": "packmytrip-6d6aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851021051488:android:debfb8d6680624ed693505",
+        "android_client_info": {
+          "package_name": "dev.pack_my_trip"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1k0dHU7Y1XreE8CeG43Z_lFskDl9hi2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

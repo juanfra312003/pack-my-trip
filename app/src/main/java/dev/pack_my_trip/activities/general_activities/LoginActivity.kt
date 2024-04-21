@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import dev.pack_my_trip.R
 import android.util.Log
+import dev.pack_my_trip.activities.operator_activities.DashboardOperator
 import dev.pack_my_trip.activities.inter_activities.DashboardInter
 import dev.pack_my_trip.activities.tourist_activities.DashboardTouristActivity
 import dev.pack_my_trip.activities.tourist_activities.TouristMapActivity
 import dev.pack_my_trip.activities.tourist_activities.UploadDocumentActivity
+import dev.pack_my_trip.models.data_model.Usuario
 import dev.pack_my_trip.models.models_tourist.Turista  // Asegúrate de que el modelo y la ruta sean correctos.
 
 class LoginActivity : AppCompatActivity() {
@@ -50,6 +52,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
+        val usuario = Usuario("operador@gmail.com","a","a",'A')
+        startActivity(Intent(this, DashboardOperator::class.java).putExtra("usuario", usuario))
         startActivity(Intent(this, DashboardInter::class.java))
     }
 
