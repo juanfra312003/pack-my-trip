@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -20,6 +21,21 @@
             android:theme="@style/Theme.Packmytrip"
             tools:targetApi="31">
       
+        <activity
+                android:name=".activities.general_activities.RegionActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.general_activities.ProfileViewActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.inter_activities.FollowTouristActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.inter_activities.PaqueteAgendadoActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.inter_activities.AgendaIntermediarioActivity"
+                android:exported="false" />
         <activity
                 android:name=".activities.general_activities.RegionActivity"
                 android:exported="false" />
@@ -57,7 +73,7 @@
                 android:name=".activities.tourist_activities.SearchPackagesActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.tourist_activities.ChatTouristActivity"
+                android:name=".activities.general_activities.ChatActivity"
                 android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.TouristMapActivity"

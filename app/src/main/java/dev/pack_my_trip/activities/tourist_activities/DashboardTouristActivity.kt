@@ -56,7 +56,7 @@ class DashboardTouristActivity : AppCompatActivity() {
 
     private fun managePackages () : MutableList<PaqueteTuristico>{
         val paquetes = mutableListOf<PaqueteTuristico>()
-
+        
         // Paquete Volcan arenal
         /*val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
         paqueteVolcanArenal.servicios.add(Servicio(0, "Expedición al volcán arenal de Costa Rica", 58f, 15, "aa", "operador"))
@@ -67,6 +67,8 @@ class DashboardTouristActivity : AppCompatActivity() {
         // Añadir los paquetes.
         paquetes.add(paqueteVolcanArenal)*/
         return paquetes
+
+
     }
 
     private fun manageButtons(turista : Turista){

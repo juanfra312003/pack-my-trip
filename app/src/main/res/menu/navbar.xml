@@ -14,14 +14,14 @@
         android:id="@+id/menuChat"
         android:icon="@drawable/chat_32"
         android:iconTint="@color/white"
-        android:title="Chat Organizador"
+        android:title="Chat"
         android:visible="true" />
 
     <item
         android:id="@+id/menuMap"
         android:icon="@drawable/map_32"
         android:iconTint="@color/white"
-        android:title="Localizar servicios"
+        android:title="Mapa"
         android:visible="true" />
 
 </menu>

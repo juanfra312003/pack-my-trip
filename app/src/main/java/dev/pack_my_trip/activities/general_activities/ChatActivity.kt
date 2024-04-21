@@ -1,24 +1,26 @@
-package dev.pack_my_trip.activities.tourist_activities
+package dev.pack_my_trip.activities.general_activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dev.pack_my_trip.R
+import dev.pack_my_trip.activities.tourist_activities.DashboardTouristActivity
+import dev.pack_my_trip.activities.tourist_activities.TouristMapActivity
 import dev.pack_my_trip.adapters.tourist_adapters.MessageAdapter
-import dev.pack_my_trip.databinding.ActivityChatTouristBinding
+import dev.pack_my_trip.databinding.ActivityChatBinding
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import dev.pack_my_trip.models.models_tourist.messages.MessageApp
 import dev.pack_my_trip.models.models_tourist.messages.TextMessage
 import java.util.Date
 
-class ChatTouristActivity : AppCompatActivity() {
+class ChatActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityChatTouristBinding
+    private lateinit var binding : ActivityChatBinding
     private lateinit var paquete_turista : PaquetesPorTurista
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityChatTouristBinding.inflate(layoutInflater)
+        binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Recibir el paquete a partir de la actividad anterior.
@@ -55,14 +57,14 @@ class ChatTouristActivity : AppCompatActivity() {
         return mensajes
     }
     private fun manageNavBar(){
-        binding.bottomNavigationView.setOnItemSelectedListener {
+        binding.bottomNavigationViewTourist.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.menuBack -> {
                     startActivity(Intent(this, DashboardTouristActivity::class.java))
                     true
                 }
                 R.id.menuChat -> {
-                    val intent = Intent(this, ChatTouristActivity::class.java)
+                    val intent = Intent(this, ChatActivity::class.java)
                     intent.putExtra("paquete_turista", paquete_turista)
                     startActivity(intent)
                     true
