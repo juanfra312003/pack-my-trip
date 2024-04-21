@@ -51,6 +51,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"/>
         <EditText
+            android:id="@+id/precioServicioEdtETxt"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="#d9d9d9"
@@ -62,6 +63,7 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
         <TextView
+            android:id="@+id/limiteServicioEdtETxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/texto_limite_dario"
@@ -73,6 +75,7 @@
             android:background="#d9d9d9"/>
     </LinearLayout>
     <ImageView
+        android:id="@+id/portadaEdtImgView"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:src="@drawable/operador_dashboard"

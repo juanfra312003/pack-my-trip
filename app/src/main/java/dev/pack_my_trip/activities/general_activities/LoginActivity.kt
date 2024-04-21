@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import dev.pack_my_trip.R
 import android.util.Log
+import dev.pack_my_trip.activities.operator_activities.DashboardOperator
 import dev.pack_my_trip.activities.tourist_activities.DashboardTouristActivity
 import dev.pack_my_trip.activities.tourist_activities.TouristMapActivity
 import dev.pack_my_trip.activities.tourist_activities.UploadDocumentActivity
@@ -49,8 +50,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
-        startActivity(Intent(this, DashboardTouristActivity::class.java))
-
+        //startActivity(Intent(this, DashboardTouristActivity::class.java))
+        startActivity(Intent(this, DashboardOperator::class.java))
     }
 
     private fun authenticateUser(username: String, password: String): String? {

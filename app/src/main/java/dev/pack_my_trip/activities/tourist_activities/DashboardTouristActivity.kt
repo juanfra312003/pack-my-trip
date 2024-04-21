@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dev.pack_my_trip.adapters.tourist_adapters.PackagesTouristAdapter
 import dev.pack_my_trip.databinding.ActivityDashboardTouristBinding
-import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
+import dev.pack_my_trip.models.data_model.PaqueteTuristico
+import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import dev.pack_my_trip.models.models_tourist.ServicioTuristico
 import dev.pack_my_trip.models.models_tourist.Turista
@@ -24,8 +25,8 @@ class DashboardTouristActivity : AppCompatActivity() {
         val listaPaquetes = managePackages()
         val fecha = java.util.Date()
         for (paquete in listaPaquetes){
-            val paquetesPorTurista = PaquetesPorTurista(turista.uuid, paquete, fecha)
-            turista.paquetes.add(paquetesPorTurista)
+            //val paquetesPorTurista = PaquetesPorTurista(turista.uuid, paquete, fecha)
+            //turista.paquetes.add(paquetesPorTurista)
         }
 
         // MOSTRAR LA LISTA DE PAQUETES
@@ -57,14 +58,14 @@ class DashboardTouristActivity : AppCompatActivity() {
         val paquetes = mutableListOf<PaqueteTuristico>()
 
         // Paquete Volcan arenal
-        val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
-        paqueteVolcanArenal.servicios.add(ServicioTuristico("Expedición Volcánica", 10.461352, -84.701013, "Expedición al volcán arenal de Costa Rica"))
-        paqueteVolcanArenal.servicios.add(ServicioTuristico("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
-        paqueteVolcanArenal.servicios.add(ServicioTuristico("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
+        /*val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
+        paqueteVolcanArenal.servicios.add(Servicio(0, "Expedición al volcán arenal de Costa Rica", 58f, 15, "aa", "operador"))
+        paqueteVolcanArenal.servicios.add(Servicio("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
+        paqueteVolcanArenal.servicios.add(Servicioo("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
         paqueteVolcanArenal.precio = 150.45
 
         // Añadir los paquetes.
-        paquetes.add(paqueteVolcanArenal)
+        paquetes.add(paqueteVolcanArenal)*/
         return paquetes
     }
 

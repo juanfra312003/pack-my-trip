@@ -41,6 +41,7 @@
                         android:text="@string/texto_nombre_servicio"
                         android:layout_marginEnd="10dp"/>
                 <EditText
+                        android:id="@+id/nombreServicioETxt"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:background="#d9d9d9"/>
@@ -57,9 +58,11 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"/>
                 <EditText
+                        android:id="@+id/precioServicioETxt"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:background="#d9d9d9"
+                        android:inputType="numberDecimal"
                         />
             </LinearLayout>
             <LinearLayout
@@ -74,9 +77,12 @@
                         android:layout_marginStart="-8dp"
                         android:layout_marginEnd="10dp"/>
                 <EditText
+                        android:id="@+id/limiteVisitaServicioETxt"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:background="#d9d9d9"/>
+                        android:background="#d9d9d9"
+                        android:inputType="number"
+                        />
             </LinearLayout>
             <Button
                     android:id="@+id/subirPortadaButton"
