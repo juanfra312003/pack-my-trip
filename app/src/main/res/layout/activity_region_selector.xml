@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/include"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationViewTourist"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationViewInter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp">
@@ -58,7 +58,7 @@
 
     <!-- Bottom Navigation View sin cambios, como solicitaste -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewTourist"
+        android:id="@+id/bottomNavigationViewInter"
         style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

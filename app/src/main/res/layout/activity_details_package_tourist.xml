@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header_details_package_tourist" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewTourist"
+        android:id="@+id/bottomNavigationViewInter"
         style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="#283593"
         android:text="Descargar comprobante del Paquete Turístico"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewInter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

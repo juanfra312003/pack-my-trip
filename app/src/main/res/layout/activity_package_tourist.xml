@@ -186,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_costo" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewTourist"
+        android:id="@+id/bottomNavigationViewInter"
         style="@style/Widget.Design.BottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
         android:backgroundTint="#092790"
         android:layout_marginBottom="16dp"
         android:text="Información Adicional del Paquete"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewInter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
