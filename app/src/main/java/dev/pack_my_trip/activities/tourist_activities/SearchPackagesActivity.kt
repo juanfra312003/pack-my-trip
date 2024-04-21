@@ -49,6 +49,7 @@ class SearchPackagesActivity : AppCompatActivity() {
     private fun managePackages () : MutableList<PaqueteTuristico>{
         val paquetes = mutableListOf<PaqueteTuristico>()
 
+        /*
         // Paquete Volcan arenal
         val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
         paqueteVolcanArenal.servicios.add(ServicioTuristico("Expedición Volcánica", 10.461352, -84.701013, "Expedición al volcán arenal de Costa Rica"))
@@ -73,6 +74,7 @@ class SearchPackagesActivity : AppCompatActivity() {
         paquetes.add(paqueteVolcanArenal)
         paquetes.add(paqueteBuceo)
         paquetes.add(paqueteAviario)
+         */
         return paquetes
     }
 

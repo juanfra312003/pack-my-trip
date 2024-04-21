@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.tourist_activities.ChatTouristActivity">
+    tools:context=".activities.general_activities.ChatActivity">
 
     <include
         android:id="@+id/include"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigationViewTourist"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:itemTextColor="@color/white"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#283593"
-        app:menu="@menu/navbar_tourist"
+        app:menu="@menu/navbar"
         />
 
 
@@ -33,7 +33,7 @@
         android:layout_height="0dp"
         android:background="#D5D5D5"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
