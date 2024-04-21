@@ -18,6 +18,9 @@
             android:theme="@style/Theme.Packmytrip"
             tools:targetApi="31">
         <activity
+                android:name=".activities.inter_activities.PaqueteAgendadoActivity"
+                android:exported="false" />
+        <activity
                 android:name=".activities.inter_activities.AgendaIntermediarioActivity"
                 android:exported="false" />
         <activity

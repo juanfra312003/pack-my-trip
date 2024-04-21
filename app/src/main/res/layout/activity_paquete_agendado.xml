@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.inter_activities.PaqueteAgendadoActivity">
+
+    <include
+            android:id="@+id/header_paquete_agendado"
+            layout="@layout/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/textFieldPackageNameAgenda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/coda"
+            android:text="Paquete Turístico Agendado"
+            android:textColor="#092790"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_paquete_agendado" />
+
+    <TextView
+            android:id="@+id/textFieldPackageNameEditableAgenda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/coda"
+            android:text="Experiencia ..."
+            android:textAlignment="center"
+            android:textColor="#092790"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameAgenda" />
+
+    <ImageView
+            android:id="@+id/imageViewPackageTypeAgenda"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditableAgenda"
+            app:srcCompat="@drawable/volcan" />
+
+    <ImageView
+            android:id="@+id/imageView_dateAgenda"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPackageTypeAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_organizedAgenda"
+            app:srcCompat="@drawable/fecha_package" />
+
+    <ImageView
+            android:id="@+id/imageView_costAgenda"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPackageTypeAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_dateAgenda"
+            app:srcCompat="@drawable/costo_package" />
+
+    <ImageView
+            android:id="@+id/imageView_organizedAgenda"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPackageTypeAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditableAgenda"
+            app:srcCompat="@drawable/organizado_por" />
+
+    <ListView
+            android:id="@+id/listViewServicesPackageAgenda"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonBackMenuPaqueteAgendadoInt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_costAgenda" />
+
+    <TextView
+            android:id="@+id/text_organized_paquete_agendado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coda"
+            android:text="Organizado hacía:"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_organizedAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditableAgenda" />
+
+    <TextView
+            android:id="@+id/text_fechaAgenda"
+            android:layout_width="83dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coda"
+            android:text="Fecha Inicio Paquete: "
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_dateAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/organizadorTextEditable_PaqueteAgendado" />
+
+    <TextView
+            android:id="@+id/text_costoAgenda"
+            android:layout_width="83dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coda"
+            android:text="Costo: "
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_costAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/fecha_editable_text_paqueteAgenda" />
+
+    <TextView
+            android:id="@+id/organizadorTextEditable_PaqueteAgendado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Nombre Turista"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_organizedAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/text_organized_paquete_agendado" />
+
+    <TextView
+            android:id="@+id/fecha_editable_text_paqueteAgenda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Fecha Paquete"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_dateAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/text_fechaAgenda" />
+
+    <TextView
+            android:id="@+id/costo_editable_text_packageAgenda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Costo Paquete"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_costAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/text_costoAgenda" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationViewTourist"
+            style="@style/Widget.Design.BottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#283593"
+            app:itemTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/navbar" />
+
+    <Button
+            android:id="@+id/buttonBackMenuPaqueteAgendadoInt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#092790"
+            android:layout_marginBottom="16dp"
+            android:text="Volver al Menú Principal"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

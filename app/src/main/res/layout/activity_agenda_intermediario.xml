@@ -70,7 +70,7 @@
             android:id="@+id/listViewPaquetesAgendadosIntermediario" />
 
     <TextView
-            android:text="Próximos compromisos: "
+            android:text="Próximos compromisos"
             android:textAlignment="center"
             android:fontFamily="@font/coda"
             android:textSize="17sp"

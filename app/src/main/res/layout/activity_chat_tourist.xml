@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#283593"
-        app:menu="@menu/navbar_tourist"
+        app:menu="@menu/navbar"
         />
 
 
