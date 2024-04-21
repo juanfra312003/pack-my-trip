@@ -22,7 +22,8 @@ class DashboardOperator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard_operator)
-        usuario = Usuario("operador@gmail.com","a","a",'A')
+        usuario = intent.getSerializableExtra("usuario") as Usuario
+
         inicializarVariables()
         eventoRegistarServicio()
     }
@@ -31,13 +32,7 @@ class DashboardOperator : AppCompatActivity() {
         misServiciosListView = findViewById(R.id.MisServiciosListView)
         dashboardOperatorPresenter.getServicios(usuario.correo, this, object:OnGetServicios{
             override fun onGetServicios(servicios: List<Servicio>) {
-                val data = mutableMapOf<String,ByteArray>()
-                for(servicio in servicios){
-                    val texto = servicio.nombre
-                    val byteImg = servicio.portada
-                    data[texto] = byteImg.toByteArray(Charsets.UTF_8)
-                }
-                val adapter = MisServiciosAdapter(this@DashboardOperator, data, servicios)
+                val adapter = MisServiciosAdapter(this@DashboardOperator, servicios, usuario)
                 misServiciosListView.adapter = adapter
             }
         })

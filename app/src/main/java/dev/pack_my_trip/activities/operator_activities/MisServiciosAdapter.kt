@@ -9,20 +9,22 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.Servicio
+import dev.pack_my_trip.models.data_model.Usuario
 
 class MisServiciosAdapter(
     private val context: Context,
-    private val data: Map<String, ByteArray>,
-    private val servicios: List<Servicio>) : BaseAdapter()  {
+    private val data: List<Servicio>,
+    private val usuario: Usuario,
+    ) : BaseAdapter()  {
     override fun getCount(): Int {
         return data.size
     }
 
     override fun getItem(position: Int): Any {
-        var lista = data.toList()
-        return lista[position]
+        return data[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -35,16 +37,19 @@ class MisServiciosAdapter(
             convertViewTemp = LayoutInflater.from(context).inflate(R.layout.mis_servicios_adapter, parent, false) //Obtiene el xml con el diseño
         }
         val textoServicio: TextView = convertViewTemp!!.findViewById(R.id.MisServiciosTxt) //Obtener texto
-        val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen
-        val nombresServicios = data.keys.toList()
-        val nombreEnPosition = nombresServicios[position]
-        textoServicio.text = nombreEnPosition
-        val imgByteServicio = data[nombreEnPosition]
-        val bitmap = BitmapFactory.decodeByteArray(imgByteServicio, 0, imgByteServicio!!.size)
-        imagServicio.setImageBitmap(bitmap)
+        val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen]
+        textoServicio.text = data[position].nombre
+        val urlImg: String? = data[position].portada
+        if(urlImg != null && !urlImg.isEmpty()){
+            Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagServicio)
+        }
+        else{
+            imagServicio.setImageResource(R.drawable.no_disponible)
+        }
         convertViewTemp!!.setOnClickListener{
             val intent = Intent(context, EditarServicio::class.java) //Crea el intent con el contexto de esta actividad y la objetivo
-            intent.putExtra("servicio", servicios[position])
+            intent.putExtra("servicio", data[position])
+            intent.putExtra("usuario", usuario)
             context.startActivity(intent) //Inicia la actividad
         }
         return convertViewTemp

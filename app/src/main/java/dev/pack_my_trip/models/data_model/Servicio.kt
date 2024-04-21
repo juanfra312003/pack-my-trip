@@ -9,11 +9,11 @@ data class Servicio (
     var nombre : String,
     var precio : Float,
     var limiteDiario : Int,
-    var descripcion : String,
-    var operador : String
+    var caracteristicas : String,
+    var portada : String,
+    var fechaHora : String,
+    var correoOperador : String
 )
     : Serializable
 {
-    lateinit var fechaHora : LocalDateTime
-    lateinit var portada : String
 }

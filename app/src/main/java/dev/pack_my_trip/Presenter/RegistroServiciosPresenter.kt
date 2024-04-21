@@ -38,7 +38,7 @@ class RegistroServiciosPresenter(
                     month = monthOfYear + 1
                     this.year = year
                     this.day = dayOfMonth
-                    fechaHoraTxt.setText("El servicio se efectuará el "+ dayOfMonth + "/" + month + "/" + year )
+                    fechaHoraTxt.setText("El servicio se efectuará el "+ this.day + "/" + month + "/" + this.year )
                 }
                 else{
                     Toast.makeText(contexto, "La fecha es anterior a hoy", Toast.LENGTH_SHORT).show()
