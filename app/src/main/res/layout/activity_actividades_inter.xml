@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.inter_activities.PaqueteTuristicoCreado">
+
+    <include
+            android:id="@+id/header_package_tourist"
+            layout="@layout/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/textFieldPackageName"
+            android:layout_width="192dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/coda"
+            android:text=" Paquete Experiencia Completa Volcán Arenal"
+            android:textColor="#092790"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_package_tourist" />
+
+
+    <ImageView
+            android:id="@+id/imageViewPackageType"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName"
+            app:srcCompat="@drawable/volcan" />
+
+    <ImageView
+            android:id="@+id/imageView_organized"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName"
+            app:srcCompat="@drawable/organizado_por" />
+
+    <TextView
+            android:id="@+id/text_organized"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coda"
+            android:text="Organizado por:"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_organized"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName" />
+
+    <TextView
+            android:id="@+id/organizadorTextEditable_PackageT"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Organizador Paquete"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_organized"
+            app:layout_constraintTop_toBottomOf="@+id/text_organized" />
+
+    <ImageView
+            android:id="@+id/imageView_date"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_organized"
+            app:srcCompat="@drawable/fecha_package" />
+
+    <TextView
+            android:id="@+id/text_fecha"
+            android:layout_width="83dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coda"
+            android:text="Fecha: "
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_date"
+            app:layout_constraintTop_toBottomOf="@+id/organizadorTextEditable_PackageT" />
+
+    <TextView
+            android:id="@+id/fecha_editable_text_packagetourist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Fecha Paquete"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_date"
+            app:layout_constraintTop_toBottomOf="@+id/text_fecha" />
+
+    <ImageView
+            android:id="@+id/imageView_cost"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_date"
+            app:srcCompat="@drawable/costo_package" />
+
+    <TextView
+            android:id="@+id/text_costo"
+            android:layout_width="83dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coda"
+            android:text="Costo: "
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_cost"
+            app:layout_constraintTop_toBottomOf="@+id/fecha_editable_text_packagetourist" />
+
+    <TextView
+            android:id="@+id/costo_editable_text_packagetourist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Costo Paquete"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_cost"
+            app:layout_constraintTop_toBottomOf="@+id/text_costo" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_cost"
+            app:layout_constraintVertical_bias="0.127"
+            android:id="@+id/view"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+    <ImageView
+            android:id="@+id/imageView_transport"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/transporte"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintVertical_bias="0.384" />
+
+    <TextView
+            android:id="@+id/descripcionTransporte"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/coda"
+            android:text="Transporte ida y vuelta del turista hacía el lugar de hospedaje."
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_transport"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            android:layout_marginStart="24dp" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.160"
+            android:id="@+id/view2"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+    <ImageView
+            android:id="@+id/imageView_Excursion"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/excursion"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintVertical_bias="0.384" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.160"
+            android:id="@+id/view3"
+            tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+            android:id="@+id/descripcionExcursionismo"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/coda"
+            android:text="Subida a la cumbre del volcán, kit de protección y equipamiento especial."
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_Excursion"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            android:layout_marginStart="24dp" />
+
+    <ImageView
+            android:id="@+id/imageView_bolsaAlmuerzo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/almuerzo"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintVertical_bias="0.384" />
+
+    <TextView
+            android:id="@+id/descripcionAlmuerzo"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/coda"
+            android:text="Almuerzo típico de la zona, dos snacks y té de coca."
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_bolsaAlmuerzo"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            android:layout_marginStart="24dp" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            app:layout_constraintVertical_bias="0.190"
+            android:id="@+id/view4"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+    <ImageView
+            android:id="@+id/imageView_pdf"
+            android:layout_width="500dp"
+            android:layout_height="80dp"
+            app:srcCompat="@drawable/pdf"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationViewTourist"
+            style="@style/Widget.Design.BottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#283593"
+            app:itemTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/navbar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

@@ -7,10 +7,13 @@ import java.util.Date
 data class PaqueteTuristico (
     var id : Int,
     var nombre : String,
-    var precio : Double,
-    var correoIntermediario : String
+    var fechaHora : String,
+    var precioDolares : Float,
+    var imagen : String,
+    var listaServicios : List<Servicio>,
+    var calificacion : Int,
+    var comentarios : String,
+    var comprobante : String
 ) : Serializable
 {
-  var fechaHora : Date = Date()
-  var imagen : Blob? = null
 }
