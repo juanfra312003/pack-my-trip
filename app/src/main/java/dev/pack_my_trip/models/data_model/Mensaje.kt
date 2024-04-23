@@ -5,10 +5,10 @@ import java.util.Date
 
 data class Mensaje (
     var id : Int,
-    var usuario1 : Usuario,
-    var usuario2 : Usuario,
+    var correoUsuario1 : Usuario,
+    var correoUsuario2 : Usuario,
     var mensaje : String,
     var enviado : Boolean,
-    var hora : Date
+    var hora : String
 ) : Serializable{
 }

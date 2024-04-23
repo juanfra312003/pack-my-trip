@@ -60,6 +60,8 @@ dependencies {
     implementation("com.google.android.libraries.places:places:3.2.0")
     implementation("androidx.compose.ui:ui-graphics-android:1.5.3")
     implementation("com.android.volley:volley:1.2.1")
+    implementation ("com.squareup.retrofit2:retrofit:2.7.2")
+    implementation ("com.squareup.retrofit2:converter-gson:2.4.0")
     implementation("com.dmitryborodin:pdfview-android:1.1.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
