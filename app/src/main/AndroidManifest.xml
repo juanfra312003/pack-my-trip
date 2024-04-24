@@ -23,7 +23,7 @@
                 android:name=".activities.inter_activities.PdfIntermediario"
                 android:exported="false" />
         <activity
-                android:name=".activities.inter_activities.ActividadesInter"
+                android:name=".activities.inter_activities.ServiciosInter"
                 android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.PaqueteTuristicoCreado"
@@ -38,25 +38,24 @@
                 android:name=".activities.inter_activities.FollowTouristActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.inter_activities.PaqueteAgendadoActivity"
-                android:exported="false" />
-        <activity
                 android:name=".activities.inter_activities.AgendaIntermediarioActivity"
                 android:exported="false" />
         <activity
                 android:name=".activities.general_activities.RegionActivity"
-                android:exported="false" />
+                android:exported="false"
+                tools:ignore="DuplicateActivity" />
         <activity
                 android:name=".activities.general_activities.ProfileViewActivity"
-                android:exported="false" />
+                android:exported="false"
+                tools:ignore="DuplicateActivity" />
         <activity
-                android:name=".activities.operator_activities.ServiciosNotificacionAdapter"
+                android:name=".adapters.Operador.ServiciosNotificacionAdapter"
                 android:exported="false" />
         <activity
                 android:name=".activities.operator_activities.NotificationsActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.operator_activities.ServiciosMetricasAdapter"
+                android:name=".adapters.Operador.ServiciosMetricasAdapter"
                 android:exported="false" />
         <activity
                 android:name=".activities.operator_activities.EditarServicio"

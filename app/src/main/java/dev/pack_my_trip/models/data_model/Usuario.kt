@@ -7,7 +7,7 @@ data class Usuario (
     var correo : String,
     var usuario : String,
     var contrasena : String,
-    var fechaNacimiento : Date,
+    var fechaNacimiento : String,
     var latitud : Float,
     var longitud : Float,
     var region : String,

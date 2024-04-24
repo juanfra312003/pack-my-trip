@@ -4,12 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.ListView
-import dev.pack_my_trip.ConectionBack.OnGetServicios
-import dev.pack_my_trip.Presenter.DashboardOperatorPresenter
+import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
+import dev.pack_my_trip.Presenter.Operador.DashboardOperatorPresenter
 import dev.pack_my_trip.R
-import dev.pack_my_trip.databinding.ActivityDashboardOperatorBinding
+import dev.pack_my_trip.adapters.Operador.MisServiciosAdapter
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
 
@@ -30,7 +29,7 @@ class DashboardOperator : AppCompatActivity() {
 
     fun inicializarVariables(){
         misServiciosListView = findViewById(R.id.MisServiciosListView)
-        dashboardOperatorPresenter.getServicios(usuario.correo, this, object:OnGetServicios{
+        dashboardOperatorPresenter.getServicios(usuario.correo, this, object: OnGetServicios {
             override fun onGetServicios(servicios: List<Servicio>) {
                 val adapter = MisServiciosAdapter(this@DashboardOperator, servicios, usuario)
                 misServiciosListView.adapter = adapter

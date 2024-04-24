@@ -13,6 +13,7 @@ import dev.pack_my_trip.activities.inter_activities.DashboardInter
 import dev.pack_my_trip.activities.tourist_activities.DashboardTouristActivity
 import dev.pack_my_trip.activities.tourist_activities.TouristMapActivity
 import dev.pack_my_trip.activities.tourist_activities.UploadDocumentActivity
+import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Usuario
 import dev.pack_my_trip.models.models_tourist.Turista  // Asegúrate de que el modelo y la ruta sean correctos.
 
@@ -52,9 +53,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
-        val usuario = Usuario("operador@gmail.com","a","a",'A')
-        startActivity(Intent(this, DashboardOperator::class.java).putExtra("usuario", usuario))
-        startActivity(Intent(this, DashboardInter::class.java))
+        val usuario = Usuario("juanfra312003@gmail.com","a","a","a",1f,2f,"",'O',"", listOf())
+        //startActivity(Intent(this, DashboardOperator::class.java).putExtra("usuario", usuario))
+        //startActivity(Intent(this, DashboardInter::class.java))
+        startActivity(Intent(this, DashboardInter::class.java).putExtra("usuario", usuario))
     }
 
     private fun authenticateUser(username: String, password: String): String? {

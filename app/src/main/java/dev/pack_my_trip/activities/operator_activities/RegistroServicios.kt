@@ -18,8 +18,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.FirebaseStorage
-import dev.pack_my_trip.ConectionBack.OnCrearServicio
-import dev.pack_my_trip.Presenter.RegistroServiciosPresenter
+import dev.pack_my_trip.ConectionBack.Interfaces.OnCrearServicio
+import dev.pack_my_trip.Presenter.Operador.OnSubirImagen
+import dev.pack_my_trip.Presenter.Operador.RegistroServiciosPresenter
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
@@ -127,7 +128,8 @@ class RegistroServicios : AppCompatActivity() {
                 Toast.makeText(this@RegistroServicios, "Complete todos los datos antes de registrar", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener;
             }
-            subirImagen(nombreServicioEditText.text.toString(), LocalDateTime.of(year, month, day, hour, minute), object: OnSubirImagen{
+            subirImagen(nombreServicioEditText.text.toString(), LocalDateTime.of(year, month, day, hour, minute), object:
+                OnSubirImagen {
                 override fun onSubirImagen(url: String?) {
                     if(url == null){
                         Toast.makeText(this@RegistroServicios, "no se pudo subir la imagen", Toast.LENGTH_SHORT).show()
@@ -165,7 +167,8 @@ class RegistroServicios : AppCompatActivity() {
     }
 
     fun subirServicio(servicio: Servicio){
-        registroServiciosPresenter.registrarServicio(servicio, this@RegistroServicios, object: OnCrearServicio{
+        registroServiciosPresenter.registrarServicio(servicio, this@RegistroServicios, object:
+            OnCrearServicio {
             override fun onCrearServicio(realizado: Boolean) {
                 if(realizado){
                     val intent = Intent(this@RegistroServicios, DashboardOperator::class.java) //Crea el intent con el contexto de esta actividad y la objetivo

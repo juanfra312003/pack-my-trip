@@ -7,12 +7,14 @@
         android:orientation="vertical"
         tools:context=".activities.operator_activities.DashboardOperator">
 
+
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_tam"
             android:layout_marginBottom="16dp"
             />
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +24,31 @@
             android:textAlignment="center"
             android:text="Métricas y análisis"
             android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             />
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="@string/mostrar_unicamente"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                />
+        <Spinner
+                android:id="@+id/cuposSp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                />
+    </LinearLayout>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +59,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/blue"
                 android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
                 android:padding="2dp">
             <TextView
                     android:id="@+id/titleTextView"
@@ -42,6 +70,8 @@
                     android:focusable="true"
                     android:text="Servicios en oferta"
                     android:textColor="@android:color/white"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
         </LinearLayout>
@@ -49,6 +79,8 @@
                 android:id="@+id/MisServiciosListView"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16dp"/>
         </LinearLayout>
     <LinearLayout
@@ -61,6 +93,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/blue"
                 android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
                 android:padding="2dp">
             <TextView
                     android:id="@+id/title2TextView"
@@ -71,12 +105,16 @@
                     android:text="Otros servicios"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:textStyle="bold" />
         </LinearLayout>
         <ListView
                 android:id="@+id/MisServicios2ListView"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
     </LinearLayout>
 </LinearLayout>

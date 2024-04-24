@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imagenProfileUserDash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -67,13 +67,13 @@
         </androidx.cardview.widget.CardView>
 
         <ImageButton
+                android:id="@+id/buttonProfileDashInt"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:background="#D8E3F2"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/usuario"
-                android:id="@+id/buttonProfileDashInt"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="18dp"
                 android:layout_marginStart="80dp"
@@ -94,13 +94,13 @@
                 app:layout_constraintStart_toEndOf="@+id/cardDashBoard" />
 
         <ImageButton
+                android:id="@+id/buttonRegionDashInt"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:background="#D8E3F2"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/marcador_location"
-                android:id="@+id/buttonRegionDashInt"
                 android:layout_marginStart="64dp"
                 app:layout_constraintStart_toEndOf="@+id/buttonProfileDashInt"
                 app:layout_constraintTop_toTopOf="parent"
@@ -162,23 +162,23 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
         <ListView
+                android:id="@+id/listViewDashBoardIntermediario"
                 android:layout_width="0dp"
                 android:layout_height="202dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/imageDashIntPaq"
-                android:id="@+id/listViewDashBoardIntermediario"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
+            android:id="@+id/buttonCrearPaqueteTuristicoInt"
             android:text="Crear Paquete Turístico"
             android:backgroundTint="#092790"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonCrearPaqueteTuristicoInt"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="32dp"
             android:layout_marginEnd="24dp"
@@ -187,11 +187,11 @@
             app:layout_constraintStart_toEndOf="@+id/buttonVerPaquetesAgenda" />
 
     <Button
+            android:id="@+id/buttonVerPaquetesAgenda"
             android:text="Paquetes Agendados"
             android:layout_width="0dp"
             android:backgroundTint="#092790"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonVerPaquetesAgenda"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="parent"

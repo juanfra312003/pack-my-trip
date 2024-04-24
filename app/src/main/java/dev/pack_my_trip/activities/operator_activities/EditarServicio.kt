@@ -19,10 +19,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-import dev.pack_my_trip.ConectionBack.OnCrearServicio
-import dev.pack_my_trip.ConectionBack.OnEditarServicio
-import dev.pack_my_trip.Presenter.EditarServicioPresenter
-import dev.pack_my_trip.Presenter.RegistroServiciosPresenter
+import dev.pack_my_trip.ConectionBack.Interfaces.OnEditarServicio
+import dev.pack_my_trip.Presenter.Operador.EditarServicioPresenter
+import dev.pack_my_trip.Presenter.Operador.OnSubirImagen
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
@@ -122,7 +121,8 @@ class EditarServicio : AppCompatActivity() {
                 Toast.makeText(this@EditarServicio, "Complete todos los datos antes de registrar", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener;
             }
-            subirImagen(nombreServicioETxt.text.toString(), LocalDateTime.of(year, month, day, hour, minute), object: OnSubirImagen{
+            subirImagen(nombreServicioETxt.text.toString(), LocalDateTime.of(year, month, day, hour, minute), object:
+                OnSubirImagen {
                 override fun onSubirImagen(url: String?) {
                     if(url == null){
                         Toast.makeText(this@EditarServicio, "no se pudo subir la imagen", Toast.LENGTH_SHORT).show()

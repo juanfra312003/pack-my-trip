@@ -1,13 +1,10 @@
 package dev.pack_my_trip.activities.tourist_activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ListView
 import dev.pack_my_trip.R
-import dev.pack_my_trip.activities.operator_activities.MisServiciosAdapter
-import dev.pack_my_trip.activities.operator_activities.ServiciosMetricasAdapter
+import dev.pack_my_trip.adapters.Operador.ServiciosMetricasAdapter
 import dev.pack_my_trip.databinding.ActivityMetricasBinding
 
 class MetricasActivity : AppCompatActivity() {
