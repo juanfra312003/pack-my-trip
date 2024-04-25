@@ -3,10 +3,14 @@ package dev.pack_my_trip.activities.tourist_activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import dev.pack_my_trip.ConectionBack.Interfaces.OnGetPaquetesUsuario
+import dev.pack_my_trip.Presenter.Turista.DashboardTuristaPresenter
 import dev.pack_my_trip.adapters.tourist_adapters.PackagesTouristAdapter
 import dev.pack_my_trip.databinding.ActivityDashboardTouristBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
+import dev.pack_my_trip.models.data_model.Usuario
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import dev.pack_my_trip.models.models_tourist.ServicioTuristico
 import dev.pack_my_trip.models.models_tourist.Turista
@@ -14,21 +18,24 @@ import dev.pack_my_trip.models.models_tourist.Turista
 class DashboardTouristActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardTouristBinding
+    private lateinit var usuario : Usuario
+    private var dashboardTuristaPresenter : DashboardTuristaPresenter = DashboardTuristaPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardTouristBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // MANEJO DE TURISTA Y PAQUETES "ADQUIRIDOS"
-        val turista = manageTourist()
-        val listaPaquetes = managePackages()
-        val fecha = java.util.Date()
-        for (paquete in listaPaquetes){
-            //val paquetesPorTurista = PaquetesPorTurista(turista.uuid, paquete, fecha)
-            //turista.paquetes.add(paquetesPorTurista)
-        }
+        // Recibir el turista a partir de la actividad anterior.
+        usuario = intent.getSerializableExtra("usuario") as Usuario
 
+        // Llamado a funciones de inicialización
+        inicializarVariables()
+        personalizarLayout()
+        manejoListView()
+
+
+        /*
         // MOSTRAR LA LISTA DE PAQUETES
         binding.listTouristPackages.adapter = PackagesTouristAdapter(this, turista.paquetes)
         binding.listTouristPackages.setOnItemClickListener { _, _, position, _ ->
@@ -39,37 +46,35 @@ class DashboardTouristActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // ACTUALIZAR EL NOMBRE DEL TURISTA.
-        binding.textoBienvenido.text = "Bienvenido de nuevo, ${turista.nombre}"
 
         // MANEJO DE BOTÓN DE BÚSQUEDA DE PAQUETES CON EL TURISTA CÓMO PARÁMETRO PARA LA ACTIVIDAD DE BÚSQUEDA DE PAQUETES
         manageButtons(turista)
+
+         */
     }
 
-    private fun manageTourist () : Turista {
-        // Turista.
-        val turista = Turista("Juan", "juanframireze@gmail.com")
-        turista.latitud = 4.60971
-        turista.longitud = -74.08175
-        return turista
+    private fun inicializarVariables (){
+        dashboardTuristaPresenter.getPaquetesUsuario(usuario.correo, this, object :
+            OnGetPaquetesUsuario {
+            override fun onGetPaquetesUsuario(paquetes: List<PaqueteTuristico>) {
+                usuario.listaPaquetes = paquetes
+            }
+        })
     }
 
-    private fun managePackages () : MutableList<PaqueteTuristico>{
-        val paquetes = mutableListOf<PaqueteTuristico>()
-        
-        // Paquete Volcan arenal
-        /*val paqueteVolcanArenal = PaqueteTuristico("Expedición Volcan Arenal", 150.45, "Hotel San Bosco", "Volcan")
-        paqueteVolcanArenal.servicios.add(Servicio(0, "Expedición al volcán arenal de Costa Rica", 58f, 15, "aa", "operador"))
-        paqueteVolcanArenal.servicios.add(Servicio("Caminata por el volcán", 10.4614, -84.702, "Caminata por el volcán arenal de Costa Rica"))
-        paqueteVolcanArenal.servicios.add(Servicioo("Transporte ida y vuelta", 10.47089 , -84.64535, "Transporte desde la fortuna"))
-        paqueteVolcanArenal.precio = 150.45
-
-        // Añadir los paquetes.
-        paquetes.add(paqueteVolcanArenal)*/
-        return paquetes
-
-
+    private fun personalizarLayout(){
+        binding.textoBienvenido.text = "Bienvenido de nuevo, ${usuario.usuario} !"
     }
+
+    private fun manejoListView(){
+        if (usuario.listaPaquetes.isNullOrEmpty()){
+            Toast.makeText(this, "No tienes paquetes asignados", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            binding.listTouristPackages.adapter = PackagesTouristAdapter(this@DashboardTouristActivity, usuario.listaPaquetes.toMutableList())
+        }
+    }
+
 
     private fun manageButtons(turista : Turista){
         binding.buttonSearchPackages.setOnClickListener {
