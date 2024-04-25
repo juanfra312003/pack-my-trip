@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLogin.setOnClickListener {
             performLogin()
         }
-
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun performLogin() {
@@ -62,6 +61,10 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Bienvenido ${usuarioLogin?.correo}", Toast.LENGTH_SHORT).show()
             startActivityForUserType()
         }
+
+        // Limpiar los campos de texto
+        binding.editTextPassword.text.clear()
+        binding.editTextUsername.text.clear()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

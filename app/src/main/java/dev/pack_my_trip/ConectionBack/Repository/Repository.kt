@@ -7,6 +7,7 @@ import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetServiciosPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetUsuarioPresenter
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
@@ -37,6 +38,25 @@ class Repository() {
                 }
             }
             override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun getPaquetesTuristicosUsuario(correoUsuario: String, context: Context, onGetPaquetesUsuarioPresenter: OnGetPaquetesUsuarioPresenter){
+        val getPaquetes = urlFinal.getPaquetesTuristicosUsuario(correoUsuario)
+
+        getPaquetes.enqueue(object: Callback<List<PaqueteTuristico>>{
+            override fun onResponse(call: Call<List<PaqueteTuristico>>, response: Response<List<PaqueteTuristico>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener paquetes", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetPaquetesUsuarioPresenter.onGetPaquetesUsuarioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<PaqueteTuristico>>, t: Throwable) {
                 Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
             }
         })

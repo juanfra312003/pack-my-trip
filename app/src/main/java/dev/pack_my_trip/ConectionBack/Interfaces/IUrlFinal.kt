@@ -32,4 +32,6 @@ interface IUrlFinal {
     fun editarServicio(@Body servicio: Servicio): Call<Boolean>
     @GET("paqueteturistico/lista")
     fun getPaquetesTuristicos(@Query("correoIntermediario") correoIntermediario: String) : Call<List<PaqueteTuristico>>
+    @GET("usuariogetpaquete")
+    fun getPaquetesTuristicosUsuario(@Query("correoUsuario") correoUsuario: String) : Call<List<PaqueteTuristico>>
 }
