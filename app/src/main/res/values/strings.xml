@@ -36,4 +36,9 @@
     <string name="agregar_servicio">Agregar Servicio</string>
     <string name="busca_tu_servicio">Busca un servicio para agregar</string>
     <string name="busca_tu_servicio_coma">Busca un servicio para agregar,</string>
+    <string name="servicios_diponibles">Servicios disponibles en la región actual:</string>
+    <string name="servicios_recordatorio">Los servicios que se ofrecen pueden variar de acuerdo con la región turistica en que te encuentres.</string>
+    <string name="nombre_servicios">Descripción</string>
+    <string name="organizado_por">Organizador por:</string>
+    <string name="crear_paquete">Crear Paquete</string>
 </resources>

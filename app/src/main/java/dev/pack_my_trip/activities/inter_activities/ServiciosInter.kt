@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import dev.pack_my_trip.R
+import dev.pack_my_trip.databinding.ActivityPaqueteTuristicoCreadoBinding
+import dev.pack_my_trip.databinding.ActivityServiciosInterBinding
 
 class ServiciosInter : AppCompatActivity() {
-    private lateinit var imageViewPackageType: ImageView
+    private lateinit var binding : ActivityServiciosInterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_servicios_inter)
+        binding = ActivityServiciosInterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        inicializarVariables()
+    }
+
+    fun inicializarVariables(){
     }
 }

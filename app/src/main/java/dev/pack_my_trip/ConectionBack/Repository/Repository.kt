@@ -3,6 +3,7 @@ package dev.pack_my_trip.ConectionBack.Repository
 import android.content.Context
 import android.widget.Toast
 import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
+import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
@@ -100,6 +101,25 @@ class Repository() {
 
     fun getServicios(correoOperador: String, context: Context, onGetServiciosPresenter: OnGetServiciosPresenter){
         val getServicios = urlFinal.getServicios(correoOperador)
+
+        getServicios.enqueue(object: Callback<List<Servicio>>{
+            override fun onResponse(call: Call<List<Servicio>>, response: Response<List<Servicio>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetServiciosPresenter.onGetServiciosPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<Servicio>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun getServicios(context: Context, onGetServiciosPresenter: OnGetServicios){
+        val getServicios = urlFinal.getServicios()
 
         getServicios.enqueue(object: Callback<List<Servicio>>{
             override fun onResponse(call: Call<List<Servicio>>, response: Response<List<Servicio>>) {

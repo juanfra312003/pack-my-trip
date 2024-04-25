@@ -24,6 +24,8 @@ interface IUrlFinal {
     fun actualizarUsuario(@Body usuario: Usuario): Call<Boolean>
     @GET("servicio")
     fun getServicios(@Query("correoOperador") correoOperador: String): Call<List<Servicio>>
+    @GET("servicio/all")
+    fun getServicios(): Call<List<Servicio>>
     @POST("servicio")
     fun crearServicio(@Body servicio: Servicio): Call<Boolean>
     @PUT("servicio")

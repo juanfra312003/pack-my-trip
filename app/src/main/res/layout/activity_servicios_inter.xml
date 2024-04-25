@@ -160,24 +160,39 @@
             app:layout_constraintStart_toStartOf="@+id/imageViewPackageType"
             app:layout_constraintEnd_toEndOf="@+id/organizadorTextEditable_PackageT"
             app:layout_constraintTop_toBottomOf="@+id/costo_editable_text_packagetourist"
-            app:layout_constraintBottom_toTopOf="@+id/agregarServicioBtn"
+            app:layout_constraintBottom_toTopOf="@+id/botonesLinearLayout"
             >
 
     </ListView>
-
-    <Button
-            android:id="@+id/agregarServicioBtn"
-            android:text="@string/agregar_servicio"
-            android:layout_width="0dp"
+    <LinearLayout
+            android:id="@+id/botonesLinearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#092790"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="64dp"
-            android:layout_marginEnd="64dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/serviciosInterListView"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
-            android:layout_marginBottom="5dp" />
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist">
+        <Button
+                android:id="@+id/agregarServicioBtn"
+                android:text="@string/agregar_servicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#092790"
+                android:layout_marginBottom="5dp" />
+
+        <Button
+                android:id="@+id/crearPaqueteBtn"
+                android:text="@string/crear_paquete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#092790"
+                android:layout_marginStart="50dp"
+                android:layout_marginBottom="5dp" />
+    </LinearLayout>
+
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
