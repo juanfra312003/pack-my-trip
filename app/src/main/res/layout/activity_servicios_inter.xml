@@ -29,12 +29,12 @@
             android:layout_marginStart="32dp" />
 
     <EditText
+            android:id="@+id/nombrePaqueteEtxt"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center|center_vertical"
             android:background="#d9d9d9"
-            android:id="@+id/editText"
             android:layout_marginEnd="24dp"
             app:layout_constraintTop_toBottomOf="@+id/header_servicios_inter"
             android:layout_marginTop="16dp">
@@ -73,20 +73,20 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_organized"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName" />
-
-    <TextView
+    <EditText
             android:id="@+id/organizadorTextEditable_PackageT"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginTop="1dp"
+            android:background="#d9d9d9"
             android:fontFamily="@font/coda"
-            android:text="Organizador Paquete"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_organized"
-            app:layout_constraintTop_toBottomOf="@+id/text_organized" />
+            app:layout_constraintTop_toBottomOf="@+id/text_organized"
+            />
 
     <ImageView
             android:id="@+id/imageView_date"
@@ -103,7 +103,7 @@
             android:layout_width="83dp"
             android:layout_height="14dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/coda"
             android:text="Fecha: "
             android:textSize="11sp"
@@ -111,28 +111,47 @@
             app:layout_constraintStart_toEndOf="@+id/imageView_date"
             app:layout_constraintTop_toBottomOf="@+id/organizadorTextEditable_PackageT" />
 
+    <Button
+            android:id="@+id/selecccionarFecha"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/texto_selecciona_fecha"
+            android:backgroundTint="#092790"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/coda"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_date"
+            app:layout_constraintTop_toBottomOf="@+id/text_fecha"
+            />
+
     <TextView
             android:id="@+id/fecha_editable_text_packagetourist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginTop="3dp"
             android:fontFamily="@font/coda"
-            android:text="Fecha Paquete"
+            android:visibility="gone"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_date"
-            app:layout_constraintTop_toBottomOf="@+id/text_fecha" />
+            app:layout_constraintTop_toBottomOf="@+id/selecccionarFecha"
+            />
+
+
 
     <ImageView
             android:id="@+id/imageView_cost"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_date"
+            app:layout_constraintTop_toBottomOf="@+id/fecha_editable_text_packagetourist"
             app:srcCompat="@drawable/costo_package" />
 
     <TextView
@@ -140,36 +159,49 @@
             android:layout_width="83dp"
             android:layout_height="14dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="9dp"
             android:fontFamily="@font/coda"
             android:text="Costo: "
             android:textSize="11sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_cost"
             app:layout_constraintTop_toBottomOf="@+id/fecha_editable_text_packagetourist" />
-
-    <TextView
+    <EditText
             android:id="@+id/costo_editable_text_packagetourist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
+            android:background="#d9d9d9"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/coda"
-            android:text="Costo Paquete"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_cost"
-            app:layout_constraintTop_toBottomOf="@+id/text_costo" />
-
-    <ListView
-            android:id="@+id/serviciosInterListView"
-            android:layout_width="0dp"
-            android:layout_height="270dp"
-            android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_costo"
+            />
+    <Button
+            android:id="@+id/subirImagenBtn"
+            android:backgroundTint="#092790"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/texto_subir_portada"
             app:layout_constraintStart_toStartOf="@+id/imageViewPackageType"
             app:layout_constraintEnd_toEndOf="@+id/organizadorTextEditable_PackageT"
             app:layout_constraintTop_toBottomOf="@+id/costo_editable_text_packagetourist"
+            app:layout_constraintBottom_toTopOf="@+id/serviciosInterListView"
+
+            />
+    <ListView
+            android:id="@+id/serviciosInterListView"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintStart_toStartOf="@+id/imageViewPackageType"
+            app:layout_constraintEnd_toEndOf="@+id/organizadorTextEditable_PackageT"
+            app:layout_constraintTop_toBottomOf="@+id/subirImagenBtn"
             app:layout_constraintBottom_toTopOf="@+id/botonesLinearLayout"
             >
 

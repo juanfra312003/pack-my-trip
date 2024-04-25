@@ -11,10 +11,10 @@ data class PaqueteTuristico (
     var precioDolares : Float,
     var imagen : String,
     var correoIntermediario: String,
-    var listaServicios : List<Servicio>,
-    var calificacion : Int,
-    var comentarios : String,
-    var comprobante : String
+    var listaServicios : List<Servicio>
 ) : Serializable
 {
+    var calificacion : Int? = null
+    var comentarios : String? = null
+    var comprobante : String? = null
 }
