@@ -35,7 +35,16 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLogin.setOnClickListener {
             performLogin()
         }
+        binding.buttonRegister.setOnClickListener{
+            performRegister()
+        }
     }
+
+    fun performRegister(){
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun performLogin() {
         inicializarValores()
