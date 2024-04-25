@@ -3,17 +3,15 @@ package dev.pack_my_trip.activities.tourist_activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetPaquetesUsuario
 import dev.pack_my_trip.Presenter.Turista.DashboardTuristaPresenter
+import dev.pack_my_trip.activities.general_activities.ProfileViewActivity
+import dev.pack_my_trip.activities.general_activities.RegionActivity
 import dev.pack_my_trip.adapters.tourist_adapters.PackagesTouristAdapter
 import dev.pack_my_trip.databinding.ActivityDashboardTouristBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
-import dev.pack_my_trip.models.models_tourist.ServicioTuristico
-import dev.pack_my_trip.models.models_tourist.Turista
 
 class DashboardTouristActivity : AppCompatActivity() {
 
@@ -33,6 +31,9 @@ class DashboardTouristActivity : AppCompatActivity() {
         inicializarVariables()
         personalizarLayout()
         manejoListView()
+
+        // Manejo de botones
+        manageButtons()
 
 
         /*
@@ -58,6 +59,8 @@ class DashboardTouristActivity : AppCompatActivity() {
             OnGetPaquetesUsuario {
             override fun onGetPaquetesUsuario(paquetes: List<PaqueteTuristico>) {
                 usuario.listaPaquetes = paquetes
+                binding.listTouristPackages.adapter = PackagesTouristAdapter(this@DashboardTouristActivity, paquetes.toMutableList())
+
             }
         })
     }
@@ -67,32 +70,16 @@ class DashboardTouristActivity : AppCompatActivity() {
     }
 
     private fun manejoListView(){
-        if (usuario.listaPaquetes.isNullOrEmpty()){
-            Toast.makeText(this, "No tienes paquetes asignados", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            binding.listTouristPackages.adapter = PackagesTouristAdapter(this@DashboardTouristActivity, usuario.listaPaquetes.toMutableList())
-        }
     }
 
 
-    private fun manageButtons(turista : Turista){
-        binding.buttonSearchPackages.setOnClickListener {
-            val intent = Intent(this, SearchPackagesActivity::class.java)
-            intent.putExtra("turista", turista)
-            startActivity(intent)
-        }
-
-        binding.buttonProfile.setOnClickListener {
-            binding.buttonProfile.setOnClickListener {
-                val intent = Intent(this, UserProfileActivity::class.java)
-                startActivity(intent)
-            }
-        }
+    private fun manageButtons(){
+       binding.buttonProfile.setOnClickListener {
+           startActivity(Intent(this, ProfileViewActivity::class.java).putExtra("usuario", usuario))
+       }
 
         binding.buttonLocation.setOnClickListener {
-            val intent = Intent(this, SelectorActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegionActivity::class.java).putExtra("usuario", usuario))
         }
     }
 }

@@ -6,6 +6,7 @@ import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetServiciosPresenter
@@ -100,24 +101,7 @@ class Repository() {
         })
     }
 
-    fun actualizarUsuario(usuario: Usuario, context: Context){
-        val actualizarUsuario = urlFinal.actualizarUsuario(usuario)
 
-        actualizarUsuario.enqueue(object: Callback<Boolean>{
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                if(!response.isSuccessful){
-                    Toast.makeText(context, "No se pudo actualizar el usuario", Toast.LENGTH_SHORT).show()
-                }
-                if(response.body() != null){
-
-                }
-            }
-
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     fun getServicios(correoOperador: String, context: Context, onGetServiciosPresenter: OnGetServiciosPresenter){
         val getServicios = urlFinal.getServicios(correoOperador)
@@ -186,6 +170,25 @@ class Repository() {
                 }
                 if(response.body() != null){
                     onEditarServicioPresenter.onEditarServicioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun actualizarUsuario(usuario: Usuario, context: Context, onEditarUsuarioPresenter : OnEditarUsuarioPresenter){
+        val actualizarUsuario = urlFinal.actualizarUsuario(usuario)
+
+        actualizarUsuario.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo actualizar el usuario", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onEditarUsuarioPresenter.onEditarUsuarioPresenter(response.body()!!)
                 }
             }
 

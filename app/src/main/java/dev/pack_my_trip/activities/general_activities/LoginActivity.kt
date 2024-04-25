@@ -66,7 +66,6 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
         }
         else{
-            Toast.makeText(this, "Bienvenido ${usuarioLogin?.correo}", Toast.LENGTH_SHORT).show()
             startActivityForUserType()
         }
 
