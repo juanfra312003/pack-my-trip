@@ -8,6 +8,7 @@ import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresent
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetServiciosPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetUsuarioPresenter
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
@@ -23,7 +24,7 @@ class Repository() {
         urlFinal = retrofit.create(IUrlFinal::class.java)
     }
 
-    fun getUsuario(usuario: String, contrasenha: String, context: Context){
+    fun getUsuario(usuario: String, contrasenha: String, context: Context, onGetUsuarioPresenter: OnGetUsuarioPresenter){
         val getUsuario = urlFinal.getUsuario(usuario, contrasenha)
 
         getUsuario.enqueue(object: Callback<Usuario>{
@@ -32,10 +33,9 @@ class Repository() {
                     Toast.makeText(context, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show()
                 }
                 if(response.body() != null){
-
+                    onGetUsuarioPresenter.onGetUsuarioPresenter(response.body()!!)
                 }
             }
-
             override fun onFailure(call: Call<Usuario>, t: Throwable) {
                 Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
             }
@@ -127,7 +127,7 @@ class Repository() {
                     Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
                 }
                 if(response.body() != null){
-                    onGetServiciosPresenter.onGetServiciosPresenter(response.body()!!)
+                    //onGetServiciosPresenter.onGetServiciosPresenter(response.body()!!)
                 }
             }
 

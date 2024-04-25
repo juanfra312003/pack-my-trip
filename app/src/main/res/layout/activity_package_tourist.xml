@@ -7,7 +7,7 @@
     tools:context=".activities.tourist_activities.PackageTouristActivity">
 
     <include
-        android:id="@+id/header_package_tourist"
+        android:id="@+id/header_servicios_inter"
         layout="@layout/header_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_package_tourist" />
+        app:layout_constraintTop_toBottomOf="@+id/header_servicios_inter" />
 
     <TextView
         android:id="@+id/textFieldPackageNameEditable"
