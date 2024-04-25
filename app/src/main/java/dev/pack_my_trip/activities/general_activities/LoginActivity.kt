@@ -40,7 +40,32 @@ class LoginActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun performLogin() {
-        verificacionLogIn()
+        inicializarValores()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun inicializarValores(){
+        loginPresenter.getUsuario(binding.editTextUsername.text.toString(), binding.editTextPassword.text.toString(), baseContext, object : OnGetUsuario {
+            override fun onGetUsuario(usuario: Usuario) {
+                usuarioLogin = usuario
+                verificacionLogIn() // Llamar a verificacionLogIn() una vez que usuarioLogin se haya inicializado
+            }
+        })
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun verificacionLogIn(){
+        if (usuarioLogin == null){
+            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this, "Bienvenido ${usuarioLogin?.correo}", Toast.LENGTH_SHORT).show()
+            startActivityForUserType()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun startActivityForUserType() {
         usuarioLogin?.let { usuario ->
             if (usuario.tipo == 'T'){
                 startActivity(Intent(this, DashboardTouristActivity::class.java).putExtra("usuario", usuario))
@@ -51,22 +76,5 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun verificacionLogIn(){
-        inicializarValores()
-        if (usuarioLogin == null){
-            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            Toast.makeText(this, "Bienvenido ${usuarioLogin?.correo}", Toast.LENGTH_SHORT).show()
-        }
-    }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun inicializarValores(){
-        loginPresenter.getUsuario(binding.editTextUsername.text.toString(), binding.editTextPassword.text.toString(), baseContext, object : OnGetUsuario {
-            override fun onGetUsuario(usuario: Usuario) {
-                usuarioLogin = usuario
-            }
-        })
-    }
+
 }
