@@ -23,16 +23,11 @@ class DashboardTouristActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardTouristBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Recibir el turista a partir de la actividad anterior.
         usuario = intent.getSerializableExtra("usuario") as Usuario
 
         // Llamado a funciones de inicialización
         inicializarVariables()
         personalizarLayout()
-        manejoListView()
-
-        // Manejo de botones
         manageButtons()
 
 
@@ -69,8 +64,6 @@ class DashboardTouristActivity : AppCompatActivity() {
         binding.textoBienvenido.text = "Bienvenido de nuevo, ${usuario.usuario} !"
     }
 
-    private fun manejoListView(){
-    }
 
 
     private fun manageButtons(){

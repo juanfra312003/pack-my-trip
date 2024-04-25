@@ -58,11 +58,13 @@ class ProfileViewActivity : AppCompatActivity() {
         // Cargar la imagen de perfil
         val urlImg : String? = usuario.fotoPerfil
         if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).placeholder(R.drawable.usuario).error(R.drawable.usuario).into(binding.imagenProfileUser)
+            Picasso.get().load(urlImg).into(binding.imagenProfileUser)
         }
+        /*
         else{
             binding.imagenProfileUser.setImageResource(R.drawable.usuario)
         }
+         */
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -122,17 +124,17 @@ class ProfileViewActivity : AppCompatActivity() {
                 if(realizado){
                     when (usuario.tipo){
                         'T' -> {
-                            val intent = Intent(this@ProfileViewActivity, DashboardTouristActivity::class.java)
+                            val intent = Intent(baseContext, DashboardTouristActivity::class.java)
                             intent.putExtra("usuario", usuario)
                             startActivity(intent)
                         }
                         'O' -> {
-                            val intent = Intent(this@ProfileViewActivity, DashboardOperator::class.java)
+                            val intent = Intent(baseContext, DashboardOperator::class.java)
                             intent.putExtra("usuario", usuario)
                             startActivity(intent)
                         }
                         'I' -> {
-                            val intent = Intent(this@ProfileViewActivity, DashboardInter::class.java)
+                            val intent = Intent(baseContext, DashboardInter::class.java)
                             intent.putExtra("usuario", usuario)
                             startActivity(intent)
                         }
@@ -173,9 +175,6 @@ class ProfileViewActivity : AppCompatActivity() {
         if (resultCode == RESULT_OK) {
             when (requestCode) {
                 REQUEST_CAMERA, REQUEST_GALLERY -> cargarImagenEnImageView(data)
-                else -> {
-                    binding.imagenProfileUser.setImageResource(R.drawable.usuario)
-                }
             }
         }
     }
