@@ -41,4 +41,5 @@
     <string name="nombre_servicios">Descripción</string>
     <string name="organizado_por">Organizador por:</string>
     <string name="crear_paquete">Crear Paquete</string>
+    <string name="nombre_paquete">Nombre del Paquete:</string>
 </resources>
