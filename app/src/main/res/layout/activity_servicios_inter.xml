@@ -167,7 +167,7 @@
 
     <Button
             android:id="@+id/agregarServicioBtn"
-            android:text="Volver al Menú Principal"
+            android:text="@string/agregar_servicio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#092790"

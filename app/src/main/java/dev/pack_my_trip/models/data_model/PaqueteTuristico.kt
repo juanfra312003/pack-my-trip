@@ -10,6 +10,7 @@ data class PaqueteTuristico (
     var fechaHora : String,
     var precioDolares : Float,
     var imagen : String,
+    var correoIntermediario: String,
     var listaServicios : List<Servicio>,
     var calificacion : Int,
     var comentarios : String,

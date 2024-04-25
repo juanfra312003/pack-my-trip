@@ -33,4 +33,7 @@
     <string name="select_file">Seleccionar Archivo</string>
     <string name="upload_file">Subir Archivo</string>
     <string name="mostrar_unicamente">Mostrar únicamente:</string>
+    <string name="agregar_servicio">Agregar Servicio</string>
+    <string name="busca_tu_servicio">Busca un servicio para agregar</string>
+    <string name="busca_tu_servicio_coma">Busca un servicio para agregar,</string>
 </resources>

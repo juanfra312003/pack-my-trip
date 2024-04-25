@@ -20,6 +20,12 @@
             android:theme="@style/Theme.Packmytrip"
             tools:targetApi="31">
         <activity
+                android:name=".AgregarServicios"
+                android:exported="false" />
+        <activity
+                android:name=".activities.inter_activities.AgregarServicio"
+                android:exported="false" />
+        <activity
                 android:name=".activities.inter_activities.PdfIntermediario"
                 android:exported="false" />
         <activity

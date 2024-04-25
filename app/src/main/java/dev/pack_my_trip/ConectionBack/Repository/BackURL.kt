@@ -1,7 +1,12 @@
 package dev.pack_my_trip.ConectionBack.Repository
 
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.SecureRandom
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 
 class BackURL {
@@ -12,7 +17,7 @@ class BackURL {
 
         fun conectarBackURL() : Retrofit {
             try{
-                /*val trustAllCerts = arrayOf<TrustManager>(TrustAllCertificates())  //Para probar con localHost
+               /* val trustAllCerts = arrayOf<TrustManager>(TrustAllCertificates())  //Para probar con localHost
                 val sslContext = SSLContext.getInstance("SSL").apply {
                     init(null, trustAllCerts, SecureRandom())
                 }
