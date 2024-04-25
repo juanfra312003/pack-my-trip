@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ListView
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetPaquetes
 import dev.pack_my_trip.Presenter.Intermediario.DashboardInterPresenter
 import dev.pack_my_trip.R
@@ -49,6 +50,12 @@ class DashboardInter : AppCompatActivity() {
         listViewDashBoardIntermediario = findViewById(R.id.listViewDashBoardIntermediario)
         buttonCrearPaqueteTuristicoInt = findViewById(R.id.buttonCrearPaqueteTuristicoInt)
         buttonVerPaquetesAgenda = findViewById(R.id.buttonVerPaquetesAgenda)
+        if(usuario.fotoPerfil != null && !usuario.fotoPerfil.isEmpty()){
+            Picasso.get().load(usuario.fotoPerfil).placeholder(R.drawable.guia_dashboard_pp).error(R.drawable.guia_dashboard_pp).into(imagenUsuario)
+        }
+        else{
+            imagenUsuario.setImageResource(R.drawable.guia_dashboard_pp)
+        }
         dashboardInterPresenter.getPaquetes(usuario.correo, this, object: OnGetPaquetes {
             override fun onGetPaquetes(paquetes: List<PaqueteTuristico>) {
                 dashboardInterAdapter = DashboardInterAdapter(this@DashboardInter, paquetes)
@@ -60,22 +67,23 @@ class DashboardInter : AppCompatActivity() {
     fun eventoProfile(){
         buttonProfileDashInt.setOnClickListener{
             val intent = Intent(this, ProfileViewActivity::class.java)
-            intent.putExtra("usuario", DashboardInter::class.java)
+            intent.putExtra("usuario", usuario)
+            startActivity(intent)
         }
     }
 
     fun eventoRegion(){
         buttonRegionDashInt.setOnClickListener{
             val intent = Intent(this, RegionActivity::class.java)
-            intent.putExtra("usuario", DashboardInter::class.java)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }
 
     fun eventoCrearPaquete(){
         buttonCrearPaqueteTuristicoInt.setOnClickListener{
-            val intent = Intent(this, RegionActivity::class.java)
-            intent.putExtra("usuario", DashboardInter::class.java)
+            val intent = Intent(this, ServiciosInter::class.java)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }
@@ -83,7 +91,7 @@ class DashboardInter : AppCompatActivity() {
     fun eventoVerPaquetesAgenda(){
         buttonVerPaquetesAgenda.setOnClickListener{
             val intent = Intent(this, AgendaIntermediarioActivity::class.java)
-            intent.putExtra("usuario", DashboardInter::class.java)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }
