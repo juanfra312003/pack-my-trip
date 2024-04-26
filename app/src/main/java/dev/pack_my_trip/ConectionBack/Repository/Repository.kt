@@ -222,6 +222,25 @@ class Repository() {
         })
     }
 
+    fun actualizarComentariosCalificaciones(idPaquete: Int, correoUsuario: String, comentarios: String, calificacion: Int, context: Context, onActualizarComentariosCalificacionesPresenter: OnActualizarComentariosCalificacionesPresenter){
+        val actualizarComentariosCalificaciones = urlFinal.actualizarComentariosCalificaciones(idPaquete, correoUsuario, comentarios, calificacion)
+
+        actualizarComentariosCalificaciones.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo actualizar los comentarios y calificaciones", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onActualizarComentariosCalificacionesPresenter.onActualizarComentariosCalificacionesPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun getPaquetesTuristicos(correoIntermediario: String, context: Context, onGetServiciosPresenter: OnGetPaquetesPresenter){
         val getPaquetes = urlFinal.getPaquetesTuristicos(correoIntermediario)
 
