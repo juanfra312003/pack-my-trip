@@ -90,6 +90,9 @@ class DashboardInter : AppCompatActivity() {
             intent.putExtra("nombrePaquete", String())
             intent.putExtra("fecha", String())
             intent.putExtra("costo", 0)
+            intent.putExtra("dia", 0)
+            intent.putExtra("mes", 0)
+            intent.putExtra("year", 0)
             startActivity(intent)
         }
     }
