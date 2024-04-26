@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
@@ -28,25 +29,11 @@ class PackagesTouristAdapter (context : Context, packages : MutableList<PaqueteT
         description.text = item!!.nombre
         begininningDate.text = item.fechaHora.toString()
 
-        // TODO: Realizar la modificaciòn de la imagen con Firebase Storage en la parte de backend
-        /*
-        //imagePackage.setImageResource(item.paqueteActual.picture)
-        when (item.paqueteActual.tipo) {
-            "Volcan" -> {
-                imagePackage.setImageResource(R.drawable.volcan)
-            }
-            "Aviario" -> {
-                imagePackage.setImageResource(R.drawable.aviario)
-            }
-            "Buceo" -> {
-                imagePackage.setImageResource(R.drawable.buceo)
-            }
-            else -> {
-                imagePackage.setImageResource(R.drawable.paquete_general)
-            }
+        if (!item.imagen.isNullOrBlank()) {
+            Picasso.get().load(item.imagen).into(imagePackage)
+        } else {
+            imagePackage.setImageResource(R.drawable.paquete_imagen)
         }
-
-         */
 
         return itemView
     }

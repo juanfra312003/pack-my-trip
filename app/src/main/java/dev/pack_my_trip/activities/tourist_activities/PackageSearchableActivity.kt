@@ -7,6 +7,7 @@ import android.widget.Toast
 import dev.pack_my_trip.R
 import dev.pack_my_trip.adapters.tourist_adapters.ServicesPackageAdapter
 import dev.pack_my_trip.databinding.ActivityPackageSearchableBinding
+import dev.pack_my_trip.models.data_model.Usuario
 import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import dev.pack_my_trip.models.models_tourist.Turista
@@ -15,22 +16,17 @@ import java.util.Date
 class PackageSearchableActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPackageSearchableBinding
-    private lateinit var turista: Turista
+    private lateinit var turista: Usuario
     private lateinit var paquete: PaqueteTuristico
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPackageSearchableBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Obtener el turista y el paquete turístico de la intención
-        turista = intent.getSerializableExtra("turista") as Turista
+        turista = intent.getSerializableExtra("usuario") as Usuario
         paquete = intent.getSerializableExtra("paquete_nuevo") as PaqueteTuristico
 
-        // Llamar a load_values() después de que turista y paquete se hayan inicializado
         load_values()
-
-        // Manejo de botones
         manageButtons()
     }
 
@@ -60,10 +56,6 @@ class PackageSearchableActivity : AppCompatActivity() {
 
             // Pasar a fecha el long del calendaryview
             val fecha = Date(fechaLong)
-
-            val paquetePorTurista: PaquetesPorTurista =
-                PaquetesPorTurista(turista.uuid, paquete, fecha)
-            turista.paquetes.add(paquetePorTurista)
 
             // TODO: Guardar el turista en la base de datos con el nuevo paquete y colocar la actividad como start for result
 

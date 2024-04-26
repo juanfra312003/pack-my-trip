@@ -222,6 +222,25 @@ class Repository() {
         })
     }
 
+    fun getAllPaquetesTuristicos(context: Context, onGetAllPaquetesPresenter : OnGetAllPaquetesPresenter){
+        val getPaquetes = urlFinal.getAllPaquetes()
+
+        getPaquetes.enqueue(object: Callback<List<PaqueteTuristico>>{
+            override fun onResponse(call: Call<List<PaqueteTuristico>>, response: Response<List<PaqueteTuristico>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener paquetes", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetAllPaquetesPresenter.onGetAllPaquetesPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<PaqueteTuristico>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun crearPaqueteTuristico(paqueteTuristico: PaqueteTuristico, context: Context, onCrearPaquetePresenter: OnCrearPaquetePresenter){
         val getPaquetes = urlFinal.crearPaquete(paqueteTuristico)
 

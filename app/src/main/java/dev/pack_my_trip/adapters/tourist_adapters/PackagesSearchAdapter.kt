@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
-import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
+import dev.pack_my_trip.models.data_model.PaqueteTuristico
 
 class PackagesSearchAdapter (context : Context, packages : MutableList<PaqueteTuristico>) : ArrayAdapter<PaqueteTuristico>(context, 0, packages) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -25,24 +26,14 @@ class PackagesSearchAdapter (context : Context, packages : MutableList<PaqueteTu
         var imagePackage = itemView.findViewById<ImageView>(R.id.imageAdapterSearchPackages)
 
         description.text = item!!.nombre
-        organizerField.text =  "Organizador: " + item.nombreOrganizador
+        organizerField.text =  "Organizador: " + item.correoIntermediario
 
-        // TODO: Realizar la modificaciòn de la imagen con Firebase Storage en la parte de backend
-        //imagePackage.setImageResource(item.paqueteActual.picture)
-        when (item.tipo) {
-            "Volcan" -> {
-                imagePackage.setImageResource(R.drawable.volcan)
-            }
-            "Aviario" -> {
-                imagePackage.setImageResource(R.drawable.aviario)
-            }
-            "Buceo" -> {
-                imagePackage.setImageResource(R.drawable.buceo)
-            }
-            else -> {
-                imagePackage.setImageResource(R.drawable.paquete_general)
-            }
+        if (!item.imagen.isNullOrBlank()) {
+            Picasso.get().load(item.imagen).into(imagePackage)
+        } else {
+            imagePackage.setImageResource(R.drawable.paquete_imagen)
         }
+
 
         return itemView
     }
