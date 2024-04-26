@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetAllPaquetes
 import dev.pack_my_trip.Presenter.Turista.GetAllPaquetesPresenter
-import dev.pack_my_trip.R
 import dev.pack_my_trip.activities.general_activities.RegionActivity
 import dev.pack_my_trip.adapters.tourist_adapters.PackagesSearchAdapter
 import dev.pack_my_trip.databinding.ActivitySearchPackagesBinding
