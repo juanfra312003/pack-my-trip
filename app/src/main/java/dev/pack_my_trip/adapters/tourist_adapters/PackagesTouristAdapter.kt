@@ -8,9 +8,10 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import dev.pack_my_trip.R
+import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
-class PackagesTouristAdapter (context : Context, packages : MutableList<PaquetesPorTurista>) : ArrayAdapter<PaquetesPorTurista>(context, 0, packages) {
+class PackagesTouristAdapter (context : Context, packages : MutableList<PaqueteTuristico>) : ArrayAdapter<PaqueteTuristico>(context, 0, packages) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var itemView = convertView
         val item = getItem(position)
@@ -24,10 +25,11 @@ class PackagesTouristAdapter (context : Context, packages : MutableList<Paquetes
         var begininningDate = itemView.findViewById<TextView>(R.id.textFieldDateAdapterTourist)
         var imagePackage = itemView.findViewById<ImageView>(R.id.imageAdapterDashBoardTourist)
 
-        description.text = item!!.paqueteActual.nombre
-        begininningDate.text = item.fecha.toString()
+        description.text = item!!.nombre
+        begininningDate.text = item.fechaHora.toString()
 
         // TODO: Realizar la modificaciòn de la imagen con Firebase Storage en la parte de backend
+        /*
         //imagePackage.setImageResource(item.paqueteActual.picture)
         when (item.paqueteActual.tipo) {
             "Volcan" -> {
@@ -43,6 +45,8 @@ class PackagesTouristAdapter (context : Context, packages : MutableList<Paquetes
                 imagePackage.setImageResource(R.drawable.paquete_general)
             }
         }
+
+         */
 
         return itemView
     }

@@ -46,6 +46,8 @@ class ServiciosInter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityServiciosInterBinding.inflate(layoutInflater)
+        usuario = intent.getSerializableExtra("usuario") as Usuario
+        serviciosInterPresenter = ServiciosInterPresenter(this, binding.fechaEditableTextPackagetourist)
         setContentView(binding.root)
         inicializarVariables()
         onSubirImagen()

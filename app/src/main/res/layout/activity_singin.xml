@@ -150,6 +150,7 @@
 
     <Spinner
             android:id="@+id/spinnerRole"
+            android:entries="@array/rol_entries"
             android:layout_width="0dp"
             android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"

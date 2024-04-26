@@ -5,6 +5,15 @@ import android.widget.Toast
 import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.*
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearUsuarioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarRegionUsuarioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarUsuarioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesUsuarioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetServiciosPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetUsuarioPresenter
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
@@ -57,26 +66,9 @@ class Repository() {
         })
     }
 
-    fun crearUsuario(usuario: Usuario, context: Context){
-        val crearUsuario = urlFinal.crearUsuario(usuario)
 
-        crearUsuario.enqueue(object: Callback<Boolean>{
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                if(!response.isSuccessful){
-                    Toast.makeText(context, "Hubo un error a la hora de registrarse", Toast.LENGTH_SHORT).show()
-                }
-                if(response.body() != null){
 
-                }
-            }
-
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    fun actualizarRegion(usuario: Usuario, context: Context){
+    fun actualizarRegion(usuario: Usuario, context: Context, onActualizarRegionPresenter : OnEditarRegionUsuarioPresenter){
         val actualizarRegion = urlFinal.actualizarRegion(usuario)
 
         actualizarRegion.enqueue(object: Callback<Boolean>{
@@ -95,24 +87,7 @@ class Repository() {
         })
     }
 
-    fun actualizarUsuario(usuario: Usuario, context: Context){
-        val actualizarUsuario = urlFinal.actualizarUsuario(usuario)
 
-        actualizarUsuario.enqueue(object: Callback<Boolean>{
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                if(!response.isSuccessful){
-                    Toast.makeText(context, "No se pudo actualizar el usuario", Toast.LENGTH_SHORT).show()
-                }
-                if(response.body() != null){
-
-                }
-            }
-
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     fun getServicios(correoOperador: String, context: Context, onGetServiciosPresenter: OnGetServiciosPresenter){
         val getServicios = urlFinal.getServicios(correoOperador)
@@ -171,6 +146,25 @@ class Repository() {
         })
     }
 
+    fun crearUsuario(usuario: Usuario, context: Context, onCrearUsuarioPresenter : OnCrearUsuarioPresenter){
+        val crearUsuario = urlFinal.crearUsuario(usuario)
+
+        crearUsuario.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "Hubo un error a la hora de registrarse", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onCrearUsuarioPresenter.onCrearUsuarioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun editarServicio(servicio: Servicio, context: Context, onEditarServicioPresenter: OnEditarServicioPresenter){
         val editarServicio = urlFinal.editarServicio(servicio)
 
@@ -181,6 +175,25 @@ class Repository() {
                 }
                 if(response.body() != null){
                     onEditarServicioPresenter.onEditarServicioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun actualizarUsuario(usuario: Usuario, context: Context, onEditarUsuarioPresenter : OnEditarUsuarioPresenter){
+        val actualizarUsuario = urlFinal.actualizarUsuario(usuario)
+
+        actualizarUsuario.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo actualizar el usuario", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onEditarUsuarioPresenter.onEditarUsuarioPresenter(response.body()!!)
                 }
             }
 

@@ -6,7 +6,7 @@ import java.util.Date
 data class Usuario (
     var correo : String,
     var usuario : String,
-    var contrasena : String,
+    var contrasenha : String,
     var fechaNacimiento : String,
     var latitud : Float,
     var longitud : Float,
