@@ -27,6 +27,9 @@ class AgregarServicios : AppCompatActivity() {
     private var nombrePaquete: String = ""
     private var fechaPaquete: String = ""
     private var costoPaquete: Int = 0
+    private var year: Int = 0
+    private var month: Int = 0
+    private var day: Int = 0
     private lateinit var imagen: ByteArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +59,9 @@ class AgregarServicios : AppCompatActivity() {
         nombrePaquete = intent.getSerializableExtra("nombrePaquete") as String
         fechaPaquete = intent.getSerializableExtra("fecha") as String
         costoPaquete = intent.getSerializableExtra("costo") as Int
+        day = intent.getSerializableExtra("dia") as Int
+        month = intent.getSerializableExtra("mes") as Int
+        year = intent.getSerializableExtra("year") as Int
         serviciosAgregados = intent.getSerializableExtra("servicios") as MutableList<Servicio>
         agregarServiciosPresenter.getServicios(this, object: OnGetServicios{
             override fun onGetServicios(servicios: List<Servicio>) {
@@ -117,6 +123,9 @@ class AgregarServicios : AppCompatActivity() {
             intent.putExtra("nombrePaquete", nombrePaquete)
             intent.putExtra("fecha", fechaPaquete)
             intent.putExtra("costo", costoPaquete)
+            intent.putExtra("dia", day)
+            intent.putExtra("mes", month)
+            intent.putExtra("year", year)
             startActivity(intent)
         }
     }

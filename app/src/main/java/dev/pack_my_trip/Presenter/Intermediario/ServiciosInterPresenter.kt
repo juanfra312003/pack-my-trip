@@ -19,8 +19,6 @@ class ServiciosInterPresenter(var contexto: Context, var fechaHoraTxt: TextView)
     var year: Int = 0
     var month: Int = 0
     var day: Int = 0
-    var hour: Int = 0
-    var minute: Int = 0
     var repository = Repository()
 
     fun pedirFecha() {
@@ -36,6 +34,7 @@ class ServiciosInterPresenter(var contexto: Context, var fechaHoraTxt: TextView)
                     month = monthOfYear + 1
                     this.year = year
                     this.day = dayOfMonth
+                    println("${this.day} / ${this.month} / ${this.month}")
                     fechaHoraTxt.visibility = View.VISIBLE
                     fechaHoraTxt.setText("El servicio se efectuará el "+ dayOfMonth + "/" + month + "/" + year )
                 }
