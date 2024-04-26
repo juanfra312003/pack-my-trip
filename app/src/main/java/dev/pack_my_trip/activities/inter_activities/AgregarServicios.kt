@@ -1,8 +1,11 @@
 package dev.pack_my_trip.activities.inter_activities
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.Presenter.Intermediario.AgregarServiciosPresenter
 import dev.pack_my_trip.activities.general_activities.RegionActivity
@@ -18,14 +21,19 @@ class AgregarServicios : AppCompatActivity() {
     private lateinit var binding : ActivityAgregarServiciosBinding
     private lateinit var intermediario: Usuario
     private lateinit var servicios: MutableList<Servicio>
+    private lateinit var serviciosAgregados: MutableList<Servicio>
     private lateinit var agregarServiciosPresenter: AgregarServiciosPresenter
+    private lateinit var agregarServiciosAdapter: AgregarServiciosAdapter
+    private var nombrePaquete: String = ""
+    private var fechaPaquete: String = ""
+    private var costoPaquete: Int = 0
+    private lateinit var imagen: ByteArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAgregarServiciosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Recibir el turista a partir de la actividad anterior.
-        intermediario = intent.getSerializableExtra("intermedario") as Usuario
+        agregarServiciosPresenter = AgregarServiciosPresenter()
 
         // Manejo de botones
         inicializarComponentes()
@@ -39,13 +47,28 @@ class AgregarServicios : AppCompatActivity() {
             startActivity(intent)
         }
         manageFilterButton()
+        agregarServiciosEvento()
     }
 
     private fun inicializarComponentes() {
+        // Recibir el turista a partir de la actividad anterior.
+        intermediario = intent.getSerializableExtra("usuario") as Usuario
+        nombrePaquete = intent.getSerializableExtra("nombrePaquete") as String
+        fechaPaquete = intent.getSerializableExtra("fecha") as String
+        costoPaquete = intent.getSerializableExtra("costo") as Int
+        serviciosAgregados = intent.getSerializableExtra("servicios") as MutableList<Servicio>
         agregarServiciosPresenter.getServicios(this, object: OnGetServicios{
             override fun onGetServicios(servicios: List<Servicio>) {
-                this@AgregarServicios.servicios = servicios.toMutableList()
-                binding.listViewServicesSearchTourist.adapter = AgregarServiciosAdapter(this@AgregarServicios, this@AgregarServicios.servicios)
+                if(servicios == null) {
+                    this@AgregarServicios.servicios = listOf<Servicio>().toMutableList()
+                    Toast.makeText(this@AgregarServicios, "No hay servicios disponibles", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    this@AgregarServicios.servicios = servicios.toMutableList()
+                    this@AgregarServicios.servicios.removeAll(this@AgregarServicios.serviciosAgregados)
+                }
+                agregarServiciosAdapter = AgregarServiciosAdapter(this@AgregarServicios, this@AgregarServicios.servicios)
+                binding.listViewServicesSearchTourist.adapter = agregarServiciosAdapter
             }
         })
     }
@@ -78,6 +101,23 @@ class AgregarServicios : AppCompatActivity() {
                 ) }
                 binding.listViewServicesSearchTourist.adapter = AgregarServiciosAdapter(this, serviciosFiltrados.toMutableList())
             }
+        }
+    }
+
+    private fun agregarServiciosEvento(){
+        binding.agregarServiciosBtn.setOnClickListener{
+            var intent = Intent(this@AgregarServicios, ServiciosInter::class.java)
+            val serviciosFinal = serviciosAgregados
+            if(servicios != null){
+                serviciosFinal += servicios
+            }
+            servicios = agregarServiciosAdapter.serviciosSeleccionados
+            intent.putExtra("usuario", intermediario)
+            intent.putExtra("servicios", ArrayList(serviciosFinal))
+            intent.putExtra("nombrePaquete", nombrePaquete)
+            intent.putExtra("fecha", fechaPaquete)
+            intent.putExtra("costo", costoPaquete)
+            startActivity(intent)
         }
     }
 }

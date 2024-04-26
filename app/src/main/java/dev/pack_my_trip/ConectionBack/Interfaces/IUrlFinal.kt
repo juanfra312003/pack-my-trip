@@ -24,7 +24,7 @@ interface IUrlFinal {
     fun actualizarUsuario(@Body usuario: Usuario): Call<Boolean>
     @GET("servicio")
     fun getServicios(@Query("correoOperador") correoOperador: String): Call<List<Servicio>>
-    @GET("servicio/all")
+    @GET("serviciogetall")
     fun getServicios(): Call<List<Servicio>>
     @POST("servicio")
     fun crearServicio(@Body servicio: Servicio): Call<Boolean>
@@ -34,4 +34,6 @@ interface IUrlFinal {
     fun getPaquetesTuristicos(@Query("correoIntermediario") correoIntermediario: String) : Call<List<PaqueteTuristico>>
     @GET("usuariogetpaquete")
     fun getPaquetesTuristicosUsuario(@Query("correoUsuario") correoUsuario: String) : Call<List<PaqueteTuristico>>
+    @GET("paqueteturistico")
+    fun crearPaquete(@Body paquete: PaqueteTuristico) : Call<Boolean>
 }

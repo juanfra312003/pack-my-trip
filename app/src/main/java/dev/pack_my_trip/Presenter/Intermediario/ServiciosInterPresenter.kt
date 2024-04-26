@@ -2,11 +2,13 @@ package dev.pack_my_trip.Presenter.Intermediario
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.view.View
 import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import dev.pack_my_trip.ConectionBack.Interfaces.OnCrearPaquete
 import dev.pack_my_trip.ConectionBack.Interfaces.OnCrearServicio
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearPaquetePresenter
 import dev.pack_my_trip.ConectionBack.Repository.Repository
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
@@ -34,6 +36,7 @@ class ServiciosInterPresenter(var contexto: Context, var fechaHoraTxt: TextView)
                     month = monthOfYear + 1
                     this.year = year
                     this.day = dayOfMonth
+                    fechaHoraTxt.visibility = View.VISIBLE
                     fechaHoraTxt.setText("El servicio se efectuará el "+ dayOfMonth + "/" + month + "/" + year )
                 }
                 else{
@@ -48,6 +51,10 @@ class ServiciosInterPresenter(var contexto: Context, var fechaHoraTxt: TextView)
     }
 
     fun crearPaquete(paquete: PaqueteTuristico, context: Context, onCrearPaquete: OnCrearPaquete){
-
+        repository.crearPaqueteTuristico(paquete, context, object: OnCrearPaquetePresenter{
+            override fun onCrearPaquetePresenter(creado: Boolean) {
+                onCrearPaquete.onCrearPaquete(creado)
+            }
+        })
     }
 }
