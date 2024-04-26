@@ -22,8 +22,6 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Recibir el paquete a partir de la actividad anterior.
         paquete_turista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
 
         // Manejar la barra de navegación

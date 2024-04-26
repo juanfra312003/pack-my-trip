@@ -165,6 +165,25 @@ class Repository() {
         })
     }
 
+    fun registrarUsuarioPaquete(correoUsuario : String, idPaquete : Int, context : Context, onRegistrarPaqueteUsuario : OnRegistrarPaqueteUsuarioPresenter){
+        val registrarPaqueteUsuario = urlFinal.registrarPaqueteUsuario(correoUsuario, idPaquete)
+
+        registrarPaqueteUsuario.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo registrar el paquete", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onRegistrarPaqueteUsuario.onRegistrarPaqueteUsuarioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun crearUsuario(usuario: Usuario, context: Context, onCrearUsuarioPresenter : OnCrearUsuarioPresenter){
         val crearUsuario = urlFinal.crearUsuario(usuario)
 
@@ -213,6 +232,25 @@ class Repository() {
                 }
                 if(response.body() != null){
                     onEditarUsuarioPresenter.onEditarUsuarioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun actualizarComentariosCalificaciones(idPaquete: Int, correoUsuario: String, comentarios: String, calificacion: Int, context: Context, onActualizarComentariosCalificacionesPresenter: OnActualizarComentariosCalificacionesPresenter){
+        val actualizarComentariosCalificaciones = urlFinal.actualizarComentariosCalificaciones(idPaquete, correoUsuario, comentarios, calificacion)
+
+        actualizarComentariosCalificaciones.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo actualizar los comentarios y calificaciones", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onActualizarComentariosCalificacionesPresenter.onActualizarComentariosCalificacionesPresenter(response.body()!!)
                 }
             }
 

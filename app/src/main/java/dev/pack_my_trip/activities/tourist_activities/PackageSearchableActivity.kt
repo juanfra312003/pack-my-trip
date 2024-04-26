@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServiciosPaquete
+import dev.pack_my_trip.ConectionBack.Interfaces.OnRegistrarPaqueteUsuario
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetServiciosPaquetePresenter
 import dev.pack_my_trip.Presenter.Turista.PackageSearchPresenter
+import dev.pack_my_trip.Presenter.Turista.RegistrarPaqueteUsuarioPresenter
 import dev.pack_my_trip.R
 import dev.pack_my_trip.adapters.tourist_adapters.ServicesPackageAdapter
 import dev.pack_my_trip.databinding.ActivityPackageSearchableBinding
@@ -25,6 +27,7 @@ class PackageSearchableActivity : AppCompatActivity() {
     private lateinit var turista: Usuario
     private lateinit var paquete: PaqueteTuristico
     private var packageSearchPresenter : PackageSearchPresenter = PackageSearchPresenter()
+    private var registrarPaqueteUsuarioPresenter : RegistrarPaqueteUsuarioPresenter = RegistrarPaqueteUsuarioPresenter()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +52,6 @@ class PackageSearchableActivity : AppCompatActivity() {
             binding.imageViewPackageTypeSearch.setImageResource(R.drawable.paquete_imagen)
         }
         loadListView()
-        // Mostrar los servicios a través del adapter del mismo
-        //binding.listViewServicesSearchPackage.adapter = ServicesPackageAdapter(this, paquete.servicios.toMutableList())
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun loadListView(){
@@ -60,19 +61,13 @@ class PackageSearchableActivity : AppCompatActivity() {
             }
         })
     }
-
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun manageButtons() {
         binding.buttonProgramPackage.setOnClickListener {
-            // Tomar los valores de año, mes y día del calendario
-            val fechaLong = binding.calendarViewPackage.date
-
-            // Pasar a fecha el long del calendaryview
-            val fecha = Date(fechaLong)
-
-            // TODO: Guardar el turista en la base de datos con el nuevo paquete y colocar la actividad como start for result
-
-            // Redirigir a la actividdad del dashboard del turista
-            startActivity(Intent(this, DashboardTouristActivity::class.java))
+            registrarUsuarioPaquete()
+            val intent = Intent(this, DashboardTouristActivity::class.java)
+            intent.putExtra("usuario", turista)
+            startActivity(intent)
         }
 
         binding.backButtonSearchPackage.setOnClickListener {
@@ -80,6 +75,20 @@ class PackageSearchableActivity : AppCompatActivity() {
             intent.putExtra("turista", turista)
             startActivity(intent)
         }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun registrarUsuarioPaquete(){
+        registrarPaqueteUsuarioPresenter.registrarPaqueteUsuario(turista.correo, paquete.id, this, object : OnRegistrarPaqueteUsuario {
+            override fun onRegistrarPaqueteUsuario(registrado: Boolean) {
+                if (registrado){
+                    Toast.makeText(this@PackageSearchableActivity, "Paquete registrado con éxito", Toast.LENGTH_SHORT).show()
+
+                } else {
+                    Toast.makeText(this@PackageSearchableActivity, "Error al registrar el paquete", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
     }
 }
 
