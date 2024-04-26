@@ -5,6 +5,7 @@ import android.widget.Toast
 import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
@@ -63,24 +64,7 @@ class Repository() {
         })
     }
 
-    fun crearUsuario(usuario: Usuario, context: Context){
-        val crearUsuario = urlFinal.crearUsuario(usuario)
 
-        crearUsuario.enqueue(object: Callback<Boolean>{
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                if(!response.isSuccessful){
-                    Toast.makeText(context, "Hubo un error a la hora de registrarse", Toast.LENGTH_SHORT).show()
-                }
-                if(response.body() != null){
-
-                }
-            }
-
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     fun actualizarRegion(usuario: Usuario, context: Context){
         val actualizarRegion = urlFinal.actualizarRegion(usuario)
@@ -151,6 +135,25 @@ class Repository() {
                 }
                 if(response.body() != null){
                     onCrearServicioPresenter.onCrearServicioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun crearUsuario(usuario: Usuario, context: Context, onCrearUsuarioPresenter : OnCrearUsuarioPresenter){
+        val crearUsuario = urlFinal.crearUsuario(usuario)
+
+        crearUsuario.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "Hubo un error a la hora de registrarse", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onCrearUsuarioPresenter.onCrearUsuarioPresenter(response.body()!!)
                 }
             }
 

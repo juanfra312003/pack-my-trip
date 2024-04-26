@@ -127,16 +127,19 @@ class ProfileViewActivity : AppCompatActivity() {
                             val intent = Intent(baseContext, DashboardTouristActivity::class.java)
                             intent.putExtra("usuario", usuario)
                             startActivity(intent)
+                            finish()
                         }
                         'O' -> {
                             val intent = Intent(baseContext, DashboardOperator::class.java)
                             intent.putExtra("usuario", usuario)
                             startActivity(intent)
+                            finish()
                         }
                         'I' -> {
                             val intent = Intent(baseContext, DashboardInter::class.java)
                             intent.putExtra("usuario", usuario)
                             startActivity(intent)
+                            finish()
                         }
                     }
                 }

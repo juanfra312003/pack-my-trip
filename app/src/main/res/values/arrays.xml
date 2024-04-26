@@ -18,4 +18,11 @@
         <item>Hoja Blanca</item>
         <item>Quepos</item>
     </string-array>
+
+    <string-array name="rol_entries">
+        <item> </item>
+        <item>Turista </item>
+        <item>Operador</item>
+        <item>Intermediario</item>
+    </string-array>
 </resources>

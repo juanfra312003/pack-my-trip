@@ -69,10 +69,12 @@ class DashboardTouristActivity : AppCompatActivity() {
     private fun manageButtons(){
        binding.buttonProfile.setOnClickListener {
            startActivity(Intent(this, ProfileViewActivity::class.java).putExtra("usuario", usuario))
+           finish()
        }
 
         binding.buttonLocation.setOnClickListener {
             startActivity(Intent(this, RegionActivity::class.java).putExtra("usuario", usuario))
+            finish()
         }
     }
 }
