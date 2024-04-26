@@ -4,57 +4,46 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.adapters.tourist_adapters.ServicesPackageAdapter
 import dev.pack_my_trip.databinding.ActivityPackageTouristBinding
+import dev.pack_my_trip.models.data_model.Usuario
+import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
 class PackageTouristActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityPackageTouristBinding
-    private lateinit var paqueteTurista : PaquetesPorTurista
+    private lateinit var paqueteTurista : dev.pack_my_trip.models.data_model.PaqueteTuristico
+    private lateinit var usuario : Usuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPackageTouristBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        paqueteTurista = intent.getSerializableExtra("paquete_turista") as dev.pack_my_trip.models.data_model.PaqueteTuristico
+        usuario = intent.getSerializableExtra("usuario") as Usuario
 
-        // Recibir el paquete a partir de la actividad anterior.
-        paqueteTurista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
-
-        // Cargar los valores
-        load_values()
-
-        // Manejar la barra de navegación
+        cargarValores()
         manageNavBar()
-
-        // Manejo de botones
         manageButtons()
     }
 
     @SuppressLint("SetTextI18n")
-    private fun load_values(){
-        // Cargar los valroes de: nombre, costo, fecha, organizador
-        binding.costoEditableTextPackagetourist.text = "$" + paqueteTurista.paqueteActual.precio.toString()
-
-        // Obtener la fecha en formato dia/mes/año
-        val fechaPaquete = paqueteTurista.fecha.date.toString() + "/" + (paqueteTurista.fecha.month + 1).toString() + "/" + (paqueteTurista.fecha.year + 1900).toString()
-
+    private fun cargarValores(){
+        binding.costoEditableTextPackagetourist.text = "$" + paqueteTurista.precioDolares.toString()
+        val fechaPaquete = paqueteTurista.fechaHora
         binding.fechaEditableTextPackagetourist.text = fechaPaquete
-        binding.organizadorTextEditablePackageT.text = paqueteTurista.paqueteActual.nombreOrganizador
-        binding.textFieldPackageNameEditable.text = paqueteTurista.paqueteActual.nombre
-
-        // Cargar la imagen
-        when (paqueteTurista.paqueteActual.tipo){
-            //TODO: Cambiar las imagenes por las que se encuentran en el proyecto en firebase storage
-            "Volcan" -> binding.imageViewPackageType.setImageResource(R.drawable.volcan)
-            "Buceo" -> binding.imageViewPackageType.setImageResource(R.drawable.buceo)
-            "Aviario" -> binding.imageViewPackageType.setImageResource(R.drawable.aviario)
+        binding.organizadorTextEditablePackageT.text = paqueteTurista.correoIntermediario
+        binding.textFieldPackageNameEditable.text = paqueteTurista.nombre
+        if (paqueteTurista.imagen != null && paqueteTurista.imagen != ""){
+            Picasso.get().load(paqueteTurista.imagen).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(binding.imageViewPackageType)
+        } else {
+            binding.imageViewPackageType.setImageResource(R.drawable.paquete_general)
         }
-
-
-        // Mostrar los servicios a través del adapter del mismo
-        binding.listViewServicesPackage.adapter = ServicesPackageAdapter(this, paqueteTurista.paqueteActual.servicios)
+        //Mostrar servicios del paquete.
+        binding.listViewServicesPackage.adapter = ServicesPackageAdapter(this, paqueteTurista.listaServicios.toMutableList())
     }
 
     private fun manageNavBar(){
@@ -65,14 +54,16 @@ class PackageTouristActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menuChat -> {
-                    val intent = Intent(this, ChatActivity::class.java)
+                    val intent = Intent(this, ChatTouristActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }
                 R.id.menuMap -> {
                     val intent = Intent(this, TouristMapActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }
@@ -85,6 +76,7 @@ class PackageTouristActivity : AppCompatActivity() {
         binding.buttonInfoAditionalPackage.setOnClickListener {
             val intent = Intent(this, DetailsPackageTourist::class.java)
             intent.putExtra("paquete_turista", paqueteTurista)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }
