@@ -1,8 +1,10 @@
 package dev.pack_my_trip.activities.tourist_activities
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetAllPaquetes
 import dev.pack_my_trip.Presenter.Turista.GetAllPaquetesPresenter
 import dev.pack_my_trip.R
@@ -19,7 +21,7 @@ class SearchPackagesActivity : AppCompatActivity() {
     private lateinit var usuario : Usuario
     private var getAllPaquetesPresenter : GetAllPaquetesPresenter = GetAllPaquetesPresenter()
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchPackagesBinding.inflate(layoutInflater)
@@ -30,6 +32,7 @@ class SearchPackagesActivity : AppCompatActivity() {
         manageButtons()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadValues(){
         getAllPaquetesPresenter.getAllPaquetes(this, object : OnGetAllPaquetes {
             override fun onGetAllPaquetes(paquetes: List<PaqueteTuristico>) {
@@ -60,6 +63,7 @@ class SearchPackagesActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFilterButton (paquetes : MutableList<PaqueteTuristico>){
         binding.buttonSearchFiltrePackages.setOnClickListener {
             val text = binding.editableTextSearch.text.toString()
