@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="region1_array">
-        <item> </item>
+        <item></item>
         <item>Región Central</item>
         <item>Región Chorotega</item>
         <item>Región Pacífico Central</item>
     </string-array>
     <string-array name="region2_array">
-        <item> </item>
+        <item></item>
         <item>San José</item>
         <item>Alajuela</item>
         <item>Cartago</item>
     </string-array>
     <string-array name="region3_array">
-        <item> </item>
+        <item></item>
         <item>Nicoya</item>
         <item>Hoja Blanca</item>
         <item>Quepos</item>
     </string-array>
 
     <string-array name="rol_entries">
-        <item> </item>
+        <item></item>
         <item>Turista </item>
         <item>Operador</item>
         <item>Intermediario</item>

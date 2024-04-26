@@ -6,6 +6,7 @@ import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearUsuarioPresenter
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarRegionUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetPaquetesPresenter
@@ -66,7 +67,7 @@ class Repository() {
 
 
 
-    fun actualizarRegion(usuario: Usuario, context: Context){
+    fun actualizarRegion(usuario: Usuario, context: Context, onActualizarRegionPresenter : OnEditarRegionUsuarioPresenter){
         val actualizarRegion = urlFinal.actualizarRegion(usuario)
 
         actualizarRegion.enqueue(object: Callback<Boolean>{
