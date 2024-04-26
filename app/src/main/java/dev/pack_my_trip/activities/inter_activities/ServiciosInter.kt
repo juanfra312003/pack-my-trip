@@ -45,7 +45,7 @@ class ServiciosInter : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityServiciosInterBinding.inflate(layoutInflater)
         usuario = intent.getSerializableExtra("usuario") as Usuario
-        serviciosInterPresenter = ServiciosInterPresenter(this, binding.fecha_editable_text_packagetourist)
+        serviciosInterPresenter = ServiciosInterPresenter(this, binding.fechaEditableTextPackagetourist)
         setContentView(binding.root)
         inicializarVariables()
         onSubirImagen()
