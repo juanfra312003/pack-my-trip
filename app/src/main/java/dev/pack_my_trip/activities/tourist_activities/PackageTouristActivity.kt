@@ -63,6 +63,7 @@ class PackageTouristActivity : AppCompatActivity() {
                 R.id.menuMap -> {
                     val intent = Intent(this, TouristMapActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }
