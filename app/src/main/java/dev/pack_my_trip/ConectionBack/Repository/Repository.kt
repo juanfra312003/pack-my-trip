@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.google.gson.Gson
 import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
+import dev.pack_my_trip.ConectionBack.Interfaces.OnGetMetricas
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.*
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
@@ -261,4 +262,20 @@ class Repository() {
         })
     }
 
+    fun getMetricas(correoOperador: String, context: Context, onGetMetricas: OnGetMetricas){
+        val getMetricas = urlFinal.getMetricas(correoOperador)
+        getMetricas.enqueue(object: Callback<List<Servicio>>{
+            override fun onResponse(call: Call<List<Servicio>>, response: Response<List<Servicio>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo actualizar los cambios", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetMetricas.onGetMetricas(response.body()!!)
+                }
+            }
+            override fun onFailure(call: Call<List<Servicio>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }

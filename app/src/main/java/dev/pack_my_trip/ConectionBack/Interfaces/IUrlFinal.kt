@@ -38,4 +38,6 @@ interface IUrlFinal {
     fun crearPaquete(@Body paquete: PaqueteTuristico) : Call<Boolean>
     @PUT("paqueteturistico")
     fun updatePaquete(@Body paquete: PaqueteTuristico) : Call<Boolean>
+    @GET("servicio/metricas")
+    fun getMetricas(@Query("correoOperador") correoOperador: String): Call<List<Servicio>>
 }

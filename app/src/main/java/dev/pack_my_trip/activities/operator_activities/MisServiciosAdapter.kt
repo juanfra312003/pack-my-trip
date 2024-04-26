@@ -16,7 +16,7 @@ import dev.pack_my_trip.models.data_model.Usuario
 
 class MisServiciosAdapter(
     private val context: Context,
-    private val data: List<Servicio>,
+    val data: List<Servicio>,
     private val usuario: Usuario,
     ) : BaseAdapter()  {
     override fun getCount(): Int {

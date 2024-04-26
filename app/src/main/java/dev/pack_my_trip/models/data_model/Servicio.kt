@@ -12,8 +12,12 @@ data class Servicio (
     var caracteristicas : String,
     var portada : String,
     var fechaHora : String,
-    var correoOperador : String
+    var correoOperador : String,
 )
     : Serializable
 {
+    var tasaOcupacion: Float = 0.0f
+    var horasPromedio: Map<String, Int>? = HashMap()
+    var ingresos: Float = 0.0f
+    var indiceRepeticion: Float = 0.0f
 }

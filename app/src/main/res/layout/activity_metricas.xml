@@ -83,38 +83,4 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16dp"/>
         </LinearLayout>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <LinearLayout
-                android:id="@+id/backgroundLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/blue"
-                android:orientation="vertical"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="5dp"
-                android:padding="2dp">
-            <TextView
-                    android:id="@+id/title2TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:text="Otros servicios"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:textStyle="bold" />
-        </LinearLayout>
-        <ListView
-                android:id="@+id/MisServicios2ListView"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
-    </LinearLayout>
 </LinearLayout>

@@ -8,6 +8,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.MenuItem
+import android.view.MenuItem.OnMenuItemClickListener
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -20,6 +22,7 @@ import dev.pack_my_trip.Presenter.Intermediario.EditarPaquetePresenter
 import dev.pack_my_trip.Presenter.Intermediario.ServiciosInterPresenter
 import dev.pack_my_trip.Presenter.Operador.OnSubirImagen
 import dev.pack_my_trip.R
+import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.adapters.Intermediario.AgregarServiciosAdapter
 import dev.pack_my_trip.adapters.Intermediario.ServiciosInterAdapter
 import dev.pack_my_trip.databinding.ActivityEditarPaqueteBinding
@@ -59,6 +62,9 @@ class EditarPaqueteActivity : AppCompatActivity() {
         eventoActualizarPaquete()
         eventoSeleccionarFecha()
         eventoAgregarServicio()
+        eventoChat()
+        eventBack()
+        seguirPaquete()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -208,6 +214,38 @@ class EditarPaqueteActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 Toast.makeText(this@EditarPaqueteActivity, "No se pudo crear el paquete", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun eventBack(){
+        binding.bottomNavigationViewTourist.menu.findItem(R.id.menuMap).setOnMenuItemClickListener( object: OnMenuItemClickListener{
+            override fun onMenuItemClick(item: MenuItem): Boolean {
+                var intent = Intent(this@EditarPaqueteActivity, DashboardInter::class.java)
+                startActivity(intent)
+                return true
+            }
+        })
+    }
+
+    fun seguirPaquete(){
+        binding.bottomNavigationViewTourist.menu.findItem(R.id.menuMap).setOnMenuItemClickListener( object: OnMenuItemClickListener{
+            override fun onMenuItemClick(item: MenuItem): Boolean {
+                var intent = Intent(this@EditarPaqueteActivity, FollowTouristActivity::class.java)
+                intent.putExtra("usuario", usuario)
+                startActivity(intent)
+                return true
+            }
+        })
+    }
+
+    fun eventoChat(){
+        binding.bottomNavigationViewTourist.menu.findItem(R.id.menuChat).setOnMenuItemClickListener( object: OnMenuItemClickListener{
+            override fun onMenuItemClick(item: MenuItem): Boolean {
+                var intent = Intent(this@EditarPaqueteActivity, ChatActivity::class.java)
+                intent.putExtra("usuario", usuario)
+                startActivity(intent)
+                return true
             }
         })
     }
