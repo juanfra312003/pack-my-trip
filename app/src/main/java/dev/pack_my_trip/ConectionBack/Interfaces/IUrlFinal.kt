@@ -36,4 +36,6 @@ interface IUrlFinal {
     fun getPaquetesTuristicosUsuario(@Query("correoUsuario") correoUsuario: String) : Call<List<PaqueteTuristico>>
     @POST("paqueteturistico")
     fun crearPaquete(@Body paquete: PaqueteTuristico) : Call<Boolean>
+    @PUT("paqueteturistico")
+    fun updatePaquete(@Body paquete: PaqueteTuristico) : Call<Boolean>
 }
