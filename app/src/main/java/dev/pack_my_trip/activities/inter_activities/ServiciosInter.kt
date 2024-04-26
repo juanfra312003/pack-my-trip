@@ -49,6 +49,7 @@ class ServiciosInter : AppCompatActivity() {
         usuario = intent.getSerializableExtra("usuario") as Usuario
         serviciosInterPresenter = ServiciosInterPresenter(this, binding.fechaEditableTextPackagetourist)
         setContentView(binding.root)
+        firebaseStorage = FirebaseStorage.getInstance()
         inicializarVariables()
         onSubirImagen()
         eventoCrearPaquete()
@@ -70,6 +71,9 @@ class ServiciosInter : AppCompatActivity() {
         servicios = intent.getSerializableExtra("servicios") as MutableList<Servicio>
         binding.serviciosInterListView.adapter = ServiciosInterAdapter(this, servicios, usuario)
         serviciosInterPresenter = ServiciosInterPresenter(this, binding.fechaEditableTextPackagetourist)
+        day = intent.getSerializableExtra("dia") as Int
+        month = intent.getSerializableExtra("mes") as Int
+        year = intent.getSerializableExtra("year") as Int
     }
 
 
@@ -116,6 +120,9 @@ class ServiciosInter : AppCompatActivity() {
             intent.putExtra("fecha", fecha.toString())
             intent.putExtra("costo", valorPasado)
             intent.putExtra("servicios", ArrayList(servicios))
+            intent.putExtra("dia", serviciosInterPresenter.day)
+            intent.putExtra("mes", serviciosInterPresenter.month)
+            intent.putExtra("year", serviciosInterPresenter.day)
             startActivity(intent)
         }
     }
@@ -127,9 +134,11 @@ class ServiciosInter : AppCompatActivity() {
                 Toast.makeText(this@ServiciosInter, "Necesitas al menos un servicio", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            this.day = serviciosInterPresenter.day
-            this.month = serviciosInterPresenter.month
-            this.year = serviciosInterPresenter.year
+            if(this.day == 0 && this.month == 0 && this.year == 0){
+                this.day = serviciosInterPresenter.day
+                this.month = serviciosInterPresenter.month
+                this.year = serviciosInterPresenter.year
+            }
             if(binding.nombrePaqueteEtxt.text.equals("") || binding.organizadorTextEditablePackageT.text.equals("") || binding.fechaEditableTextPackagetourist.visibility == View.GONE ||
                 binding.costoEditableTextPackagetourist.text.equals("") || binding.fechaEditableTextPackagetourist.visibility == View.GONE || binding.imageViewPackageType.drawable.toString().toIntOrNull() != null){
                 Toast.makeText(this@ServiciosInter, "Completa todos los datos antes de registrar", Toast.LENGTH_SHORT).show()
@@ -145,14 +154,13 @@ class ServiciosInter : AppCompatActivity() {
                         Toast.makeText(this@ServiciosInter, "no se pudo subir la imagen", Toast.LENGTH_SHORT).show()
                         return
                     }
-
-                    val paquete = PaqueteTuristico(0, binding.nombrePaqueteEtxt.text.toString(), LocalDateTime.of(year, month, day, 0, 0).toString(),
+                    val numeroAleatorio3 = random.nextInt(24)
+                    val numeroAleatorio4 = random.nextInt(60)
+                    val paquete = PaqueteTuristico(0, binding.nombrePaqueteEtxt.text.toString(), LocalDateTime.of(year, month, day, numeroAleatorio3, numeroAleatorio4).toString(),
                         binding.costoEditableTextPackagetourist.text.toString().toFloat(), url, usuario.correo, servicios)
                     subirPaquete(paquete)
                 }
             })
-            val intent = Intent(this, DashboardInter::class.java)
-            startActivity(intent)
         }
     }
 
@@ -164,7 +172,7 @@ class ServiciosInter : AppCompatActivity() {
                     Toast.makeText(this@ServiciosInter, "se ha creado el paquete!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@ServiciosInter, DashboardInter::class.java)
                     intent.putExtra("usuario", usuario)
-                    return
+                    startActivity(intent)
                 }
                 Toast.makeText(this@ServiciosInter, "No se pudo crear el paquete", Toast.LENGTH_SHORT).show()
             }
