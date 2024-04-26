@@ -3,6 +3,7 @@ package dev.pack_my_trip.activities.tourist_activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetPaquetesUsuario
 import dev.pack_my_trip.Presenter.Turista.DashboardTuristaPresenter
 import dev.pack_my_trip.activities.general_activities.ProfileViewActivity
@@ -58,6 +59,12 @@ class DashboardTouristActivity : AppCompatActivity() {
 
             }
         })
+
+        // Cargar la imagen de perfil
+        val urlImg : String? = usuario.fotoPerfil
+        if(urlImg != null && !urlImg.isEmpty()){
+            Picasso.get().load(urlImg).into(binding.dashboardTouristPhoto)
+        }
     }
 
     private fun personalizarLayout(){
