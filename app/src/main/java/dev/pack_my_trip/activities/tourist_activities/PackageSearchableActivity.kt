@@ -1,16 +1,22 @@
 package dev.pack_my_trip.activities.tourist_activities
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import com.squareup.picasso.Picasso
+import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServiciosPaquete
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnGetServiciosPaquetePresenter
+import dev.pack_my_trip.Presenter.Turista.PackageSearchPresenter
 import dev.pack_my_trip.R
 import dev.pack_my_trip.adapters.tourist_adapters.ServicesPackageAdapter
 import dev.pack_my_trip.databinding.ActivityPackageSearchableBinding
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
-import dev.pack_my_trip.models.models_tourist.Turista
+import dev.pack_my_trip.models.data_model.PaqueteTuristico
+import dev.pack_my_trip.models.data_model.Servicio
+
 import java.util.Date
 
 class PackageSearchableActivity : AppCompatActivity() {
@@ -18,7 +24,9 @@ class PackageSearchableActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPackageSearchableBinding
     private lateinit var turista: Usuario
     private lateinit var paquete: PaqueteTuristico
+    private var packageSearchPresenter : PackageSearchPresenter = PackageSearchPresenter()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPackageSearchableBinding.inflate(layoutInflater)
@@ -26,27 +34,31 @@ class PackageSearchableActivity : AppCompatActivity() {
         turista = intent.getSerializableExtra("usuario") as Usuario
         paquete = intent.getSerializableExtra("paquete_nuevo") as PaqueteTuristico
 
-        load_values()
+        loadValues()
         manageButtons()
     }
 
-    // Funcion para cargar los valores
-    private fun load_values() {
-        // Cargar valores
-        binding.organizadorTextEditablePackageTSearch.text = paquete.nombreOrganizador
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadValues() {
+        binding.organizadorTextEditablePackageTSearch.text = paquete.correoIntermediario
         binding.textFieldPackageNameEditableSearch.text = paquete.nombre
-        binding.costoEditableTextPackagetouristSearch.text = "$" + paquete.precio.toString()
-
-        // Pintar la imagen
-        when (paquete.tipo) {
-            //TODO: Cambiar las imagenes por las que se encuentran en el proyecto en firebase storage
-            "Volcan" -> binding.imageViewPackageTypeSearch.setImageResource(R.drawable.volcan)
-            "Buceo" -> binding.imageViewPackageTypeSearch.setImageResource(R.drawable.buceo)
-            "Aviario" -> binding.imageViewPackageTypeSearch.setImageResource(R.drawable.aviario)
+        binding.costoEditableTextPackagetouristSearch.text = "$" + paquete.precioDolares.toString()
+        if (!paquete.imagen.isNullOrBlank()) {
+            Picasso.get().load(paquete.imagen).into(binding.imageViewPackageTypeSearch)
+        } else {
+            binding.imageViewPackageTypeSearch.setImageResource(R.drawable.paquete_imagen)
         }
-
+        loadListView()
         // Mostrar los servicios a través del adapter del mismo
         //binding.listViewServicesSearchPackage.adapter = ServicesPackageAdapter(this, paquete.servicios.toMutableList())
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadListView(){
+        packageSearchPresenter.getServiciosPaquete(paquete.id, this, object : OnGetServiciosPaquete {
+            override fun onGetServiciosPaquete(servicios: List<Servicio>) {
+                binding.listViewServicesSearchPackage.adapter = ServicesPackageAdapter(this@PackageSearchableActivity, servicios.toMutableList())
+            }
+        })
     }
 
     private fun manageButtons() {

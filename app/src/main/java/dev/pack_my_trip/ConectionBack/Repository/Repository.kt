@@ -127,6 +127,25 @@ class Repository() {
         })
     }
 
+    fun getServiciosPaquete (idPaquete: Int, context: Context, onGetServiciosPaquetePresenter: OnGetServiciosPaquetePresenter){
+        val getServicios = urlFinal.getServiciosPaquete(idPaquete)
+
+        getServicios.enqueue(object: Callback<List<Servicio>>{
+            override fun onResponse(call: Call<List<Servicio>>, response: Response<List<Servicio>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetServiciosPaquetePresenter.onGetServiciosPaquetePresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<Servicio>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun crearServicio(servicio: Servicio, context: Context, onCrearServicioPresenter: OnCrearServicioPresenter){
         val crearServicio = urlFinal.crearServicio(servicio)
 
