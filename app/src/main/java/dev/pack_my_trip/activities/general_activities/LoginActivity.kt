@@ -40,9 +40,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun performRegister(){
+    private fun performRegister(){
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -66,7 +67,6 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
         }
         else{
-            Toast.makeText(this, "Bienvenido ${usuarioLogin?.correo}", Toast.LENGTH_SHORT).show()
             startActivityForUserType()
         }
 
@@ -78,12 +78,19 @@ class LoginActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun startActivityForUserType() {
         usuarioLogin?.let { usuario ->
-            if (usuario.tipo == 'T'){
-                startActivity(Intent(this, DashboardTouristActivity::class.java).putExtra("usuario", usuario))
-            } else if (usuario.tipo == 'O'){
-                startActivity(Intent(this, DashboardOperator::class.java).putExtra("usuario", usuario))
-            } else if (usuario.tipo == 'I'){
-                startActivity(Intent(this, DashboardInter::class.java).putExtra("usuario", usuario))
+            when (usuario.tipo) {
+                'T' -> {
+                    startActivity(Intent(this, DashboardTouristActivity::class.java).putExtra("usuario", usuario))
+                    finish()
+                }
+                'O' -> {
+                    startActivity(Intent(this, DashboardOperator::class.java).putExtra("usuario", usuario))
+                    finish()
+                }
+                'I' -> {
+                    startActivity(Intent(this, DashboardInter::class.java).putExtra("usuario", usuario))
+                    finish()
+                }
             }
         }
     }
