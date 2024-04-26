@@ -54,8 +54,9 @@ class PackageTouristActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menuChat -> {
-                    val intent = Intent(this, ChatActivity::class.java)
+                    val intent = Intent(this, ChatTouristActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }
@@ -74,6 +75,7 @@ class PackageTouristActivity : AppCompatActivity() {
         binding.buttonInfoAditionalPackage.setOnClickListener {
             val intent = Intent(this, DetailsPackageTourist::class.java)
             intent.putExtra("paquete_turista", paqueteTurista)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }

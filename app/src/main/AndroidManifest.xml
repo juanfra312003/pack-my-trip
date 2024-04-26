@@ -22,6 +22,8 @@
         <activity
                 android:name=".activities.inter_activities.AgregarServicios"
                 android:exported="false" />
+        <activity android:name=".activities.tourist_activities.ChatTouristActivity"
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.AgregarServicio"
                 android:exported="false" />
