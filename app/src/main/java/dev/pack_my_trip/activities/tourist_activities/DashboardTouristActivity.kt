@@ -56,7 +56,13 @@ class DashboardTouristActivity : AppCompatActivity() {
             override fun onGetPaquetesUsuario(paquetes: List<PaqueteTuristico>) {
                 usuario.listaPaquetes = paquetes
                 binding.listTouristPackages.adapter = PackagesTouristAdapter(this@DashboardTouristActivity, paquetes.toMutableList())
-
+                binding.listTouristPackages.setOnItemClickListener { _, _, position, _ ->
+                    val paqueteTurista = usuario.listaPaquetes[position]
+                    val intent = Intent(baseContext, PackageTouristActivity::class.java)
+                    intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
+                    startActivity(intent)
+                }
             }
         })
 

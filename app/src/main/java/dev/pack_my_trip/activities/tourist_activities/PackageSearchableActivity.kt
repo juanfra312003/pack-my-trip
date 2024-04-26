@@ -50,7 +50,7 @@ class PackageSearchableActivity : AppCompatActivity() {
         }
 
         // Mostrar los servicios a través del adapter del mismo
-        binding.listViewServicesSearchPackage.adapter = ServicesPackageAdapter(this, paquete.servicios)
+        //binding.listViewServicesSearchPackage.adapter = ServicesPackageAdapter(this, paquete.servicios.toMutableList())
     }
 
     private fun manageButtons() {
