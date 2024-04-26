@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.drawable.toBitmap
 import com.google.firebase.storage.FirebaseStorage
 import dev.pack_my_trip.ConectionBack.Interfaces.OnCrearPaquete
 import dev.pack_my_trip.ConectionBack.Interfaces.OnCrearServicio
@@ -19,6 +20,7 @@ import dev.pack_my_trip.Presenter.Intermediario.ServiciosInterPresenter
 import dev.pack_my_trip.Presenter.Operador.OnSubirImagen
 import dev.pack_my_trip.R
 import dev.pack_my_trip.activities.operator_activities.DashboardOperator
+import dev.pack_my_trip.adapters.Intermediario.ServiciosInterAdapter
 import dev.pack_my_trip.databinding.ActivityPaqueteTuristicoCreadoBinding
 import dev.pack_my_trip.databinding.ActivityServiciosInterBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
@@ -30,11 +32,11 @@ import kotlin.random.Random
 
 class ServiciosInter : AppCompatActivity() {
     private lateinit var binding : ActivityServiciosInterBinding
-    private lateinit var portada: ImageView
     private lateinit var firebaseStorage: FirebaseStorage
     private lateinit var usuario: Usuario
-    private lateinit var servicios: List<Servicio>
+    private lateinit var servicios: MutableList<Servicio>
     private lateinit var serviciosInterPresenter: ServiciosInterPresenter
+    private var bitmapPortada: Bitmap? = null
     private var year: Int = 0
     private var month: Int = 0
     private var day: Int = 0
@@ -55,8 +57,21 @@ class ServiciosInter : AppCompatActivity() {
     }
 
     fun inicializarVariables(){
-
+        usuario = intent.getSerializableExtra("usuario") as Usuario
+        binding.organizadorTextEditablePackageT.text = usuario.correo
+        val nombrePaquete = intent.getSerializableExtra("nombrePaquete") as String
+        binding.nombrePaqueteEtxt.setText(nombrePaquete)
+        binding.fechaEditableTextPackagetourist.text = intent.getSerializableExtra("fecha") as String
+        if(binding.fechaEditableTextPackagetourist.text != ""){
+            binding.fechaEditableTextPackagetourist.visibility = View.VISIBLE
+        }
+        val costo = intent.getSerializableExtra("costo") as Int
+        binding.costoEditableTextPackagetourist.setText(costo.toString())
+        servicios = intent.getSerializableExtra("servicios") as MutableList<Servicio>
+        binding.serviciosInterListView.adapter = ServiciosInterAdapter(this, servicios, usuario)
+        serviciosInterPresenter = ServiciosInterPresenter(this, binding.fechaEditableTextPackagetourist)
     }
+
 
     fun onSubirImagen(){
         binding.subirImagenBtn.setOnClickListener {
@@ -70,9 +85,8 @@ class ServiciosInter : AppCompatActivity() {
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             val selectedImage = data.data
             val inputStream = contentResolver.openInputStream(selectedImage!!)
-            val bitmap = BitmapFactory.decodeStream(inputStream)
-            portada.setImageBitmap(bitmap)
-            portada.visibility = View.VISIBLE
+            bitmapPortada = BitmapFactory.decodeStream(inputStream)
+            binding.imageViewPackageType.setImageBitmap(bitmapPortada)
         }
     }
 
@@ -86,6 +100,22 @@ class ServiciosInter : AppCompatActivity() {
     fun eventoAgregarServicio(){
         binding.agregarServicioBtn.setOnClickListener{
             val intent = Intent(this, AgregarServicios::class.java)
+            val nombrePaquete = binding.nombrePaqueteEtxt.text
+            val fecha = binding.fechaEditableTextPackagetourist.text
+            val costoPaquete = binding.costoEditableTextPackagetourist.text.toString()
+            var valorPasado = 0
+            if(!costoPaquete.isEmpty()){
+                valorPasado = costoPaquete.toInt()
+            }
+            val bitmap = binding.imageViewPackageType.drawable.toBitmap()
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            val byteArray = stream.toByteArray()
+            intent.putExtra("usuario", usuario)
+            intent.putExtra("nombrePaquete", nombrePaquete.toString())
+            intent.putExtra("fecha", fecha.toString())
+            intent.putExtra("costo", valorPasado)
+            intent.putExtra("servicios", ArrayList(servicios))
             startActivity(intent)
         }
     }
@@ -93,13 +123,17 @@ class ServiciosInter : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun eventoCrearPaquete(){
         binding.crearPaqueteBtn.setOnClickListener{
+            if(servicios.size == 0){
+                Toast.makeText(this@ServiciosInter, "Necesitas al menos un servicio", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             this.day = serviciosInterPresenter.day
             this.month = serviciosInterPresenter.month
             this.year = serviciosInterPresenter.year
             if(binding.nombrePaqueteEtxt.text.equals("") || binding.organizadorTextEditablePackageT.text.equals("") || binding.fechaEditableTextPackagetourist.visibility == View.GONE ||
-                binding.costoEditableTextPackagetourist.text.equals("") || !fechaPuesta || portada.visibility == View.GONE){
-                Toast.makeText(this@ServiciosInter, "Complete todos los datos antes de registrar", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener;
+                binding.costoEditableTextPackagetourist.text.equals("") || binding.fechaEditableTextPackagetourist.visibility == View.GONE || binding.imageViewPackageType.drawable.toString().toIntOrNull() != null){
+                Toast.makeText(this@ServiciosInter, "Completa todos los datos antes de registrar", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             val random = Random(12345L)
             val numeroAleatorio = random.nextInt(24)
@@ -138,7 +172,7 @@ class ServiciosInter : AppCompatActivity() {
     }
 
     fun subirImagen(nombrePaquete: String, fechaPaquete: LocalDateTime, onSubirImagen: OnSubirImagen) {
-        val bitmapPortada = (portada.drawable as BitmapDrawable).bitmap
+        val bitmapPortada = (binding.imageViewPackageType.drawable as BitmapDrawable).bitmap
         val carpetaDestino = firebaseStorage.reference.child(usuario.correo)
         val referenciaImagen = carpetaDestino.child(nombrePaquete +fechaPaquete.toString() + ".jpg")
         // Comprimir el bitmap a un stream de bytes

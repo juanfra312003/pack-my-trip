@@ -45,11 +45,12 @@
             android:id="@+id/imageViewPackageType"
             android:layout_width="155dp"
             android:layout_height="155dp"
+            android:src="@drawable/paquete_imagen"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName"
-            app:srcCompat="@drawable/volcan" />
+            />
 
     <ImageView
             android:id="@+id/imageView_organized"
@@ -73,14 +74,13 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_organized"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName" />
-    <EditText
+    <TextView
             android:id="@+id/organizadorTextEditable_PackageT"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="1dp"
-            android:background="#d9d9d9"
             android:fontFamily="@font/coda"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"

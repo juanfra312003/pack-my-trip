@@ -7,7 +7,7 @@
 
 
     <ImageView
-            android:id="@+id/imageAdapterSearchPackages"
+            android:id="@+id/imageAdapterSearchServices"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_marginStart="32dp"
@@ -19,7 +19,7 @@
             app:srcCompat="@drawable/aviario" />
 
     <TextView
-            android:id="@+id/descripcionAdapterSearchPackage"
+            android:id="@+id/descripcionAdapterSearchService"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -28,19 +28,31 @@
             android:fontFamily="@font/coda"
             android:text="@string/nombre_servicios"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchPackages"
+            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchServices"
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/organizerAdapterSearchTourist"
+            android:id="@+id/organizerAdapterSearchInter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="100dp"
             android:fontFamily="@font/coda"
             android:text="@string/organizado_por"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchPackages"
-            app:layout_constraintTop_toBottomOf="@+id/descripcionAdapterSearchPackage" />
+            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchServices"
+            app:layout_constraintTop_toBottomOf="@+id/descripcionAdapterSearchService" />
+
+    <TextView
+            android:id="@+id/organizerTextAdapterSearchInter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="80dp"
+            android:fontFamily="@font/coda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchServices"
+            app:layout_constraintTop_toBottomOf="@+id/organizerAdapterSearchInter" />
 </androidx.constraintlayout.widget.ConstraintLayout>

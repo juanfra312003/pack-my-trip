@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import dev.pack_my_trip.ConectionBack.Interfaces.IUrlFinal
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
+import dev.pack_my_trip.ConectionBack.InterfacesPresenter.*
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearServicioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnCrearUsuarioPresenter
 import dev.pack_my_trip.ConectionBack.InterfacesPresenter.OnEditarRegionUsuarioPresenter
@@ -116,7 +117,7 @@ class Repository() {
                     Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
                 }
                 if(response.body() != null){
-                    //onGetServiciosPresenter.onGetServiciosPresenter(response.body()!!)
+                    onGetServiciosPresenter.onGetServicios(response.body()!!)
                 }
             }
 
@@ -216,6 +217,25 @@ class Repository() {
             }
 
             override fun onFailure(call: Call<List<PaqueteTuristico>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun crearPaqueteTuristico(paqueteTuristico: PaqueteTuristico, context: Context, onCrearPaquetePresenter: OnCrearPaquetePresenter){
+        val getPaquetes = urlFinal.crearPaquete(paqueteTuristico)
+
+        getPaquetes.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener paquetes", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onCrearPaquetePresenter.onCrearPaquetePresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
                 Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
             }
         })

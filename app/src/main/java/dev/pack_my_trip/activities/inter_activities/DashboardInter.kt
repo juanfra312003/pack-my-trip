@@ -1,6 +1,7 @@
 package dev.pack_my_trip.activities.inter_activities
 
 import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -16,6 +17,7 @@ import dev.pack_my_trip.activities.general_activities.RegionActivity
 import dev.pack_my_trip.adapters.Intermediario.DashboardInterAdapter
 import dev.pack_my_trip.databinding.ActivityDashboardInterBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
+import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
 
 class DashboardInter : AppCompatActivity() {
@@ -44,12 +46,12 @@ class DashboardInter : AppCompatActivity() {
     }
 
     fun inicializarComponentes(){
-        imagenUsuario = findViewById(R.id.imagenProfileUserDash)
-        buttonProfileDashInt = findViewById(R.id.buttonProfileDashInt)
-        buttonRegionDashInt = findViewById(R.id.buttonRegionDashInt)
-        listViewDashBoardIntermediario = findViewById(R.id.listViewDashBoardIntermediario)
-        buttonCrearPaqueteTuristicoInt = findViewById(R.id.buttonCrearPaqueteTuristicoInt)
-        buttonVerPaquetesAgenda = findViewById(R.id.buttonVerPaquetesAgenda)
+        imagenUsuario = binding.imagenProfileUserDash
+        buttonProfileDashInt = binding.buttonProfileDashInt
+        buttonRegionDashInt = binding.buttonRegionDashInt
+        listViewDashBoardIntermediario = binding.listViewDashBoardIntermediario
+        buttonCrearPaqueteTuristicoInt = binding.buttonCrearPaqueteTuristicoInt
+        buttonVerPaquetesAgenda = binding.buttonVerPaquetesAgenda
         if(usuario.fotoPerfil != null && !usuario.fotoPerfil.isEmpty()){
             Picasso.get().load(usuario.fotoPerfil).placeholder(R.drawable.guia_dashboard_pp).error(R.drawable.guia_dashboard_pp).into(imagenUsuario)
         }
@@ -84,6 +86,10 @@ class DashboardInter : AppCompatActivity() {
         buttonCrearPaqueteTuristicoInt.setOnClickListener{
             val intent = Intent(this, ServiciosInter::class.java)
             intent.putExtra("usuario", usuario)
+            intent.putExtra("servicios", ArrayList<Servicio>())
+            intent.putExtra("nombrePaquete", String())
+            intent.putExtra("fecha", String())
+            intent.putExtra("costo", 0)
             startActivity(intent)
         }
     }
