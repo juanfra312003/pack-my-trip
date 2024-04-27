@@ -112,7 +112,7 @@ class Repository() {
         })
     }
 
-    fun getServicios(context: Context, onGetServiciosPresenter: OnGetServicios){
+    fun getAllServicios(context: Context, onGetAllServiciosPresenter: OnGetAllServiciosPresenter){
         val getServicios = urlFinal.getServicios()
 
         getServicios.enqueue(object: Callback<List<Servicio>>{
@@ -121,7 +121,7 @@ class Repository() {
                     Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
                 }
                 if(response.body() != null){
-                    onGetServiciosPresenter.onGetServicios(response.body()!!)
+                    onGetAllServiciosPresenter.onGetAllServiciosPresenter(response.body()!!)
                 }
             }
 

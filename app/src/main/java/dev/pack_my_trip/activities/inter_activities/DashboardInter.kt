@@ -90,7 +90,7 @@ class DashboardInter : AppCompatActivity() {
             intent.putExtra("servicios", ArrayList<Servicio>())
             intent.putExtra("nombrePaquete", String())
             intent.putExtra("fecha", String())
-            intent.putExtra("costo", 0)
+            intent.putExtra("costo", 0F)
             intent.putExtra("dia", 0)
             intent.putExtra("mes", 0)
             intent.putExtra("year", 0)

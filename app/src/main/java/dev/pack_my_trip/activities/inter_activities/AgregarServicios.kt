@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
+import dev.pack_my_trip.ConectionBack.Interfaces.OnGetAllServicios
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.Presenter.Intermediario.AgregarServiciosPresenter
 import dev.pack_my_trip.activities.general_activities.RegionActivity
@@ -63,11 +64,10 @@ class AgregarServicios : AppCompatActivity() {
         day = intent.getSerializableExtra("dia") as Int
         month = intent.getSerializableExtra("mes") as Int
         year = intent.getSerializableExtra("year") as Int
-        id = intent.getSerializableExtra("id") as Int
         serviciosAgregados = intent.getSerializableExtra("servicios") as MutableList<Servicio>
         urlImg = intent.getSerializableExtra("urlImagen") as String?
-        agregarServiciosPresenter.getServicios(this, object: OnGetServicios{
-            override fun onGetServicios(servicios: List<Servicio>) {
+        agregarServiciosPresenter.getAllServicios(this, object: OnGetAllServicios {
+            override fun onGetAllServicios(servicios: List<Servicio>) {
                 if(servicios == null) {
                     this@AgregarServicios.servicios = listOf<Servicio>().toMutableList()
                     Toast.makeText(this@AgregarServicios, "No hay servicios disponibles", Toast.LENGTH_SHORT).show()
