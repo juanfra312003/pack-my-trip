@@ -1,8 +1,5 @@
 package dev.pack_my_trip.models.data_model
 import java.io.Serializable
-import java.sql.Blob
-import java.time.LocalDateTime
-import java.util.Date
 
 data class Servicio (
     var id : Int,
@@ -12,8 +9,13 @@ data class Servicio (
     var caracteristicas : String,
     var portada : String,
     var fechaHora : String,
-    var correoOperador : String
+    var correoOperador : String,
+    var tasaOcupacion: Float,
+    var horasPromedio: String,
+    var ingresos: Float,
+    var indiceRepeticion: Float = 0.0f
 )
     : Serializable
 {
+
 }

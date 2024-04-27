@@ -106,13 +106,33 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginBottom="16dp"/>
-    <Button
-        android:id="@+id/registrarServicioDashBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/texto_registar_servicio"
-        android:layout_gravity="center"
-        android:backgroundTint="#28429e"
-        android:fontFamily="@font/coda"
-    />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+                android:id="@+id/registrarServicioDashBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/texto_registar_servicio"
+                android:layout_gravity="left"
+                android:backgroundTint="#28429e"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/coda"
+        />
+
+        <Button
+                android:id="@+id/verMetricasBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver métricas servicios"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="right"
+                android:backgroundTint="#28429e"
+                android:fontFamily="@font/coda"
+        />
+    </LinearLayout>
+
 </LinearLayout>

@@ -16,7 +16,7 @@ import dev.pack_my_trip.models.data_model.Usuario
 
 class MisServiciosAdapter(
     private val context: Context,
-    private val data: List<Servicio>,
+    val data: List<Servicio>,
     private val usuario: Usuario,
     ) : BaseAdapter()  {
     override fun getCount(): Int {
@@ -39,7 +39,10 @@ class MisServiciosAdapter(
         val textoServicio: TextView = convertViewTemp!!.findViewById(R.id.MisServiciosTxt) //Obtener texto
         val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen]
         textoServicio.text = data[position].nombre
-        val urlImg: String? = data[position].portada
+        var urlImg: String? = data[position].portada
+        if(urlImg != null){
+            urlImg = urlImg!!.trim()
+        }
         if(urlImg != null && !urlImg.isEmpty()){
             Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagServicio)
         }

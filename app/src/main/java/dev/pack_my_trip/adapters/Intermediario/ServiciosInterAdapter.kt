@@ -16,8 +16,7 @@ import dev.pack_my_trip.models.data_model.Usuario
 
 class ServiciosInterAdapter (
     private val context: Context,
-    private val data: List<Servicio>,
-    private val usuario: Usuario,
+    var data: MutableList<Servicio>
 ) : BaseAdapter()  {
     override fun getCount(): Int {
         return data.size
@@ -36,7 +35,10 @@ class ServiciosInterAdapter (
         if (convertViewTemp == null) {
             convertViewTemp = LayoutInflater.from(context).inflate(R.layout.mis_servicios_adapter, parent, false) //Obtiene el xml con el diseño
         }
-        //convertViewTemp!!.isClickable = false
+        convertViewTemp!!.setOnClickListener{
+            data.removeAt(position)
+            notifyDataSetChanged()
+        }
         val textoServicio: TextView = convertViewTemp!!.findViewById(R.id.MisServiciosTxt) //Obtener texto
         val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen]
         textoServicio.text = data[position].nombre

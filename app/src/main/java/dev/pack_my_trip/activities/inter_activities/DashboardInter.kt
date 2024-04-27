@@ -60,7 +60,7 @@ class DashboardInter : AppCompatActivity() {
         }
         dashboardInterPresenter.getPaquetes(usuario.correo, this, object: OnGetPaquetes {
             override fun onGetPaquetes(paquetes: List<PaqueteTuristico>) {
-                dashboardInterAdapter = DashboardInterAdapter(this@DashboardInter, paquetes)
+                dashboardInterAdapter = DashboardInterAdapter(this@DashboardInter, paquetes, usuario)
                 listViewDashBoardIntermediario.adapter = dashboardInterAdapter
             }
         })

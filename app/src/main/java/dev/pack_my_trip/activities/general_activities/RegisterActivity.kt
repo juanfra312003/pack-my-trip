@@ -86,17 +86,15 @@ class RegisterActivity : AppCompatActivity() {
                 override fun onSubirImagen(url: String?) {
                     if (url != null) {
                         user.fotoPerfil = url
+                        // Subir usuario a la BD
+                        subirUsuario(user)
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        intent.putExtra("usuario", user)
+                        startActivity(intent)
+                        finish()
                     }
                 }
             })
-
-            // Subir usuario a la BD
-            subirUsuario(user)
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("usuario", user)
-            startActivity(intent)
-            finish()
-
         }
         else{
             // Mostrar mensaje de error

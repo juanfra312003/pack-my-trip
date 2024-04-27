@@ -17,7 +17,8 @@
     <string name="texto_edicion_de_servicios">Edición de servicios</string>
     <string name="texto_aceptar_cambios">Aceptar Cambios</string>
     <string name="texto_editar">Editar</string>
-    <string name="texto_prueba_servicios_adapter">Experiencía Acuática Playa San Carlos. Fecha Programada: 25/04/2024</string>
+    <string name="texto_prueba_servicios_adapter">Experiencía Acuática Playa San Carlos. Fecha Programada: 25/04/2024
+    </string>
     <string name="select_role_prompt">Como te quieres registrar</string>
     <string name="register_user">Registro de usuario</string>
     <string name="profile_name_hint">Nombre de usuario</string>
@@ -37,7 +38,9 @@
     <string name="busca_tu_servicio">Busca un servicio para agregar</string>
     <string name="busca_tu_servicio_coma">Busca un servicio para agregar,</string>
     <string name="servicios_diponibles">Servicios disponibles en la región actual:</string>
-    <string name="servicios_recordatorio">Los servicios que se ofrecen pueden variar de acuerdo con la región turistica en que te encuentres.</string>
+    <string name="servicios_recordatorio">Los servicios que se ofrecen pueden variar de acuerdo con la región turistica
+        en que te encuentres.
+    </string>
     <string name="nombre_servicios">Descripción</string>
     <string name="organizado_por">Organizado por:</string>
     <string name="crear_paquete">Crear Paquete</string>
