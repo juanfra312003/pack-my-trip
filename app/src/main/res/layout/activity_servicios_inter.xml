@@ -183,11 +183,12 @@
             app:layout_constraintStart_toEndOf="@+id/imageView_cost"
             app:layout_constraintTop_toBottomOf="@+id/text_costo"
             />
+
     <Button
             android:id="@+id/subirImagenBtn"
             android:backgroundTint="#092790"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/texto_subir_portada"

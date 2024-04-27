@@ -65,7 +65,7 @@ class PackageSearchableActivity : AppCompatActivity() {
     private fun manageButtons() {
         binding.buttonProgramPackage.setOnClickListener {
             // Pasar a formato aaaa/mm/dd
-            paquete.fechaHora = binding.calendarViewPackage.date.toString()
+            //paquete.fechaHora = binding.calendarViewPackage.date.toString()
             registrarUsuarioPaquete()
             val intent = Intent(this, DashboardTouristActivity::class.java)
             intent.putExtra("usuario", turista)

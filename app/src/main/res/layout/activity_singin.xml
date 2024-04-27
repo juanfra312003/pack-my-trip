@@ -33,16 +33,30 @@
             app:layout_constraintTop_toBottomOf="@+id/headerProfileDetails" />
 
     <!-- Imagen del turista -->
-    <ImageView
-            android:id="@+id/imageViewTourist"
-            android:layout_width="200dp"
-            android:layout_height="165dp"
-            app:srcCompat="@drawable/operador_dashboard"
-            android:scaleType="fitCenter"
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="rectangle"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp">
+
+        <ImageView
+                android:id="@+id/imageViewTourist"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:srcCompat="@drawable/operador_dashboard"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
 
     <EditText
             android:id="@+id/editTextProfileName"
@@ -59,7 +73,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/card"
             android:layout_marginTop="16dp"
             tools:ignore="TouchTargetSizeCheck" />
 

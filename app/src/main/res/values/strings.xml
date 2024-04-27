@@ -47,4 +47,6 @@
     <string name="nombre_paquete">Nombre del Paquete:</string>
     <string name="selecccionar_fecha">Seleccionar Fecha</string>
     <string name="agregar_servicios">Agregar Servicios</string>
+    <string name ="servicios_mostrar">¿Qué servicios incluye el paquete?</string>
+    <string name ="seleccion_fecha_hora">Selecciona la fecha de tú paquete.</string>
 </resources>
