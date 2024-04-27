@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
+import com.squareup.picasso.Picasso
 import dev.pack_my_trip.ConectionBack.Interfaces.OnGetServicios
 import dev.pack_my_trip.Presenter.Operador.DashboardOperatorPresenter
 import dev.pack_my_trip.R
 import dev.pack_my_trip.activities.tourist_activities.MetricasActivity
 import dev.pack_my_trip.adapters.Operador.MisServiciosAdapter
+import dev.pack_my_trip.databinding.ActivityDashboardOperatorBinding
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
 
@@ -19,7 +21,7 @@ class DashboardOperator : AppCompatActivity() {
     private lateinit var usuario: Usuario
     private lateinit var metricasBtn: Button
     private var dashboardOperatorPresenter: DashboardOperatorPresenter = DashboardOperatorPresenter()
-
+    private lateinit var binding: ActivityDashboardOperatorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard_operator)
@@ -40,6 +42,13 @@ class DashboardOperator : AppCompatActivity() {
             }
         })
         registrarServicioBtn = findViewById(R.id.registrarServicioDashBtn)
+
+        // Cargar la imagen de perfil
+        val urlImg : String? = usuario.fotoPerfil
+        if(urlImg != null && !urlImg.isEmpty()){
+            Picasso.get().load(urlImg).into(binding.operadorPhotoDash)
+        }
+        binding.textoBienvenido.text = "Bienvenido de nuevo, ${usuario.usuario} !"
     }
 
     fun eventoRegistarServicio(){

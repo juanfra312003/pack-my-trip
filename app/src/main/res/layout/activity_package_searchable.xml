@@ -31,20 +31,20 @@
         app:layout_constraintTop_toBottomOf="@+id/header_search_package_tourist" />
 
     <TextView
-        android:id="@+id/programmPackageTextField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/coda"
-        android:text="¡Programa tu paquete!"
-        android:textColor="#092790"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listViewServicesSearchPackage" />
+            android:id="@+id/programmPackageTextField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/coda"
+            android:text="¡Programa tu paquete!"
+            android:textColor="#092790"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listViewServicesSearchPackage" />
 
     <TextView
         android:id="@+id/textFieldPackageNameEditable_search"
@@ -65,14 +65,18 @@
 
 
     <ImageView
-        android:id="@+id/imageViewPackageType_search"
-        android:layout_width="155dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditable_search"
-        app:srcCompat="@drawable/volcan" />
+            android:id="@+id/imageViewPackageType_search"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditable_search"
+            app:srcCompat="@drawable/volcan"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_cost_search"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/listViewServicesSearchPackage" />
 
     <ImageView
         android:id="@+id/imageView_cost_search"
@@ -124,18 +128,19 @@
         app:layout_constraintTop_toBottomOf="@+id/organizadorTextEditable_PackageT_search" />
 
     <TextView
-        android:id="@+id/organizadorTextEditable_PackageT_search"
-        android:layout_width="103dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/coda"
-        android:text="Organizador Paquete"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_organized_search"
-        app:layout_constraintTop_toBottomOf="@+id/text_organized_search" />
+            android:id="@+id/organizadorTextEditable_PackageT_search"
+            android:layout_width="103dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/coda"
+            android:text="Organizador Paquete"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_organized_search"
+            app:layout_constraintTop_toBottomOf="@+id/text_organized_search"
+            app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/costo_editable_text_packagetourist_search"
@@ -167,19 +172,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <CalendarView
-        android:id="@+id/calendarViewPackage"
-        android:layout_width="0dp"
-        android:layout_height="294dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_program_package"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/programmPackageTextField"
-        app:layout_constraintVertical_bias="0.0" />
+            android:id="@+id/calendarViewPackage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/programmPackageTextField"
+            app:layout_constraintBottom_toTopOf="@+id/button_program_package"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp" />
 
     <ListView
         android:id="@+id/listViewServicesSearchPackage"

@@ -27,13 +27,11 @@
                 android:exported="false"/>
         <activity
                 android:name=".activities.inter_activities.AgregarServicios"
-<<<<<<< HEAD
                 android:exported="false"/>
-=======
-                android:exported="false" />
+
         <activity android:name=".activities.tourist_activities.ChatTouristActivity"
                 android:exported="false" />
->>>>>>> main
+
         <activity
                 android:name=".activities.inter_activities.AgregarServicio"
                 android:exported="false"/>

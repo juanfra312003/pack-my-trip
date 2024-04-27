@@ -7,40 +7,42 @@
 
 
     <ImageView
-        android:id="@+id/imageAdapterSearchPackages"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/aviario" />
+            android:id="@+id/imageAdapterSearchPackages"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/aviario" />
 
     <TextView
-        android:id="@+id/descripcionAdapterSearchPackage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/coda"
-        android:text="Descripción"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchPackages"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/descripcionAdapterSearchPackage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/coda"
+            android:text="Descripción"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchPackages"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/organizerAdapterSearchTourist"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/coda"
-        android:text="Organizado por: "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchPackages"
-        app:layout_constraintTop_toBottomOf="@+id/descripcionAdapterSearchPackage" />
+            android:id="@+id/organizerAdapterSearchTourist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/coda"
+            android:text="Organizado por: "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchPackages"
+            app:layout_constraintTop_toBottomOf="@+id/descripcionAdapterSearchPackage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
