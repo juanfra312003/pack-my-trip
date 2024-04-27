@@ -46,12 +46,16 @@ import com.google.maps.model.TravelMode
 import dev.pack_my_trip.R
 import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.databinding.ActivityTouristMapBinding
+import dev.pack_my_trip.models.data_model.PaqueteTuristico
+import dev.pack_my_trip.models.data_model.Usuario
 import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
+import kotlin.random.Random
 
 class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding : ActivityTouristMapBinding
-    private lateinit var paqueteTurista : PaquetesPorTurista
+    private lateinit var paqueteTurista : PaqueteTuristico
+    private lateinit var usuario : Usuario
 
     // Map attributes
     private lateinit var mMap: GoogleMap
@@ -84,7 +88,8 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         // Recibir el paquete a partir de la actividad anterior.
-        paqueteTurista = intent.getSerializableExtra("paquete_turista") as PaquetesPorTurista
+        paqueteTurista = intent.getSerializableExtra("paquete_turista") as PaqueteTuristico
+        usuario = intent.getSerializableExtra("usuario") as Usuario
 
         // Inicializar el mapa
         val mapFragment = supportFragmentManager
@@ -142,8 +147,10 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun loadLatLngServices (){
-        for (servicio in paqueteTurista.paqueteActual.servicios){
-            mapLatLng[servicio.nombre] = LatLng(servicio.latitud, servicio.longitud)
+        for (servicio in paqueteTurista.listaServicios){
+            val latitud = 8f + Random.nextFloat() * (11f - 8f)
+            val longitud = -82f + Random.nextFloat() * (-87f + 82f)
+            mapLatLng[servicio.nombre] = LatLng(latitud.toDouble(), longitud.toDouble())
         }
     }
 
@@ -154,18 +161,21 @@ class TouristMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 R.id.menuBack -> {
                     val intent = Intent(this, PackageTouristActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }
                 R.id.menuChat -> {
                     val intent = Intent(this, ChatActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }
                 R.id.menuMap -> {
                     val intent = Intent(this, TouristMapActivity::class.java)
                     intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                     true
                 }

@@ -131,6 +131,25 @@ class Repository() {
         })
     }
 
+    fun getServiciosPaquete (idPaquete: Int, context: Context, onGetServiciosPaquetePresenter: OnGetServiciosPaquetePresenter){
+        val getServicios = urlFinal.getServiciosPaquete(idPaquete)
+
+        getServicios.enqueue(object: Callback<List<Servicio>>{
+            override fun onResponse(call: Call<List<Servicio>>, response: Response<List<Servicio>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetServiciosPaquetePresenter.onGetServiciosPaquetePresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<Servicio>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun crearServicio(servicio: Servicio, context: Context, onCrearServicioPresenter: OnCrearServicioPresenter){
         val crearServicio = urlFinal.crearServicio(servicio)
 
@@ -141,6 +160,25 @@ class Repository() {
                 }
                 if(response.body() != null){
                     onCrearServicioPresenter.onCrearServicioPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun registrarUsuarioPaquete(correoUsuario : String, idPaquete : Int, context : Context, onRegistrarPaqueteUsuario : OnRegistrarPaqueteUsuarioPresenter){
+        val registrarPaqueteUsuario = urlFinal.registrarPaqueteUsuario(correoUsuario, idPaquete)
+
+        registrarPaqueteUsuario.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo registrar el paquete", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onRegistrarPaqueteUsuario.onRegistrarPaqueteUsuarioPresenter(response.body()!!)
                 }
             }
 
@@ -207,6 +245,25 @@ class Repository() {
         })
     }
 
+    fun actualizarComentariosCalificaciones(idPaquete: Int, correoUsuario: String, comentarios: String, calificacion: Int, context: Context, onActualizarComentariosCalificacionesPresenter: OnActualizarComentariosCalificacionesPresenter){
+        val actualizarComentariosCalificaciones = urlFinal.actualizarComentariosCalificaciones(idPaquete, correoUsuario, comentarios, calificacion)
+
+        actualizarComentariosCalificaciones.enqueue(object: Callback<Boolean>{
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo actualizar los comentarios y calificaciones", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onActualizarComentariosCalificacionesPresenter.onActualizarComentariosCalificacionesPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun getPaquetesTuristicos(correoIntermediario: String, context: Context, onGetServiciosPresenter: OnGetPaquetesPresenter){
         val getPaquetes = urlFinal.getPaquetesTuristicos(correoIntermediario)
 
@@ -217,6 +274,25 @@ class Repository() {
                 }
                 if(response.body() != null){
                     onGetServiciosPresenter.onGetPaquetesPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<PaqueteTuristico>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun getAllPaquetesTuristicos(context: Context, onGetAllPaquetesPresenter : OnGetAllPaquetesPresenter){
+        val getPaquetes = urlFinal.getAllPaquetes()
+
+        getPaquetes.enqueue(object: Callback<List<PaqueteTuristico>>{
+            override fun onResponse(call: Call<List<PaqueteTuristico>>, response: Response<List<PaqueteTuristico>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener paquetes", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetAllPaquetesPresenter.onGetAllPaquetesPresenter(response.body()!!)
                 }
             }
 

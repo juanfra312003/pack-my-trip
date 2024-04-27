@@ -26,28 +26,8 @@ class DashboardTouristActivity : AppCompatActivity() {
         setContentView(binding.root)
         usuario = intent.getSerializableExtra("usuario") as Usuario
 
-        // Llamado a funciones de inicialización
         inicializarVariables()
-        personalizarLayout()
         manageButtons()
-
-
-        /*
-        // MOSTRAR LA LISTA DE PAQUETES
-        binding.listTouristPackages.adapter = PackagesTouristAdapter(this, turista.paquetes)
-        binding.listTouristPackages.setOnItemClickListener { _, _, position, _ ->
-            val paqueteTurista = turista.paquetes[position]
-
-            val intent = Intent(baseContext, PackageTouristActivity::class.java)
-            intent.putExtra("paquete_turista", paqueteTurista)
-            startActivity(intent)
-        }
-
-
-        // MANEJO DE BOTÓN DE BÚSQUEDA DE PAQUETES CON EL TURISTA CÓMO PARÁMETRO PARA LA ACTIVIDAD DE BÚSQUEDA DE PAQUETES
-        manageButtons(turista)
-
-         */
     }
 
     private fun inicializarVariables (){
@@ -56,7 +36,13 @@ class DashboardTouristActivity : AppCompatActivity() {
             override fun onGetPaquetesUsuario(paquetes: List<PaqueteTuristico>) {
                 usuario.listaPaquetes = paquetes
                 binding.listTouristPackages.adapter = PackagesTouristAdapter(this@DashboardTouristActivity, paquetes.toMutableList())
-
+                binding.listTouristPackages.setOnItemClickListener { _, _, position, _ ->
+                    val paqueteTurista = usuario.listaPaquetes[position]
+                    val intent = Intent(baseContext, PackageTouristActivity::class.java)
+                    intent.putExtra("paquete_turista", paqueteTurista)
+                    intent.putExtra("usuario", usuario)
+                    startActivity(intent)
+                }
             }
         })
 
@@ -65,9 +51,6 @@ class DashboardTouristActivity : AppCompatActivity() {
         if(urlImg != null && !urlImg.isEmpty()){
             Picasso.get().load(urlImg).into(binding.dashboardTouristPhoto)
         }
-    }
-
-    private fun personalizarLayout(){
         binding.textoBienvenido.text = "Bienvenido de nuevo, ${usuario.usuario} !"
     }
 
@@ -78,6 +61,10 @@ class DashboardTouristActivity : AppCompatActivity() {
 
         binding.buttonLocation.setOnClickListener {
             startActivity(Intent(this, RegionActivity::class.java).putExtra("usuario", usuario))
+        }
+
+        binding.buttonSearchPackages.setOnClickListener{
+            startActivity(Intent(this, SearchPackagesActivity::class.java).putExtra("usuario", usuario))
         }
     }
 }
