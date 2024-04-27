@@ -62,7 +62,7 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
@@ -151,30 +151,30 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageTouristDashboard"
-        android:layout_width="107dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoPaquetesTuristicos"
-        app:srcCompat="@drawable/turista_dashboard" />
+            android:id="@+id/imageTouristDashboard"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textoPaquetesTuristicos"
+            app:srcCompat="@drawable/paquete_turistico_tursia" />
 
     <ListView
-        android:id="@+id/list_tourist_packages"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSearchPackages"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageTouristDashboard" />
+            android:id="@+id/list_tourist_packages"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSearchPackages"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageTouristDashboard"
+            android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/buttonSearchPackages"

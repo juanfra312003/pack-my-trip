@@ -52,12 +52,13 @@ class DashboardInter : AppCompatActivity() {
         listViewDashBoardIntermediario = binding.listViewDashBoardIntermediario
         buttonCrearPaqueteTuristicoInt = binding.buttonCrearPaqueteTuristicoInt
         buttonVerPaquetesAgenda = binding.buttonVerPaquetesAgenda
-        if(usuario.fotoPerfil != null && !usuario.fotoPerfil.isEmpty()){
-            Picasso.get().load(usuario.fotoPerfil).placeholder(R.drawable.guia_dashboard_pp).error(R.drawable.guia_dashboard_pp).into(imagenUsuario)
+
+        // Cargar la imagen de perfil
+        val urlImg : String? = usuario.fotoPerfil
+        if(urlImg != null && !urlImg.isEmpty()){
+            Picasso.get().load(urlImg).into(binding.imagenProfileUserDash)
         }
-        else{
-            imagenUsuario.setImageResource(R.drawable.guia_dashboard_pp)
-        }
+
         dashboardInterPresenter.getPaquetes(usuario.correo, this, object: OnGetPaquetes {
             override fun onGetPaquetes(paquetes: List<PaqueteTuristico>) {
                 dashboardInterAdapter = DashboardInterAdapter(this@DashboardInter, paquetes, usuario)
