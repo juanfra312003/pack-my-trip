@@ -92,7 +92,7 @@
             android:textSize="12sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textView14"
+            android:id="@+id/textViewTuristaAgenda"
             android:layout_marginStart="12dp"
             app:layout_constraintStart_toEndOf="@+id/textView13"
             android:layout_marginTop="12dp"

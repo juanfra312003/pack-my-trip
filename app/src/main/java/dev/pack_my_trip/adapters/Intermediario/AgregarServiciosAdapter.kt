@@ -13,7 +13,6 @@ import androidx.compose.ui.graphics.toArgb
 import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.Servicio
-import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
 
 class AgregarServiciosAdapter (context : Context, var servicios : MutableList<Servicio>) : ArrayAdapter<Servicio>(context, 0, servicios) {
     var serviciosSeleccionados: MutableList<Servicio> = mutableListOf()

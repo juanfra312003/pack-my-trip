@@ -43,15 +43,14 @@ class ServiciosInterAdapter (
         val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen]
         textoServicio.text = data[position].nombre
         var urlImg: String? = data[position].portada
-        if(urlImg != null){
-            urlImg = urlImg.trim()
-        }
+
         if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagServicio)
+            Picasso.get().load(urlImg).into(imagServicio)
         }
         else{
             imagServicio.setImageResource(R.drawable.no_disponible)
         }
+
         return convertViewTemp
     }
 }

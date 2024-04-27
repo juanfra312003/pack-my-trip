@@ -6,12 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
-import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.adapters.tourist_adapters.ServicesPackageAdapter
 import dev.pack_my_trip.databinding.ActivityPackageTouristBinding
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
 class PackageTouristActivity : AppCompatActivity() {
 

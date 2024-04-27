@@ -16,17 +16,12 @@ import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.toBitmap
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-import dev.pack_my_trip.ConectionBack.Interfaces.OnCrearPaquete
 import dev.pack_my_trip.ConectionBack.Interfaces.OnUpdatePaquete
 import dev.pack_my_trip.Presenter.Intermediario.EditarPaquetePresenter
-import dev.pack_my_trip.Presenter.Intermediario.ServiciosInterPresenter
 import dev.pack_my_trip.Presenter.Operador.OnSubirImagen
 import dev.pack_my_trip.R
-import dev.pack_my_trip.activities.general_activities.ChatActivity
-import dev.pack_my_trip.adapters.Intermediario.AgregarServiciosAdapter
 import dev.pack_my_trip.adapters.Intermediario.ServiciosInterAdapter
 import dev.pack_my_trip.databinding.ActivityEditarPaqueteBinding
-import dev.pack_my_trip.databinding.ActivityServiciosInterBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
 import dev.pack_my_trip.models.data_model.Usuario
@@ -242,7 +237,7 @@ class EditarPaqueteActivity : AppCompatActivity() {
     fun eventoChat(){
         binding.bottomNavigationViewTourist.menu.findItem(R.id.menuChat).setOnMenuItemClickListener( object: OnMenuItemClickListener{
             override fun onMenuItemClick(item: MenuItem): Boolean {
-                var intent = Intent(this@EditarPaqueteActivity, ChatActivity::class.java)
+                //var intent = Intent(this@EditarPaqueteActivity, ChatActivity::class.java)
                 intent.putExtra("usuario", usuario)
                 startActivity(intent)
                 return true

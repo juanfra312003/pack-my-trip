@@ -48,4 +48,6 @@ interface IUrlFinal {
     fun actualizarComentariosCalificaciones(@Query("idPaquete") idPaquete: Int, @Query("correoUsuario") correoUsuario: String, @Query("comentarios") comentarios : String,  @Query("calificacion") calificacion : Int) : Call<Boolean>
     @POST("registrarpaqueteusuario")
     fun registrarPaqueteUsuario(@Query("correoUsuario") correoUsuario: String, @Query("idPaquete") idPaquete: Int) : Call<Boolean>
+    @GET("agendainter")
+    fun getAgendaInter(@Query("correoIntermediario") correoIntermediario: String) : Call<List<PaqueteTuristico>>
 }

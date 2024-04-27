@@ -9,7 +9,6 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import dev.pack_my_trip.R
 import dev.pack_my_trip.activities.tourist_activities.DetailsPackageTourist
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
 class ServiciosNotificacionAdapter(
     private val context: Context,

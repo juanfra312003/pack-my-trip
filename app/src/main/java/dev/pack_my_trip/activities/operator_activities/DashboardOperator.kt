@@ -24,6 +24,7 @@ class DashboardOperator : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardOperatorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityDashboardOperatorBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_dashboard_operator)
         usuario = intent.getSerializableExtra("usuario") as Usuario
 

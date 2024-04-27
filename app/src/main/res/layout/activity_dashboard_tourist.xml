@@ -67,9 +67,9 @@
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
             android:innerRadius="0dp"
-            android:shape="rectangle"
+            android:shape="ring"
             android:thicknessRatio="1.9"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

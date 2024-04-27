@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.Servicio
-import dev.pack_my_trip.models.models_tourist.ServicioTuristico
 
 class ServicesPackageAdapter  (context : Context, services : MutableList<Servicio>) : ArrayAdapter<Servicio>(context, 0, services) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

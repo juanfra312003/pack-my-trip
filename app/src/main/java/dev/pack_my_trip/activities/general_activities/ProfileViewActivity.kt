@@ -20,7 +20,6 @@ import dev.pack_my_trip.activities.operator_activities.DashboardOperator
 import dev.pack_my_trip.activities.tourist_activities.DashboardTouristActivity
 import dev.pack_my_trip.databinding.ActivityProfileViewBinding
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.Turista
 import java.io.ByteArrayOutputStream
 import java.time.LocalDateTime
 
