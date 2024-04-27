@@ -129,7 +129,8 @@ class EditarServicio : AppCompatActivity() {
                         return;
                     }
                     val servicio = Servicio(this@EditarServicio.servicio.id, nombreServicioETxt.text.toString(), precioEditText.text.toString().toFloat(), limiteDiarioEditText.text.toString().toInt(),
-                        caracteristicasETxt.text.toString(), url, LocalDateTime.of(year, month, day, hour, minute).toString(),usuario.correo)
+                        caracteristicasETxt.text.toString(), url, LocalDateTime.of(year, month, day, hour, minute).toString(),usuario.correo, 0.0f,
+                        String(), 0.0f, 0.0f)
                     subirServicio(servicio)
                 }
             })

@@ -18,7 +18,6 @@ class DashboardOperator : AppCompatActivity() {
     private lateinit var registrarServicioBtn: Button
     private lateinit var usuario: Usuario
     private lateinit var metricasBtn: Button
-    //private lateinit var adapter: MisServiciosAdapter
     private var dashboardOperatorPresenter: DashboardOperatorPresenter = DashboardOperatorPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +35,8 @@ class DashboardOperator : AppCompatActivity() {
         misServiciosListView = findViewById(R.id.MisServiciosListView)
         dashboardOperatorPresenter.getServicios(usuario.correo, this, object: OnGetServicios {
             override fun onGetServicios(servicios: List<Servicio>) {
-                //adapter = MisServiciosAdapter(this@DashboardOperator, servicios, usuario)
-                misServiciosListView.adapter = MisServiciosAdapter(this@DashboardOperator, servicios, usuario)
+                val adapter = MisServiciosAdapter(this@DashboardOperator, servicios, usuario)
+                misServiciosListView.adapter = adapter
             }
         })
         registrarServicioBtn = findViewById(R.id.registrarServicioDashBtn)
@@ -52,11 +51,10 @@ class DashboardOperator : AppCompatActivity() {
     }
 
     fun eventoMetricasBtn(){
-        /*metricasBtn.setOnClickListener{
-            val intent = Intent(this, MetricasActivity::class.java) //Crea el intent con el contexto de esta actividad y la objetivo
+        metricasBtn.setOnClickListener{
+            val intent = Intent(this, ServicioMetricasActivity::class.java) //Crea el intent con el contexto de esta actividad y la objetivo
             intent.putExtra("usuario", usuario)
-            intent.putExtra("servicios", ArrayList(adapter.data))
             startActivity(intent) //Inicia la actividad
-        }*/
+        }
     }
 }

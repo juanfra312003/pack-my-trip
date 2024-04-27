@@ -38,17 +38,22 @@ class ServiciosMetricasAdapter(private val context: Activity, private val servic
         val indiceVistas = rowView.findViewById(R.id.indiceVisitas) as TextView
         val plan = rowView.findViewById(R.id.plan) as TextView
         val fecha = rowView.findViewById(R.id.fecha) as TextView
+        val image = rowView.findViewById(R.id.arrow) as ImageView
+
         nombreServicio.text = servicios[position].nombre
         tasaOcupacion.text = servicios[position].tasaOcupacion.toString()
         ingresosGenerados.text = servicios[position].ingresos.toString()
         indiceVistas.text = servicios[position].indiceRepeticion.toString()
-        duracionPromedio.text = servicios[position].horasPromedio!!.get("string").toString()
+        duracionPromedio.text = servicios[position].horasPromedio
         llSecond.visibility = View.GONE
         val fechaDate = LocalDateTime.parse(servicios[position].fechaHora)
         fecha.text = fechaDate.dayOfMonth.toString() + "/" + fechaDate.monthValue + "/" + fechaDate.year
         plan.text = servicios[position].nombre
         val imagen = rowView.findViewById(R.id.icon) as ImageView
         var urlImg = servicios[position].portada
+        if(urlImg != null){
+            urlImg = urlImg.trim()
+        }
         if(urlImg != null && !urlImg.isEmpty()){
             Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagen)
         }
@@ -58,8 +63,10 @@ class ServiciosMetricasAdapter(private val context: Activity, private val servic
         llFirst.setOnClickListener{
             if (llSecond.isVisible) {
                 llSecond.visibility = View.GONE
+                image.rotation = 0f
             } else {
                 llSecond.visibility = View.VISIBLE
+                image.rotation = 180.0f
             }
         }
 
