@@ -28,7 +28,7 @@ class AgendaIntermediarioActivity : AppCompatActivity() {
         agendaPaquetesPresenter.getPaquetes(usuario.correo, baseContext, object : OnGetAgenda {
             override fun onGetAgenda(paquetes: List<PaqueteTuristico>) {
                 binding.listViewPaquetesAgendadosIntermediario.adapter = AdapterAgendaInter(baseContext, paquetes.toMutableList())
-                Log.i("AgendaIntermediarioActivity", "Paquetes: $paquetes")
+
             }
         })
     }

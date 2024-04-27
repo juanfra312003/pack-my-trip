@@ -7,27 +7,28 @@
 
     <androidx.cardview.widget.CardView
             android:id="@+id/card"
-            android:layout_width="105dp"
-            android:layout_height="105dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
             android:innerRadius="0dp"
-            android:shape="ring"
+            android:shape="rectangle"
             android:thicknessRatio="1.9"
-            app:cardCornerRadius="40dp"
+            app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/volcan"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center"
-            android:id="@+id/imageViewAdapterAgendaInter" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/volcan"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:id="@+id/imageViewAdapterAgendaInter" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -68,7 +69,7 @@
             android:id="@+id/textEditableFechaInicioAgendaInt"
             android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@+id/nombrePaqueteAdapterAgenda"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="4dp"
             app:layout_constraintStart_toEndOf="@+id/textViewInicioPaqueteAgenda"
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -93,10 +94,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textViewTuristaAgenda"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toEndOf="@+id/textView13"
             android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@+id/textViewInicioPaqueteAgenda"
             android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@+id/textView13" />
 </androidx.constraintlayout.widget.ConstraintLayout>
