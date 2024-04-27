@@ -5,20 +5,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-    <ImageView
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <ImageView
             android:id="@+id/imageAdapterSearchServices"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="32dp"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/aviario" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
             android:id="@+id/descripcionAdapterSearchService"
@@ -30,7 +40,7 @@
             android:fontFamily="@font/coda"
             android:text="@string/nombre_servicios"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchServices"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -43,7 +53,7 @@
             android:fontFamily="@font/coda"
             android:text="@string/organizado_por"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchServices"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/descripcionAdapterSearchService" />
 
     <TextView
@@ -52,10 +62,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="7dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/coda"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageAdapterSearchServices"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/organizerAdapterSearchInter"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp" />
