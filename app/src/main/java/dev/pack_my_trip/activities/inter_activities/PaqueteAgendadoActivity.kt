@@ -21,6 +21,8 @@ class PaqueteAgendadoActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPaqueteAgendadoBinding
     private lateinit var usuario : Usuario
     private lateinit var paquete : PaqueteTuristico
+    private lateinit var nombre : String
+
     private var packageSearchPresenter = PackageSearchPresenter()
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +34,7 @@ class PaqueteAgendadoActivity : AppCompatActivity() {
 
         cargarValores()
         eventoVolver()
-        eventoMapa()
-        eventoChat()
-        eventoDetalles()
+        manejoBarraNavegacion()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -53,7 +53,8 @@ class PaqueteAgendadoActivity : AppCompatActivity() {
             "Ricardo"
         )
 
-        binding.organizadorTextEditablePaqueteAgendado.text = lista[Random.nextInt(0, lista.size)]
+        nombre = lista[Random.nextInt(0, lista.size)]
+        binding.organizadorTextEditablePaqueteAgendado.text = nombre
         binding.textFieldPackageNameEditableAgenda.text = paquete.nombre
         binding.fechaEditableTextPaqueteAgenda.text = paquete.fechaHora
         binding.costoEditableTextPackageAgenda.text = paquete.precioDolares.toString()
@@ -80,28 +81,29 @@ class PaqueteAgendadoActivity : AppCompatActivity() {
         }
     }
 
-    private fun eventoMapa(){
-        binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.menuMap -> {
-                    val intent = Intent(baseContext, FollowTouristActivity::class.java)
-                    intent.putExtra("usuario", usuario)
-                    intent.putExtra("paquete", paquete)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
-    private fun eventoChat(){
+    private fun manejoBarraNavegacion(){
         binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuChat -> {
                     val intent = Intent(baseContext, ChatIntermediarioActivity::class.java)
                     intent.putExtra("usuario", usuario)
                     intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menuMap -> {
+                    val intent = Intent(baseContext, FollowTouristActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menuBack -> {
+                    val intent = Intent(baseContext, AgendaIntermediarioActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
                     startActivity(intent)
                     true
                 }
@@ -110,17 +112,4 @@ class PaqueteAgendadoActivity : AppCompatActivity() {
         }
     }
 
-    private fun eventoDetalles(){
-        binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.menuBack -> {
-                    val intent = Intent(baseContext, AgendaIntermediarioActivity::class.java)
-                    intent.putExtra("usuario", usuario)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
-        }
-    }
 }

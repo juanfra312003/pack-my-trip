@@ -48,6 +48,7 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding : ActivityFollowTouristBinding
     private lateinit var usuario : Usuario
     private lateinit var paquete : PaqueteTuristico
+    private lateinit var nombre : String
 
     // Map attributes
     private lateinit var mMap: GoogleMap
@@ -77,6 +78,7 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
         usuario = intent.getSerializableExtra("usuario") as Usuario
         paquete = intent.getSerializableExtra("paquete") as PaqueteTuristico
+        nombre = intent.getStringExtra("nombre").toString()
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.mapViewFollowTourist) as SupportMapFragment
@@ -123,6 +125,10 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
         }
+
+        eventoMapa()
+        eventoChat()
+        eventoDetalles()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -268,6 +274,53 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onPause() {
         super.onPause()
         stopLocationUpdates()
+    }
+
+    private fun eventoMapa(){
+        binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.menuMap -> {
+                    val intent = Intent(baseContext, FollowTouristActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun eventoChat(){
+        binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.menuChat -> {
+                    val intent = Intent(baseContext, ChatIntermediarioActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun eventoDetalles(){
+        binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.menuBack -> {
+                    val intent = Intent(baseContext, AgendaIntermediarioActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
 }

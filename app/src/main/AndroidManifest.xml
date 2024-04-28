@@ -23,9 +23,6 @@
                 android:name=".activities.inter_activities.ChatIntermediarioActivity"
                 android:exported="false" />
         <activity
-                android:name=".Presenter.Intermediario.ChatIntermediarioActivity"
-                android:exported="false" />
-        <activity
                 android:name=".activities.operator_activities.ServicioMetricasActivity"
                 android:exported="false" />
         <activity

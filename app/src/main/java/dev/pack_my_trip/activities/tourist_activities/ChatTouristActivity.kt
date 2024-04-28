@@ -30,7 +30,6 @@ class ChatTouristActivity : AppCompatActivity() {
     }
 
     private fun cargarValores(){
-        // Colocar el nombre del organizador en el textview
         binding.cFriendName.text = paquete_turista.correoIntermediario
         val messages = createMessages()
         val adapter = MessageAdapter(this, messages)
