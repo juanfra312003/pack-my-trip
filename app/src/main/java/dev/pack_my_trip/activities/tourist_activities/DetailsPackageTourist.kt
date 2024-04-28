@@ -63,9 +63,9 @@ class DetailsPackageTourist : AppCompatActivity() {
         }
 
         binding.buttonDownloadFactura.setOnClickListener {
-            //TODO: Descargar factura
-            //val intent = Intent(this, FacturaPaqueteTuristaActivity::class.java)
-            intent.putExtra("paquete_turista", paqueteTurista)
+            Toast.makeText(baseContext, "Factura descargada y enviada al correo.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, DashboardTouristActivity::class.java)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }

@@ -16,7 +16,7 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="200dp"
-            app:srcCompat="@drawable/guia_dashboard_pp"
+            app:srcCompat="@drawable/usuario_profile"
             android:id="@+id/fotoIntermediarioAgendar"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="80dp"
@@ -30,10 +30,9 @@
             android:text="Estos son los paquetes que ya tienes agendados con turistas: "
             android:layout_width="0dp"
             android:fontFamily="@font/coda"
-            android:textColor="#092790"
+            android:textStyle="bold"
             android:textSize="17sp"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:id="@+id/textoAgendaInter"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,10 +69,11 @@
             android:id="@+id/listViewPaquetesAgendadosIntermediario" />
 
     <TextView
-            android:text="Próximos compromisos"
+            android:text="Mis Próximos Compromisos"
             android:textAlignment="center"
             android:fontFamily="@font/coda"
-            android:textSize="17sp"
+            android:textSize="20sp"
+            android:textColor="#092790"
             android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

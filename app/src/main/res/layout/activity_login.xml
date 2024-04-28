@@ -24,7 +24,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Ingresar al Sistema"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textColor="#092790"
             android:fontFamily="@font/coda"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +145,7 @@
     <TextView
             android:text="¿No haces parte de pack-my-trip?"
             android:textSize="18sp"
+            android:textColor="#092790"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView4"

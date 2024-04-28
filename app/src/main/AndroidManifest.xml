@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:allowBackup="true"
@@ -20,108 +20,116 @@
             android:theme="@style/Theme.Packmytrip"
             tools:targetApi="31">
         <activity
+                android:name=".activities.inter_activities.ChatIntermediarioActivity"
+                android:exported="false" />
+        <activity
+                android:name=".Presenter.Intermediario.ChatIntermediarioActivity"
+                android:exported="false" />
+        <activity
                 android:name=".activities.operator_activities.ServicioMetricasActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.EditarPaqueteActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.AgregarServicios"
-                android:exported="false"/>
-
-        <activity android:name=".activities.tourist_activities.ChatTouristActivity"
                 android:exported="false" />
-
+        <activity
+                android:name=".activities.inter_activities.PaqueteAgendadoActivity"
+                android:exported="false" />
+        <activity
+                android:name=".activities.tourist_activities.ChatTouristActivity"
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.AgregarServicio"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.PdfIntermediario"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.ServiciosInter"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.PaqueteTuristicoCreado"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.general_activities.RegionActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.general_activities.ProfileViewActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.FollowTouristActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.AgendaIntermediarioActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.general_activities.RegionActivity"
                 android:exported="false"
-                tools:ignore="DuplicateActivity"/>
+                tools:ignore="DuplicateActivity" />
         <activity
                 android:name=".activities.general_activities.ProfileViewActivity"
                 android:exported="false"
-                tools:ignore="DuplicateActivity"/>
+                tools:ignore="DuplicateActivity" />
         <activity
                 android:name=".adapters.Operador.ServiciosNotificacionAdapter"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.operator_activities.NotificationsActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".adapters.Operador.ServiciosMetricasAdapter"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.operator_activities.EditarServicio"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.operator_activities.RegistroServicios"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.DetailsPackageTourist"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.PackageSearchableActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.SelectorActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.SearchPackagesActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.TouristMapActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.PackageTouristActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.inter_activities.DashboardInter"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.operator_activities.DashboardOperator"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.tourist_activities.DashboardTouristActivity"
-                android:exported="false"/>
+                android:exported="false" />
         <activity
                 android:name=".activities.general_activities.RegisterActivity"
-                android:exported="true"/>
+                android:exported="true" />
         <activity
                 android:name=".activities.general_activities.LoginActivity"
                 android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyCxj6hHWTgFUWQdUYswYE6FyirF-3QFZvs"/>
+                android:value="AIzaSyCxj6hHWTgFUWQdUYswYE6FyirF-3QFZvs" />
     </application>
 
 </manifest>

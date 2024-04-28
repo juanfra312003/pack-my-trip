@@ -1,5 +1,6 @@
 package dev.pack_my_trip.activities.inter_activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,7 +29,13 @@ class AgendaIntermediarioActivity : AppCompatActivity() {
         agendaPaquetesPresenter.getPaquetes(usuario.correo, baseContext, object : OnGetAgenda {
             override fun onGetAgenda(paquetes: List<PaqueteTuristico>) {
                 binding.listViewPaquetesAgendadosIntermediario.adapter = AdapterAgendaInter(baseContext, paquetes.toMutableList())
-
+                binding.listViewPaquetesAgendadosIntermediario.setOnItemClickListener { parent, view, position, id ->
+                    val paquete = parent.getItemAtPosition(position) as PaqueteTuristico
+                    val intent = Intent(baseContext, PaqueteAgendadoActivity::class.java)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("usuario", usuario)
+                    startActivity(intent)
+                }
             }
         })
     }

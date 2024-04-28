@@ -42,18 +42,27 @@
 
     </EditText>
 
-    <ImageView
-            android:id="@+id/imageViewPackageType"
-            android:layout_width="155dp"
-            android:layout_height="155dp"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center"
-            android:src="@drawable/paquete_imagen"
-            android:layout_marginStart="24dp"
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            android:shape="rectangle"
+            android:thicknessRatio="1.9"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName"
+            android:layout_marginStart="24dp">
+
+            <ImageView
+                android:id="@+id/imageViewPackageType"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:src="@drawable/paquete_imagen"
             />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
             android:id="@+id/imageView_organized"
@@ -61,7 +70,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName"
             app:srcCompat="@drawable/organizado_por" />
 
@@ -97,7 +106,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/imageView_organized"
             app:srcCompat="@drawable/fecha_package" />
 
@@ -153,7 +162,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPackageType"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/fecha_editable_text_packagetourist"
             app:srcCompat="@drawable/costo_package" />
 
@@ -202,7 +211,7 @@
             android:id="@+id/serviciosInterListView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="@+id/imageViewPackageType"
+            app:layout_constraintStart_toStartOf="@+id/card"
             app:layout_constraintEnd_toEndOf="@+id/organizadorTextEditable_PackageT"
             app:layout_constraintBottom_toTopOf="@+id/agregarServicioBtn"
             android:layout_marginBottom="16dp"
