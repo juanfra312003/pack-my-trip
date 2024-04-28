@@ -69,15 +69,10 @@ class PackageSearchableActivity : AppCompatActivity() {
 
         binding.calendarPicker.setOnClickListener{
             pedirFecha()
-            paquete.fechaHora = "$day/$month/$year"
-            registrarUsuarioPaquete()
         }
 
         binding.buttonProgramPackage.setOnClickListener {
             registrarUsuarioPaquete()
-            val intent = Intent(this, DashboardTouristActivity::class.java)
-            intent.putExtra("usuario", turista)
-            startActivity(intent)
         }
 
         binding.backButtonSearchPackage.setOnClickListener {
@@ -117,16 +112,19 @@ class PackageSearchableActivity : AppCompatActivity() {
             )
             datePickerDialog.show()
         }
+        paquete.fechaHora = "$day/$month/$year"
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun registrarUsuarioPaquete(){
-        registrarPaqueteUsuarioPresenter.registrarPaqueteUsuario(turista.correo, paquete.id, this, object : OnRegistrarPaqueteUsuario {
+        registrarPaqueteUsuarioPresenter.registrarPaqueteUsuario(turista.correo, paquete.id, baseContext, object : OnRegistrarPaqueteUsuario {
             override fun onRegistrarPaqueteUsuario(registrado: Boolean) {
                 if (registrado){
                     Toast.makeText(this@PackageSearchableActivity, "Paquete registrado con éxito", Toast.LENGTH_SHORT).show()
-
+                    val intent = Intent(this@PackageSearchableActivity, DashboardTouristActivity::class.java)
+                    intent.putExtra("usuario", turista)
+                    startActivity(intent)
                 } else {
                     Toast.makeText(this@PackageSearchableActivity, "Error al registrar el paquete", Toast.LENGTH_SHORT).show()
                 }
