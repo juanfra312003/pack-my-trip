@@ -65,6 +65,8 @@ class DashboardInter : AppCompatActivity() {
                 listViewDashBoardIntermediario.adapter = dashboardInterAdapter
             }
         })
+
+        binding.textViewBienve.text = "Bienvenido ${usuario.usuario}"
     }
 
     fun eventoProfile(){

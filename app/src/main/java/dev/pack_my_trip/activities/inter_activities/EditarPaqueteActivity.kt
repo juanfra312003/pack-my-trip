@@ -57,9 +57,6 @@ class EditarPaqueteActivity : AppCompatActivity() {
         eventoActualizarPaquete()
         eventoSeleccionarFecha()
         eventoAgregarServicio()
-        eventoChat()
-        eventBack()
-        seguirPaquete()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -82,7 +79,10 @@ class EditarPaqueteActivity : AppCompatActivity() {
         }
         urlImagen = intent.getSerializableExtra("urlImagen") as String?
         if(urlImagen != null && !urlImagen!!.isEmpty()){
-            Picasso.get().load(urlImagen).placeholder(R.drawable.paquete_general).error(R.drawable.paquete_general).into(binding.imageViewPackageType)
+            Picasso.get().load(urlImagen).into(binding.imageViewPackageType)
+        }
+        else{
+            binding.imageViewPackageType.setImageResource(R.drawable.paquete_turistico_tursia)
         }
         val costo = intent.getSerializableExtra("costo") as Float
         binding.costoEditableTextPackagetourist.setText(costo.toString())
@@ -185,7 +185,7 @@ class EditarPaqueteActivity : AppCompatActivity() {
                 OnSubirImagen {
                 override fun onSubirImagen(url: String?) {
                     if(url == null){
-                        Toast.makeText(this@EditarPaqueteActivity, "no se pudo subir la imagen", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditarPaqueteActivity, "No se pudo subir la imagen", Toast.LENGTH_SHORT).show()
                         return
                     }
                     val numeroAleatorio3 = random.nextInt(24)
@@ -203,47 +203,24 @@ class EditarPaqueteActivity : AppCompatActivity() {
             OnUpdatePaquete {
             override fun onUpdatePaquete(realizado: Boolean) {
                 if(realizado){
-                    Toast.makeText(this@EditarPaqueteActivity, "se ha actualizado el paquete!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@EditarPaqueteActivity, "Paquete actualizado", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@EditarPaqueteActivity, DashboardInter::class.java)
                     intent.putExtra("usuario", usuario)
                     startActivity(intent)
                 }
-                Toast.makeText(this@EditarPaqueteActivity, "No se pudo crear el paquete", Toast.LENGTH_SHORT).show()
+                else {
+                    Toast.makeText(
+                        this@EditarPaqueteActivity,
+                        "No se pudo actualizar el paquete",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         })
     }
 
-    fun eventBack(){
-        binding.bottomNavigationViewTourist.menu.findItem(R.id.menuMap).setOnMenuItemClickListener( object: OnMenuItemClickListener{
-            override fun onMenuItemClick(item: MenuItem): Boolean {
-                var intent = Intent(this@EditarPaqueteActivity, DashboardInter::class.java)
-                startActivity(intent)
-                return true
-            }
-        })
-    }
 
-    fun seguirPaquete(){
-        binding.bottomNavigationViewTourist.menu.findItem(R.id.menuMap).setOnMenuItemClickListener( object: OnMenuItemClickListener{
-            override fun onMenuItemClick(item: MenuItem): Boolean {
-                var intent = Intent(this@EditarPaqueteActivity, FollowTouristActivity::class.java)
-                intent.putExtra("usuario", usuario)
-                startActivity(intent)
-                return true
-            }
-        })
-    }
 
-    fun eventoChat(){
-        binding.bottomNavigationViewTourist.menu.findItem(R.id.menuChat).setOnMenuItemClickListener( object: OnMenuItemClickListener{
-            override fun onMenuItemClick(item: MenuItem): Boolean {
-                //var intent = Intent(this@EditarPaqueteActivity, ChatActivity::class.java)
-                intent.putExtra("usuario", usuario)
-                startActivity(intent)
-                return true
-            }
-        })
-    }
 
     fun subirImagen(nombrePaquete: String, fechaPaquete: LocalDateTime, onSubirImagen: OnSubirImagen) {
         val bitmapPortada = (binding.imageViewPackageType.drawable as BitmapDrawable).bitmap

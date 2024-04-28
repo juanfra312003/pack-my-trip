@@ -39,7 +39,9 @@
             android:layout_marginEnd="24dp"
             app:layout_constraintTop_toBottomOf="@+id/header_servicios_inter"
             android:layout_marginTop="16dp"
-            tools:ignore="SpeakableTextPresentCheck">
+            tools:ignore="SpeakableTextPresentCheck"
+            app:layout_constraintStart_toEndOf="@+id/textFieldPackageName"
+            android:layout_marginStart="24dp">
 
     </EditText>
 
@@ -53,7 +55,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageName"
-            android:layout_marginStart="12dp">
+            android:layout_marginStart="24dp">
 
         <ImageView
                 android:id="@+id/imageViewPackageType"
@@ -200,65 +202,66 @@
             android:layout_height="40dp"
             android:text="@string/texto_subir_portada"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/card"
 
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp" />
+
     <ListView
             android:id="@+id/serviciosInterListView"
             android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginBottom="15dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@+id/card"
             app:layout_constraintEnd_toEndOf="@+id/organizadorTextEditable_PackageT"
-            app:layout_constraintTop_toBottomOf="@+id/subirImagenBtn"
-            app:layout_constraintBottom_toTopOf="@+id/botonesLinearLayout"
-    >
+            app:layout_constraintBottom_toTopOf="@+id/agregarServicioBtn"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="8dp">
 
     </ListView>
-    <LinearLayout
-            android:id="@+id/botonesLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/serviciosInterListView"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist">
 
-        <Button
-                android:id="@+id/agregarServicioBtn"
-                android:text="@string/agregar_servicio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#092790"
-                android:layout_marginBottom="5dp" />
-
-        <Button
-                android:id="@+id/aceptarCambiosBtn"
-                android:text="@string/texto_aceptar_cambios"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#092790"
-                android:layout_marginStart="50dp"
-                android:layout_marginBottom="5dp" />
-    </LinearLayout>
-
-
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationViewTourist"
-            style="@style/Widget.Design.BottomNavigationView"
+    <Button
+            android:id="@+id/agregarServicioBtn"
+            android:text="@string/agregar_servicio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#283593"
-            app:itemTextColor="@color/white"
+            android:backgroundTint="#092790"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/aceptarCambiosBtn"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/navbar" />
+            android:layout_marginStart="16dp" />
+
+    <Button
+            android:id="@+id/aceptarCambiosBtn"
+            android:text="@string/texto_aceptar_cambios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#092790"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/agregarServicioBtn" />
+
+    <TextView
+            android:text="@string/anuncio_paquetes"
+            android:textAlignment="center"
+            android:fontFamily="@font/coda"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#092790"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/subirImagenBtn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
