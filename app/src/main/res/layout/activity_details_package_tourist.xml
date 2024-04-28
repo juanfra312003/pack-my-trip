@@ -23,7 +23,6 @@
         android:layout_marginEnd="64dp"
         android:fontFamily="@font/coda"
         android:text="Comentarios:"
-        android:textColor="#092790"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,21 +140,21 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textDownloadComprobant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="72dp"
-        android:fontFamily="@font/coda"
-        android:text="Visualiza tu comprobante de pago"
-        android:textColor="#283593"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comentariosEditableText" />
+            android:id="@+id/textDownloadComprobant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="112dp"
+            android:fontFamily="@font/coda"
+            android:text="Comprobante de Pago"
+            android:textAlignment="center"
+            android:textColor="#283593"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comentariosEditableText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="112dp" />
 
     <ImageButton
         android:id="@+id/buttonSendComments"
@@ -171,30 +170,30 @@
         app:srcCompat="@drawable/enviar_comentarios" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonDownloadFactura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDownloadComprobant"
-        app:srcCompat="@drawable/factura_tourist" />
+            android:id="@+id/imageView3"
+            android:layout_width="180dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDownloadFactura"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textDownloadComprobant"
+            app:srcCompat="@drawable/recibo_turi" />
 
     <Button
-        android:id="@+id/buttonDownloadFactura"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#283593"
-        android:text="Descargar comprobante del Paquete Turístico"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/buttonDownloadFactura"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="#283593"
+            android:text="Descargar comprobante del Paquete Turístico"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

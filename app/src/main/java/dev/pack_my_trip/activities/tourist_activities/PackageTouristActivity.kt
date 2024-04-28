@@ -47,7 +47,9 @@ class PackageTouristActivity : AppCompatActivity() {
         binding.bottomNavigationViewTourist.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.menuBack -> {
-                    startActivity(Intent(this, DashboardTouristActivity::class.java))
+                    val intent = (Intent(this, DashboardTouristActivity::class.java))
+                    intent.putExtra("usuario", usuario)
+                    startActivity(intent)
                     true
                 }
                 R.id.menuChat -> {
