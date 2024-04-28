@@ -29,9 +29,7 @@ class ChatIntermediarioActivity : AppCompatActivity() {
         nombre = intent.getStringExtra("nombre").toString()
 
         cargarValores()
-        eventoMapa()
-        eventoDetalles()
-        eventoChat()
+        manejoBarraNavegacion()
     }
 
     private fun cargarValores(){
@@ -62,23 +60,7 @@ class ChatIntermediarioActivity : AppCompatActivity() {
         )
         return mensajes
     }
-    private fun eventoMapa(){
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.menuMap -> {
-                    val intent = Intent(baseContext, FollowTouristActivity::class.java)
-                    intent.putExtra("usuario", usuario)
-                    intent.putExtra("paquete", paquete)
-                    intent.putExtra("nombre", nombre)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
-    private fun eventoChat(){
+    private fun manejoBarraNavegacion(){
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuChat -> {
@@ -89,14 +71,14 @@ class ChatIntermediarioActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                else -> false
-            }
-        }
-    }
-
-    private fun eventoDetalles(){
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId){
+                R.id.menuMap -> {
+                    val intent = Intent(baseContext, FollowTouristActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
                 R.id.menuBack -> {
                     val intent = Intent(baseContext, AgendaIntermediarioActivity::class.java)
                     intent.putExtra("usuario", usuario)

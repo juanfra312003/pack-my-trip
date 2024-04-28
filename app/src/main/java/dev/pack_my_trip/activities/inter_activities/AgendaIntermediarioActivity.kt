@@ -22,7 +22,9 @@ class AgendaIntermediarioActivity : AppCompatActivity() {
         binding = ActivityAgendaIntermediarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
         usuario = intent.getSerializableExtra("usuario") as Usuario
+
         load_values()
+        eventoVolver()
     }
 
     private fun load_values(){
@@ -38,5 +40,13 @@ class AgendaIntermediarioActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun eventoVolver(){
+        binding.buttonVolverMenuAgendaIntermediario.setOnClickListener {
+            val intent = Intent(baseContext, DashboardInter::class.java)
+            intent.putExtra("usuario", usuario)
+            startActivity(intent)
+        }
     }
 }

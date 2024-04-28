@@ -23,7 +23,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header_follow_tourist"
             app:layout_constraintBottom_toTopOf="@+id/textSiguiendoA"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationViewTourist"
@@ -38,7 +40,7 @@
             app:menu="@menu/navbar" />
 
     <TextView
-            android:text="0 KM"
+            android:text="Distancia: 0 KM."
             android:layout_width="0dp"
             android:fontFamily="@font/coda"
             android:textSize="20sp"
@@ -53,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-            android:text="Distancia hacía el turista: "
+            android:text="Siguiendo a: "
             android:fontFamily="@font/coda"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -65,5 +67,20 @@
             android:layout_marginStart="32dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/distanciaKMFollowTourist" />
+
+    <TextView
+            android:text="Juan Francisco"
+            android:layout_width="0dp"
+            android:fontFamily="@font/coda"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombreTuristaSiguiendo"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@+id/textSiguiendoA"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/distanciaKMFollowTourist" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

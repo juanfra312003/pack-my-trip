@@ -38,10 +38,12 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.tasks.Task
+import kotlin.math.*
 import dev.pack_my_trip.R
 import dev.pack_my_trip.databinding.ActivityFollowTouristBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Usuario
+import kotlin.random.Random
 
 class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -59,6 +61,7 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
     private var lastLocation: Location? = null
     private var lastLocationMarker: Marker? = null
+    private lateinit var latLngTurista : LatLng
 
     // Lista de polylines para dibujar rutas
     private val currentPolylines = mutableListOf<Polyline>()
@@ -79,6 +82,11 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
         usuario = intent.getSerializableExtra("usuario") as Usuario
         paquete = intent.getSerializableExtra("paquete") as PaqueteTuristico
         nombre = intent.getStringExtra("nombre").toString()
+        binding.nombreTuristaSiguiendo.text = nombre
+
+        val latitud = 8f + Random.nextFloat() * (11f - 8f)
+        val longitud = -82f + Random.nextFloat() * (-87f + 82f)
+        latLngTurista = LatLng(latitud.toDouble(), longitud.toDouble())
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.mapViewFollowTourist) as SupportMapFragment
@@ -106,6 +114,8 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
                             )
                         )
                         mMap.animateCamera(com.google.android.gms.maps.CameraUpdateFactory.zoomTo(15f))
+                        // Llamar a la función para dibujar la ruta aquí o cualquier otra operación que requiera mMap
+                        drawRoute()
                     } else {
                         if (locationResult.lastLocation!!.distanceTo(lastLocation!!) > 30){
                             lastLocation = locationResult.lastLocation
@@ -118,6 +128,8 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
                                     )
                                 )
                             )
+                            // Llamar a la función para dibujar la ruta aquí o cualquier otra operación que requiera mMap
+                            drawRoute()
                         }
                     }
                     //lastLocationMarker?.remove() // Remove only if not null
@@ -131,9 +143,55 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
         eventoDetalles()
     }
 
+    private fun drawRoute() {
+        val polyline = mMap.addPolyline(
+            com.google.android.gms.maps.model.PolylineOptions()
+                .add(
+                    com.google.android.gms.maps.model.LatLng(
+                        lastLocation!!.latitude,
+                        lastLocation!!.longitude
+                    ),
+                    latLngTurista
+                )
+        )
+        currentPolylines.add(polyline)
+        val distancia = calcularDistancia(
+            lastLocation!!.latitude,
+            lastLocation!!.longitude,
+            latLngTurista.latitude,
+            latLngTurista.longitude).toInt()
+
+        binding.distanciaKMFollowTourist.text = "Distancia: $distancia km"
+    }
+
+    fun calcularDistancia(latitud1: Double, longitud1: Double, latitud2: Double, longitud2: Double): Double {
+        val radioTierra = 6371 // Radio de la Tierra en kilómetros
+        val latitudEnRadianes1 = Math.toRadians(latitud1)
+        val latitudEnRadianes2 = Math.toRadians(latitud2)
+        val diferenciaLatitud = Math.toRadians(latitud2 - latitud1)
+        val diferenciaLongitud = Math.toRadians(longitud2 - longitud1)
+
+        val a = sin(diferenciaLatitud / 2) * sin(diferenciaLatitud / 2) +
+                cos(latitudEnRadianes1) * cos(latitudEnRadianes2) *
+                sin(diferenciaLongitud / 2) * sin(diferenciaLongitud / 2)
+        val c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+        return radioTierra * c // Distancia en kilómetros
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
+
+        // Agregar el marcador aquí, después de que mMap haya sido inicializado
+        mMap.addMarker(
+            MarkerOptions()
+                .position(latLngTurista)
+                .title("Turista")
+                .icon(bitmapDescriptorFromVector(this, R.drawable.userpin))
+        )
+
+
     }
 
     private fun startLocationUpdates() {
