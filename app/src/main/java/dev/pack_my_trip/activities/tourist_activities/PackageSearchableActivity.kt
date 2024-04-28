@@ -1,9 +1,11 @@
 package dev.pack_my_trip.activities.tourist_activities
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.squareup.picasso.Picasso
@@ -18,6 +20,7 @@ import dev.pack_my_trip.databinding.ActivityPackageSearchableBinding
 import dev.pack_my_trip.models.data_model.Usuario
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Servicio
+import java.util.Calendar
 
 import java.util.Date
 
@@ -63,9 +66,14 @@ class PackageSearchableActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun manageButtons() {
+
+        binding.calendarPicker.setOnClickListener{
+            pedirFecha()
+            paquete.fechaHora = "$day/$month/$year"
+            registrarUsuarioPaquete()
+        }
+
         binding.buttonProgramPackage.setOnClickListener {
-            // Pasar a formato aaaa/mm/dd
-            //paquete.fechaHora = binding.calendarViewPackage.date.toString()
             registrarUsuarioPaquete()
             val intent = Intent(this, DashboardTouristActivity::class.java)
             intent.putExtra("usuario", turista)
@@ -78,6 +86,40 @@ class PackageSearchableActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    var year: Int = 0
+    var month: Int = 0
+    var day: Int = 0
+
+    fun pedirFecha() {
+        if (!isFinishing) { // Verificar si la actividad aún está en ejecución
+            val currentDate = Calendar.getInstance()
+            year = currentDate.get(Calendar.YEAR)
+            month = currentDate.get(Calendar.MONTH)
+            day = currentDate.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                    if (year > this.year || (year == this.year && monthOfYear > this.month) ||
+                        (year == this.year && monthOfYear == this.month && dayOfMonth >= this.day)
+                    ) {
+                        month = monthOfYear + 1
+                        this.year = year
+                        this.day = dayOfMonth
+                    } else {
+                        Toast.makeText(this, "La fecha es anterior a hoy", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                year,
+                month,
+                day
+            )
+            datePickerDialog.show()
+        }
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun registrarUsuarioPaquete(){
         registrarPaqueteUsuarioPresenter.registrarPaqueteUsuario(turista.correo, paquete.id, this, object : OnRegistrarPaqueteUsuario {
