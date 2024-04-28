@@ -36,15 +36,17 @@ class MisServiciosAdapter(
         if (convertViewTemp == null) {
             convertViewTemp = LayoutInflater.from(context).inflate(R.layout.mis_servicios_adapter, parent, false) //Obtiene el xml con el diseño
         }
-        val textoServicio: TextView = convertViewTemp!!.findViewById(R.id.MisServiciosTxt) //Obtener texto
+        val textoServicio: TextView = convertViewTemp!!.findViewById(R.id.nombrePaqueteMisServicios) //Obtener texto
+        val textoFecha : TextView = convertViewTemp!!.findViewById(R.id.fechaServicioMisServicios)
         val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen]
         textoServicio.text = data[position].nombre
+        textoFecha.text = data[position].fechaHora
         var urlImg: String? = data[position].portada
         if(urlImg != null){
             urlImg = urlImg!!.trim()
         }
         if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagServicio)
+            Picasso.get().load(urlImg).into(imagServicio)
         }
         else{
             imagServicio.setImageResource(R.drawable.no_disponible)
