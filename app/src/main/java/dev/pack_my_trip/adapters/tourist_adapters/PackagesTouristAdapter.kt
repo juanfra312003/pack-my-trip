@@ -10,8 +10,6 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
-
 class PackagesTouristAdapter (context : Context, packages : MutableList<PaqueteTuristico>) : ArrayAdapter<PaqueteTuristico>(context, 0, packages) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var itemView = convertView

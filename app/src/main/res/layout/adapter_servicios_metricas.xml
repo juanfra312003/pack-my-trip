@@ -31,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="title"
+                    android:fontFamily="@font/coda"
                     android:textStyle="bold"
                     android:layout_marginLeft="15dp"
                     android:layout_marginStart="15dp"
@@ -45,6 +46,7 @@
                         android:text="Fecha: "
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/coda"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
                 <TextView
@@ -52,6 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
+                        android:fontFamily="@font/coda"
                         android:layout_marginTop="5dp"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -83,6 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nombre del Servicio:"
+                    android:fontFamily="@font/coda"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
@@ -90,6 +94,7 @@
                     android:id="@+id/nombreServicio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/coda"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:textSize="16sp"/>
@@ -102,6 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tasa de Ocupación:"
+                    android:fontFamily="@font/coda"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
@@ -109,6 +115,7 @@
                     android:id="@+id/tasaOcupacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/coda"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:textSize="16sp"/>
@@ -121,6 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Duración Promedio de la estancia:"
+                    android:fontFamily="@font/coda"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
@@ -128,6 +136,7 @@
                     android:id="@+id/duracionPromedio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/coda"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:textSize="16sp"/>
@@ -140,12 +149,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ingresos Generados:"
+                    android:fontFamily="@font/coda"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
             <TextView
                     android:id="@+id/ingresosGenerados"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/coda"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
@@ -166,7 +177,7 @@
                     android:id="@+id/indiceVisitas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:fontFamily="@font/coda"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:textSize="16sp"/>

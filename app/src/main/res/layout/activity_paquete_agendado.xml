@@ -46,15 +46,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameAgenda" />
 
-    <ImageView
-            android:id="@+id/imageViewPackageTypeAgenda"
-            android:layout_width="155dp"
-            android:layout_height="155dp"
-            android:layout_marginStart="24dp"
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            android:shape="rectangle"
+            android:thicknessRatio="1.9"
+            app:layout_constraintBottom_toTopOf="@+id/listViewServicesPackageAgenda"
+            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameAgenda"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditableAgenda"
-            app:srcCompat="@drawable/volcan" />
+            android:layout_marginStart="24dp">
+
+        <ImageView
+                android:id="@+id/imageViewPackageTypeAgenda"
+                android:layout_width="155dp"
+                android:layout_height="155dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/paquete_imagen" />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
             android:id="@+id/imageView_dateAgenda"
@@ -62,7 +74,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPackageTypeAgenda"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/imageView_organizedAgenda"
             app:srcCompat="@drawable/fecha_package" />
 
@@ -72,7 +84,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPackageTypeAgenda"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/imageView_dateAgenda"
             app:srcCompat="@drawable/costo_package" />
 
@@ -82,7 +94,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPackageTypeAgenda"
+            app:layout_constraintStart_toEndOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/textFieldPackageNameEditableAgenda"
             app:srcCompat="@drawable/organizado_por" />
 
@@ -202,6 +214,7 @@
             android:backgroundTint="#092790"
             android:layout_marginBottom="16dp"
             android:text="Volver al Menú Principal"
+            android:fontFamily="@font/coda"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewTourist"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

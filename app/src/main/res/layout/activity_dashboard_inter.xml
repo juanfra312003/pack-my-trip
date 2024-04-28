@@ -43,7 +43,6 @@
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:elevation="12dp"
@@ -53,12 +52,15 @@
                 app:cardCornerRadius="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="40dp">
 
             <ImageView
                     android:id="@+id/imagenProfileUserDash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/guia_dashboard_pp" />
@@ -76,7 +78,7 @@
                 app:srcCompat="@drawable/usuario"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="18dp"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="60dp"
                 app:layout_constraintStart_toEndOf="@+id/cardDashBoard"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -90,7 +92,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/buttonProfileDashInt"
-                android:layout_marginStart="85dp"
+                android:layout_marginStart="65dp"
                 app:layout_constraintStart_toEndOf="@+id/cardDashBoard" />
 
         <ImageButton
@@ -188,7 +190,7 @@
 
     <Button
             android:id="@+id/buttonVerPaquetesAgenda"
-            android:text="Paquetes Agendados"
+            android:text="Ver Paquetes Agendados"
             android:layout_width="0dp"
             android:backgroundTint="#092790"
             android:layout_height="wrap_content"

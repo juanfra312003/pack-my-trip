@@ -20,7 +20,6 @@ import dev.pack_my_trip.activities.tourist_activities.UploadDocumentActivity
 import dev.pack_my_trip.databinding.ActivityLoginBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.Turista  // Asegúrate de que el modelo y la ruta sean correctos.
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding

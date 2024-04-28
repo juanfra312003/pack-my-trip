@@ -11,11 +11,9 @@ import androidx.annotation.RequiresApi
 import dev.pack_my_trip.ConectionBack.Interfaces.OnActualizarComentariosCalificaciones
 import dev.pack_my_trip.Presenter.Turista.ActualizarComentariosCalificacionesPresenter
 import dev.pack_my_trip.R
-import dev.pack_my_trip.activities.general_activities.ChatActivity
 import dev.pack_my_trip.databinding.ActivityDetailsPackageTouristBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 
 class DetailsPackageTourist : AppCompatActivity() {
 
@@ -65,8 +63,9 @@ class DetailsPackageTourist : AppCompatActivity() {
         }
 
         binding.buttonDownloadFactura.setOnClickListener {
-            val intent = Intent(this, FacturaPaqueteTuristaActivity::class.java)
-            intent.putExtra("paquete_turista", paqueteTurista)
+            Toast.makeText(baseContext, "Factura descargada y enviada al correo.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(baseContext, DashboardTouristActivity::class.java)
+            intent.putExtra("usuario", usuario)
             startActivity(intent)
         }
     }

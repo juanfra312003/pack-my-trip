@@ -54,10 +54,10 @@ class DashboardInterAdapter(
         editablePrecioAgInt.text = data[position].precioDolares.toString() + " $"
         val urlImg: String? = data[position].imagen
         if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagPaquete)
+            Picasso.get().load(urlImg).into(imagPaquete)
         }
         else{
-            imagPaquete.setImageResource(R.drawable.no_disponible)
+            imagPaquete.setImageResource(R.drawable.paquete_turistico_tursia)
         }
         convertViewTemp.setOnClickListener{
             val intent = Intent(context, EditarPaqueteActivity::class.java) //Crea el intent con el contexto de esta actividad y la objetivo

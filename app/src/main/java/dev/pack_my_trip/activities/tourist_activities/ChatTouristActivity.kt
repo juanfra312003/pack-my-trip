@@ -8,7 +8,6 @@ import dev.pack_my_trip.adapters.tourist_adapters.MessageAdapter
 import dev.pack_my_trip.databinding.ActivityChatTouristBinding
 import dev.pack_my_trip.models.data_model.PaqueteTuristico
 import dev.pack_my_trip.models.data_model.Usuario
-import dev.pack_my_trip.models.models_tourist.PaquetesPorTurista
 import dev.pack_my_trip.models.models_tourist.messages.MessageApp
 import dev.pack_my_trip.models.models_tourist.messages.TextMessage
 import java.util.Date
@@ -31,7 +30,6 @@ class ChatTouristActivity : AppCompatActivity() {
     }
 
     private fun cargarValores(){
-        // Colocar el nombre del organizador en el textview
         binding.cFriendName.text = paquete_turista.correoIntermediario
         val messages = createMessages()
         val adapter = MessageAdapter(this, messages)

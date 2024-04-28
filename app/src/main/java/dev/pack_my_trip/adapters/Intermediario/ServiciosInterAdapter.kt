@@ -39,19 +39,20 @@ class ServiciosInterAdapter (
             data.removeAt(position)
             notifyDataSetChanged()
         }
-        val textoServicio: TextView = convertViewTemp!!.findViewById(R.id.MisServiciosTxt) //Obtener texto
+        val nombreServicio: TextView = convertViewTemp!!.findViewById(R.id.nombrePaqueteMisServicios) //Obtener texto
+        val fechaServicio: TextView = convertViewTemp!!.findViewById(R.id.fechaServicioMisServicios) //Obtener texto
         val imagServicio: ImageView = convertViewTemp!!.findViewById(R.id.MisServiciosImgView) //Obtener imagen]
-        textoServicio.text = data[position].nombre
+        nombreServicio.text = data[position].nombre
+        fechaServicio.text = data[position].fechaHora
         var urlImg: String? = data[position].portada
-        if(urlImg != null){
-            urlImg = urlImg.trim()
-        }
+
         if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imagServicio)
+            Picasso.get().load(urlImg).into(imagServicio)
         }
         else{
-            imagServicio.setImageResource(R.drawable.no_disponible)
+            imagServicio.setImageResource(R.drawable.paquete_turistico_tursia)
         }
+
         return convertViewTemp
     }
 }

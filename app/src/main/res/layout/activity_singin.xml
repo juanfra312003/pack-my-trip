@@ -33,22 +33,36 @@
             app:layout_constraintTop_toBottomOf="@+id/headerProfileDetails" />
 
     <!-- Imagen del turista -->
-    <ImageView
-            android:id="@+id/imageViewTourist"
-            android:layout_width="200dp"
-            android:layout_height="165dp"
-            app:srcCompat="@drawable/operador_dashboard"
-            android:scaleType="fitCenter"
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="rectangle"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textViewRegisterTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp">
+
+        <ImageView
+                android:id="@+id/imageViewTourist"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:srcCompat="@drawable/operador_dashboard"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
 
     <EditText
             android:id="@+id/editTextProfileName"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="@font/coda"
             android:textSize="15sp"
             android:hint="@string/profile_name_hint"
             android:inputType="textPersonName"
@@ -59,7 +73,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewTourist"
+            app:layout_constraintTop_toBottomOf="@+id/card"
             android:layout_marginTop="16dp"
             tools:ignore="TouchTargetSizeCheck" />
 
@@ -67,7 +81,7 @@
             android:id="@+id/editTextEmail"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="@font/coda"
             android:textSize="15sp"
             android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
@@ -85,7 +99,7 @@
             android:id="@+id/editTextPassword"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="@font/coda"
             android:textSize="15sp"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
@@ -116,7 +130,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
+                android:fontFamily="@font/coda"
                 android:textSize="15sp"
                 android:hint="@string/day_hint"
                 android:inputType="number"
@@ -128,8 +142,8 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
                 android:textSize="15sp"
+                android:fontFamily="@font/coda"
                 android:hint="@string/month_hint"
                 android:inputType="number"
                 android:importantForAutofill="yes"
@@ -141,7 +155,7 @@
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:hint="@string/year_hint"
-                android:fontFamily="sans-serif-condensed"
+                android:fontFamily="@font/coda"
                 android:textSize="15sp"
                 android:inputType="number"
                 android:importantForAutofill="yes"
@@ -156,6 +170,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:prompt="@string/select_role_prompt"
+            android:fontFamily="@font/coda"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -172,6 +187,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            android:fontFamily="@font/coda"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerRole"
             android:layout_marginStart="32dp"

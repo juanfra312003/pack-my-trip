@@ -5,43 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/service_tourism_imageview"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/servicio_turistico" />
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+                android:id="@+id/service_tourism_imageview"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/servicio_turistico"/>
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
-        android:id="@+id/descripcionServiceTextViewEditable"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="24dp"
-        android:bufferType="spannable"
-        android:ellipsize="end"
-        android:fontFamily="@font/coda"
-        android:text="Descripción del servicio"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/service_tourism_imageview"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/descripcionServiceTextViewEditable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:bufferType="spannable"
+            android:ellipsize="end"
+            android:fontFamily="@font/coda"
+            android:text="Descripción del servicio"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/card"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/descripcionTextView" />
 
     <TextView
-        android:id="@+id/descripcionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Descripción: "
-        android:fontFamily="@font/coda"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/service_tourism_imageview"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/descripcionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción del Servicio: "
+            android:fontFamily="@font/coda"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/card" />
 </androidx.constraintlayout.widget.ConstraintLayout>

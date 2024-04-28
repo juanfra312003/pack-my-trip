@@ -112,7 +112,7 @@ class Repository() {
         })
     }
 
-    fun getServicios(context: Context, onGetServiciosPresenter: OnGetServicios){
+    fun getAllServicios(context: Context, onGetAllServiciosPresenter: OnGetAllServiciosPresenter){
         val getServicios = urlFinal.getServicios()
 
         getServicios.enqueue(object: Callback<List<Servicio>>{
@@ -121,7 +121,7 @@ class Repository() {
                     Toast.makeText(context, "No se pudo obtener servicios", Toast.LENGTH_SHORT).show()
                 }
                 if(response.body() != null){
-                    onGetServiciosPresenter.onGetServicios(response.body()!!)
+                    onGetAllServiciosPresenter.onGetAllServiciosPresenter(response.body()!!)
                 }
             }
 
@@ -283,7 +283,26 @@ class Repository() {
         })
     }
 
-    fun getAllPaquetesTuristicos(context: Context, onGetAllPaquetesPresenter : OnGetAllPaquetesPresenter){
+    fun getAgendaInter (correoIntermediario : String, context : Context, onGetAgendaPresenter : OnGetAgendaPresenter){
+        val getPaquetesAgenda = urlFinal.getAgendaInter(correoIntermediario)
+
+        getPaquetesAgenda.enqueue(object : Callback<List<PaqueteTuristico>>{
+            override fun onResponse(call: Call<List<PaqueteTuristico>>, response: Response<List<PaqueteTuristico>>) {
+                if(!response.isSuccessful){
+                    Toast.makeText(context, "No se pudo obtener la agenda", Toast.LENGTH_SHORT).show()
+                }
+                if(response.body() != null){
+                    onGetAgendaPresenter.onGetAgendaPresenter(response.body()!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<PaqueteTuristico>>, t: Throwable) {
+                Toast.makeText(context, "El sistema no esta disponible, inténtelo de nuevo", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun getAllPaquetesTuristicos(context: Context, onGetAllPaquetesPresenter:  OnGetAllPaquetesPresenter){
         val getPaquetes = urlFinal.getAllPaquetes()
 
         getPaquetes.enqueue(object: Callback<List<PaqueteTuristico>>{

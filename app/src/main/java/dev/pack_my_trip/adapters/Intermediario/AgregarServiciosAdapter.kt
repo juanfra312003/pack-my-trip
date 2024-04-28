@@ -13,7 +13,6 @@ import androidx.compose.ui.graphics.toArgb
 import com.squareup.picasso.Picasso
 import dev.pack_my_trip.R
 import dev.pack_my_trip.models.data_model.Servicio
-import dev.pack_my_trip.models.models_tourist.PaqueteTuristico
 
 class AgregarServiciosAdapter (context : Context, var servicios : MutableList<Servicio>) : ArrayAdapter<Servicio>(context, 0, servicios) {
     var serviciosSeleccionados: MutableList<Servicio> = mutableListOf()
@@ -46,10 +45,10 @@ class AgregarServiciosAdapter (context : Context, var servicios : MutableList<Se
             urlImg = urlImg.trim()
         }
         if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).placeholder(R.drawable.no_disponible).error(R.drawable.no_disponible).into(imageService)
+            Picasso.get().load(urlImg).into(imageService)
         }
         else{
-            imageService.setImageResource(R.drawable.no_disponible)
+            imageService.setImageResource(R.drawable.paquete_turistico_tursia)
         }
         description.text = item!!.nombre
         organizerField.text = item.correoOperador

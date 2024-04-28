@@ -37,10 +37,12 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="50dp">
             <ImageView
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/operador_photo"
-                android:layout_gravity="center"/>
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:id="@+id/operadorPhotoDash"
+                android:src="@drawable/operador_photo" />
         </FrameLayout>
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -116,6 +118,7 @@
                 android:id="@+id/registrarServicioDashBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/texto_registar_servicio"
                 android:layout_gravity="left"
                 android:backgroundTint="#28429e"
@@ -127,6 +130,8 @@
                 android:id="@+id/verMetricasBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="20dp"
                 android:text="Ver métricas servicios"
                 android:layout_marginStart="10dp"
                 android:layout_gravity="right"
