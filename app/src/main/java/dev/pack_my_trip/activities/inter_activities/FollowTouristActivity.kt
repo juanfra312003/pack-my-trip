@@ -141,6 +141,38 @@ class FollowTouristActivity : AppCompatActivity(), OnMapReadyCallback {
         eventoMapa()
         eventoChat()
         eventoDetalles()
+        manejoBarraNavegacion()
+    }
+
+    private fun manejoBarraNavegacion(){
+        binding.bottomNavigationViewTourist.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.menuChat -> {
+                    val intent = Intent(baseContext, ChatIntermediarioActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menuMap -> {
+                    val intent = Intent(baseContext, FollowTouristActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    intent.putExtra("nombre", nombre)
+                    startActivity(intent)
+                    true
+                }
+                R.id.menuBack -> {
+                    val intent = Intent(baseContext, AgendaIntermediarioActivity::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("paquete", paquete)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun drawRoute() {
