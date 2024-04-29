@@ -8,21 +8,23 @@ _Aplicación innovadora fácil, ágil y sencilla para entusiastas en: creación 
 
 _Clone el repositorio con el comando: git clone [https://github.com/LiSierra/TestAppML.git](https://github.com/juanfra312003/pack-my-trip.git)_
 
-## `Intermediario`
+`Intermediario`
 
 ### Creación de paquetes 📦
 
 ![Crear Paquete](https://github.com/juanfra312003/pack-my-trip/assets/99839239/39b533eb-53b6-4dfb-ae97-f545801f35cf)
 
-## Operador
+## `Operador`
 
 ### Creación de servicios 🌋
 
-## General
+## `General`
 
 ### Seguimiento en tiempo real de turistas 🧗
 
 ![Seguimiento](https://github.com/juanfra312003/pack-my-trip/assets/99839239/12a8d6ef-72d5-4f2c-b6e2-1258bfc49229)
+
+## `Turista`
 
 ### Agendamiento de paquetes 📅
 
