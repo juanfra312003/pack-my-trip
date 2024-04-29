@@ -6,7 +6,7 @@ _Aplicación innovadora fácil, ágil y sencilla para entusiastas en: creación 
 
 ## Comenzando 🚀
 
-_Clone el repositorio con el comando: git clone [https://github.com/juafra312003/pack-my-trip.git](https://github.com/juanfra312003/pack-my-trip.git)_
+_Clone el repositorio con el comando: git clone [https://github.com/juanfra312003/pack-my-trip.git](https://github.com/juanfra312003/pack-my-trip.git)_
 
 ## `Intermediario`
 
@@ -59,4 +59,4 @@ _Herramientas utilizadas para crear el proyecto_
 * Retrofit 2.9.0
 * Gson 2.9.0
 * Google Maps Services 0.15.0
-* [.NET 6.0 BackEnd](https://github.com/juanfra312003/pack-my-trip.git)
+* [.NET 6.0 BackEnd](https://github.com/Juligo17/PackMyTripBack)
