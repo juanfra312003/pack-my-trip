@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_tam"
+        android:src="@drawable/header_pmt_final"
         android:layout_marginBottom="16dp"
     />
 
@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_height="match_parent"
                 android:id="@+id/operadorPhotoDash"
-                android:src="@drawable/operador_photo" />
+                android:src="@drawable/dwight" />
         </FrameLayout>
         <LinearLayout
                 android:layout_width="wrap_content"

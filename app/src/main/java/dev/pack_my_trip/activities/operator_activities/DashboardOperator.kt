@@ -28,6 +28,18 @@ class DashboardOperator : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard_operator)
         usuario = intent.getSerializableExtra("usuario") as Usuario
 
+
+        // Cargar la imagen de perfil
+        val urlImg : String? = usuario.fotoPerfil
+        if(urlImg != null && !urlImg.isEmpty()){
+            Picasso.get().load(urlImg).into(binding.operadorPhotoDash)
+        }
+        else{
+            binding.operadorPhotoDash.setImageResource(R.drawable.usuario_profile)
+        }
+        binding.textoBienvenido.text = "Bienvenido de nuevo, ${usuario.usuario} !"
+
+
         inicializarVariables()
         eventoRegistarServicio()
         eventoMetricasBtn()
@@ -44,12 +56,7 @@ class DashboardOperator : AppCompatActivity() {
         })
         registrarServicioBtn = findViewById(R.id.registrarServicioDashBtn)
 
-        // Cargar la imagen de perfil
-        val urlImg : String? = usuario.fotoPerfil
-        if(urlImg != null && !urlImg.isEmpty()){
-            Picasso.get().load(urlImg).into(binding.operadorPhotoDash)
-        }
-        binding.textoBienvenido.text = "Bienvenido de nuevo, ${usuario.usuario} !"
+
     }
 
     fun eventoRegistarServicio(){
