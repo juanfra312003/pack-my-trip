@@ -74,8 +74,8 @@ _Herramientas utilizadas para crear el proyecto_
 
 ### Desarrollado por: 💻
 
-* Juan Francisco Ramírez Escobar
-* Edgar Julián González Sierra
-* Valentina Garcia Alfonso
-* Juan Miguel Suárez Zuluaga
-* Nicolás Alexander Sánchez
+* [Edgar Julián González Sierra](https://github.com/Juligo17)
+* [Juan Francisco Ramírez Escobar](https://github.com/juanfra312003)
+* [Juan Miguel Suárez Zuluaga](https://github.com/juanzulu)
+* [Nicolás Alexander Sánchez](https://github.com/Lexsanche)
+* [Valentina Garcia Alfonso](https://github.com/valentinaG08)
